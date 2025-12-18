@@ -3,3 +3,4 @@ a.out
 *.log
 *.exe
 *.log
+.c
