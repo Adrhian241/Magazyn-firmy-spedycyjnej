@@ -5,10 +5,11 @@ void ustaw_semafor(int semid, int numer_semafora, int wartosc)
     {
 	    perror("[MAIN] Nie mozna ustawic semafora");
 	    exit(EXIT_FAILURE);
-	else
-	{
-	    printf("[MAIN] semafor %d zostal ustawiony na %d.\n",numer_semafora,wartosc);
-	}
+    }
+    else
+    {
+        printf("[MAIN] semafor %d zostal ustawiony na %d.\n",numer_semafora,wartosc);
+    }
 }
 int main(){
     
@@ -20,7 +21,7 @@ int main(){
 	printf("[MAIN] problem z utworzeniem pamieci dzielonej. \n");
 	exit(EXIT_FAILURE);
     }
-    else prinf("[MAIN] Pamiec dzielona zostala utworzona : %d\n",shmid);
+    else printf("[MAIN] Pamiec dzielona zostala utworzona : %d\n",shmid);
     
     //stworzenie semaforow
     int semid = semget(KEY_SEM, 5, IPC_CREAT | 0600);
@@ -98,8 +99,16 @@ int main(){
 	    {
                 perror("[MAIN] Blad fork");
             }
-                else {
+                else 
+	    {
                 printf("[MAIN] Uruchomiono ciezarowke C%d (PID: %d)\n", i, pid);
             }
         }
+	int status;
+    while (wait(&status) > 0);
+
+    printf("\n[MAIN] Wszyscy pracownicy oraz ciezarowki zakonczyly prace. Sprzatam system.\n");
+
+    shmctl(shmid, IPC_RMID, NULL);
+    semctl(semid, 0, IPC_RMID);
 }
