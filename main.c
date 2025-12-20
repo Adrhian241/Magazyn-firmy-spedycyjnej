@@ -1,5 +1,6 @@
 #include "dane.h"
-void ustaw_semafor(int semid, int numer_semafora, int wartosc){
+void ustaw_semafor(int semid, int numer_semafora, int wartosc)
+{
     if (semctl(semid,numer_semafora,SETVAL,wartosc)==-1)
     {
 	    perror("[MAIN] Nie mozna ustawic semafora");
@@ -8,7 +9,7 @@ void ustaw_semafor(int semid, int numer_semafora, int wartosc){
 	{
 	    printf("[MAIN] semafor %d zostal ustawiony na %d.\n",numer_semafora,wartosc);
 	}
-    }
+}
 int main(){
     
     //stworzenie pamieci dzielonej
@@ -34,11 +35,12 @@ int main(){
         }
 
     //polaczenie sie z pamieci dzielona
-        MagazynShared *wspolna = (MagazynShared*)shmat(shmid, NULL, 0);
-        if (wspolna == (void*)-1) {
-            perror("[MAIN] Blad shmat");
-            exit(1);
-        }
+    MagazynShared *wspolna = (MagazynShared*)shmat(shmid, NULL, 0);
+    if (wspolna == (void*)-1)
+    {
+        perror("[MAIN] Blad shmat");
+        exit(1);
+    }
     //ustawianie semaforow
     ustaw_semafor(semid, SEM_MUTEX_TASMA, 1);
     ustaw_semafor(semid, SEM_MUTEX_CIEZAROWKA, 1);
@@ -55,4 +57,49 @@ int main(){
     wspolna->ciezarowka.id_ciezarowki = -1;
     wspolna->koniec_symulacji = 0;
     shmdt(wspolna);
+
+    //tworzenie pracownikow 1,2,3
+    char id_str[10]; // Bufor tekstowy na ID pracownika
+        for (int i = 1; i <= 3; i++) 
+	    {
+            pid_t pid = fork();
+
+            if (pid == 0)
+	    {
+            sprintf(id_str, "%d", i); // Zamiana int na string, np. 1 -> "1"
+            execlp("./pracownicy", "pracownicy", id_str, NULL);
+            perror("[MAIN] Blad execlp (uruchamianie pracownika)");
+            exit(1);
+            }
+            else if (pid < 0) 
+	    {
+                perror("[MAIN] Blad fork");
+            }
+            else
+            {
+                printf("[MAIN] Uruchomiono pracownika P%d (PID: %d)\n", i, pid);
+            }
+        }
+
+    //tworzenie N ciezarowek
+     char id_c[10];
+        for (int i = 1; i <= N; i++) 
+        {
+            pid_t pid = fork();
+
+            if (pid == 0) 
+            {
+            sprintf(id_c, "%d", i); // Zamiana int na string, np. 1 -> "1"
+            execlp("./ciezarowka", "ciezarowka", id_c, NULL);
+            perror("[MAIN] Blad execlp (uruchamianie ciezarowki)");
+            exit(1);
+            }
+            else if (pid < 0) 
+	    {
+                perror("[MAIN] Blad fork");
+            }
+                else {
+                printf("[MAIN] Uruchomiono ciezarowke C%d (PID: %d)\n", i, pid);
+            }
+        }
 }
