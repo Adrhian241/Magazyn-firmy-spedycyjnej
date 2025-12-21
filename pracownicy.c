@@ -20,7 +20,8 @@ int main(int argc,char *argv[])
     printf("[PRACOWNIK] Pracownik %d zaczyna prace.\n", id);
 
     int shmid = shmget(KEY_SHM,sizeof(MagazynShared),0600);
-    if (shmid == -1){
+    if (shmid == -1)
+    {
         perror("[PRACOWNIK] Blad shmget");
         exit(1);
     }
@@ -32,7 +33,11 @@ int main(int argc,char *argv[])
         exit(1);
     }
     int semid = semget(KEY_SEM,0,0);
-
+    if (semid == -1)
+    {
+        perror("[PRACOWNIK] blad semget");
+        exit(1);
+    }
     while(1)
     {
         useconds_t czas_snu = 200000 + (rand() % 500000);
@@ -42,11 +47,12 @@ int main(int argc,char *argv[])
         double waga_paczki = losuj_wage(typ_paczki);
         char nazwa_paczki = (typ_paczki == 1) ? 'A' : (typ_paczki == 2) ? 'B' : 'C';
         double objetosc_paczki = (typ_paczki == 1) ? 19456 : (typ_paczki == 2) ? 46208 : 99712; //w cm3
-        while(czy_udalo_sie_polozyc == 0)
+        while(!czy_udalo_sie_polozyc)
         {
-            sem_P(semid, SEM_MUTEX_TASMA);
+
             sem_P(semid, SEM_EMPTY);
-            if(wspolna->tasma.masa_paczek + waga_paczki < M)
+	    sem_P(semid, SEM_MUTEX_TASMA);
+            if(wspolna->tasma.masa_paczek + waga_paczki <= M)
             {
                 int indeks = wspolna->tasma.tail;
                 wspolna->tasma.bufor[indeks].id_pracownika = id;
@@ -59,17 +65,17 @@ int main(int argc,char *argv[])
                  printf("[PRACOWNIK] P%d + Dodal paczke %c (%.1fkg) o V = %.1fcm3, Tasma: %d/%d szt, %.1f/%.1f kg\n"
                 ,id,nazwa_paczki,waga_paczki,objetosc_paczki,wspolna->tasma.ilosc_paczek, K,wspolna->tasma.masa_paczek, M);
 
+		czy_udalo_sie_polozyc = 1;
                 sem_V(semid, SEM_MUTEX_TASMA);
                 sem_V(semid, SEM_FULL);
-                czy_udalo_sie_polozyc = 1;
             }
             else
             {
                 printf("[PRACOWNIK] P%d !cd Paczka %.1fkg za ciezka (Tasma: %.1fkg). Czekam z paczka...\n",
                 id, waga_paczki, wspolna->tasma.masa_paczek);
 
+		sem_V(semid, SEM_MUTEX_TASMA);
                 sem_V(semid, SEM_EMPTY);
-                sem_V(semid, SEM_MUTEX_TASMA);
                 sleep(3);
 
             }
