@@ -35,6 +35,15 @@ int main(){
                 printf("[MAIN] Semafory zostal utworzone : %d\n",semid);
         }
 
+    //tworzenie kolejki komunikatow
+    int msgid = msgget(KEY_MSG, IPC_CREAT | 0600);
+    if (msgid == -1) 
+    {
+        perror("[MAIN] Nie moglem utworzyc kolejki komunikatow");
+        exit(1);
+    }
+    printf("[MAIN] Kolejka komunikatow utworzona: %d\n", msgid);
+
     //polaczenie sie z pamieci dzielona
     MagazynShared *wspolna = (MagazynShared*)shmat(shmid, NULL, 0);
     if (wspolna == (void*)-1)
@@ -111,4 +120,5 @@ int main(){
 
     shmctl(shmid, IPC_RMID, NULL);
     semctl(semid, 0, IPC_RMID);
+    msgctl(msgid, IPC_RMID, NULL);
 }

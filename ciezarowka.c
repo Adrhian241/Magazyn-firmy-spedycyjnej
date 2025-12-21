@@ -17,6 +17,11 @@ int main(int argc, char *argv[])
     { 
         perror("[CIEZAROWKA] blad semget"); exit(1); 
     }
+    int msgid = msgget(KEY_MSG, 0666);
+    if (msgid == -1) 
+    { 
+        perror("[CIEZAROWKA] Blad msgget"); exit(1); 
+    }
 
     printf("[CIEZAROWKA] Ciezarowka %d zaczyna prace.\n",id);
     while(1)
@@ -34,10 +39,25 @@ int main(int argc, char *argv[])
         printf("\n [CIEZAROWKA] CIEZAROWKA %d --- Podjechalem pod rampe\n", id);
 
         int czy_pelna = 0;
+	struct moj_komunikat msg;
+
         while(czy_pelna == 0)
         {
+	    if (msgrcv(msgid, &msg, sizeof(int), 1, IPC_NOWAIT) != -1)
+            {
+                printf("[DYSPOZYTOR]>>>[CIEZAROWKA] Rozkaz natychmiastowego odjazdu");
+                czy_pelna = 1;
+                continue;
+            }
+            
+            struct sembuf check_full = {SEM_FULL, -1, IPC_NOWAIT};
+            if (semop(semid, &check_full, 1) == -1) 
+	    {
+                usleep(350000); 
+                continue;
+            }
             usleep(350000);
-            sem_P(semid, SEM_FULL);
+
             sem_P(semid, SEM_MUTEX_TASMA);
 
             int idx = wspolna->tasma.head;
