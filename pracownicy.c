@@ -17,7 +17,7 @@ int main(int argc,char *argv[])
 {
     int id = atoi(argv[1]);
     srand(time(NULL) ^ getpid());
-    printf("[PRACOWNIK] Pracownik %d zaczyna prace.\n", id);
+    printf("[PRACOWNIK %d] zaczyna prace.\n", id);
 
     int shmid = shmget(KEY_SHM,sizeof(MagazynShared),0600);
     if (shmid == -1)
@@ -40,6 +40,11 @@ int main(int argc,char *argv[])
     }
     while(1)
     {
+	if(wspolna->koniec_symulacji)
+        {
+            printf("[PRACOWNIK %d] koniec pracy\n",id);
+            break;
+        }
         useconds_t czas_snu = 200000 + (rand() % 500000);
         usleep(czas_snu);
         int czy_udalo_sie_polozyc = 0;
@@ -49,7 +54,10 @@ int main(int argc,char *argv[])
         double objetosc_paczki = (typ_paczki == 1) ? 19456 : (typ_paczki == 2) ? 46208 : 99712; //w cm3
         while(!czy_udalo_sie_polozyc)
         {
-
+	    if(wspolna->koniec_symulacji)
+            {
+                break;
+            }
             sem_P(semid, SEM_EMPTY);
 	    sem_P(semid, SEM_MUTEX_TASMA);
             if(wspolna->tasma.masa_paczek + waga_paczki <= M)
@@ -62,7 +70,7 @@ int main(int argc,char *argv[])
                 wspolna->tasma.tail = (indeks + 1) % K;
                 wspolna->tasma.masa_paczek += waga_paczki;
                 wspolna->tasma.ilosc_paczek += 1;
-                 printf("[PRACOWNIK] P%d + Dodal paczke %c (%.1fkg) o V = %.1fcm3, Tasma: %d/%d szt, %.1f/%.1f kg\n"
+                 printf("[PRACOWNIK %d] + Dodal paczke %c (%.1fkg) o V = %.1fcm3, Tasma: %d/%d szt, %.1f/%.1f kg\n"
                 ,id,nazwa_paczki,waga_paczki,objetosc_paczki,wspolna->tasma.ilosc_paczek, K,wspolna->tasma.masa_paczek, M);
 
 		czy_udalo_sie_polozyc = 1;
@@ -71,7 +79,7 @@ int main(int argc,char *argv[])
             }
             else
             {
-                printf("[PRACOWNIK] P%d !cd Paczka %.1fkg za ciezka (Tasma: %.1fkg). Czekam z paczka...\n",
+                printf("[PRACOWNIK %d] !cd Paczka %.1fkg za ciezka (Tasma: %.1fkg). Czekam z paczka...\n",
                 id, waga_paczki, wspolna->tasma.masa_paczek);
 
 		sem_V(semid, SEM_MUTEX_TASMA);

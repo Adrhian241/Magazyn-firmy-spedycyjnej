@@ -15,7 +15,7 @@
 #define W 1200.0 //Ladownosc ciezarowki [kg]
 #define V 9000000 //Objetosc ciezarowki [cm3]
 #define N 4 //Liczba ciezarowek
-#define TI 120 // czas po jakim wraca ciezarowka w sekundach
+#define TI 45 // czas po jakim wraca ciezarowka w sekundach
 #define KEY_SHM 1111
 #define KEY_SEM 2222
 #define KEY_MSG 3333

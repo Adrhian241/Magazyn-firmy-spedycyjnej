@@ -20,14 +20,24 @@ int main(int argc, char *argv[])
     int msgid = msgget(KEY_MSG, 0666);
     if (msgid == -1) 
     { 
-        perror("[CIEZAROWKA] Blad msgget"); exit(1); 
+        perror("[CIEZAROWKA ] Blad msgget"); exit(1); 
     }
 
-    printf("[CIEZAROWKA] Ciezarowka %d zaczyna prace.\n",id);
+    printf("[CIEZAROWKA %d] zaczyna prace.\n",id);
     while(1)
     {
-        if (wspolna->koniec_symulacji) break;
+        if (wspolna->koniec_symulacji && wspolna->tasma.ilosc_paczek == 0) 
+        {
+            printf("[CIEZAROWKA %d] Koniec symulacji i brak paczek. Koncze prace\n", id);
+            break; 
+        }
         sem_P(semid, SEM_RAMPA);
+        if (wspolna->koniec_symulacji && wspolna->tasma.ilosc_paczek == 0) 
+        {
+            printf("[CIEZAROWKA %d] Wjechalem na rampe ale brak paczek. Koncze prace\n", id);
+            sem_V(semid, SEM_RAMPA);
+            break; 
+        }
         sem_P(semid, SEM_MUTEX_CIEZAROWKA);
 
         wspolna->ciezarowka.id_ciezarowki = id;
@@ -36,34 +46,43 @@ int main(int argc, char *argv[])
         wspolna->ciezarowka.czy_stoi = 1; //tak
 
         sem_V(semid, SEM_MUTEX_CIEZAROWKA);
-        printf("\n [CIEZAROWKA] CIEZAROWKA %d --- Podjechalem pod rampe\n", id);
+        printf("\n [CIEZAROWKA %d] --- Podjechalem pod rampe\n", id);
 
         int czy_pelna = 0;
-	struct moj_komunikat msg;
+        struct moj_komunikat msg;
 
         while(czy_pelna == 0)
         {
-	    if (msgrcv(msgid, &msg, sizeof(int), 1, IPC_NOWAIT) != -1)
+            if (msgrcv(msgid, &msg, sizeof(int), 1, IPC_NOWAIT) != -1)
             {
-                printf("[DYSPOZYTOR]>>>[CIEZAROWKA] Rozkaz natychmiastowego odjazdu");
+		if(wspolna->koniec_symulacji)
+		{
+                    continue;
+		}
+		printf("\nDYSPOZYTOR KAZE ODJECHAC (Sygnal 1)!\n");
                 czy_pelna = 1;
                 continue;
             }
             
             struct sembuf check_full = {SEM_FULL, -1, IPC_NOWAIT};
-            if (semop(semid, &check_full, 1) == -1) 
-	    {
+            if (semop(semid, &check_full, 1) == -1) {
+                if(wspolna->koniec_symulacji) 
+                {
+                    printf("[CIEZAROWKA %d] Koniec symulacji i pusta tasma. Koncze ladunek i odjezdzam w ostatnia trase.\n", id);
+                    czy_pelna = 1; 
+                    continue;
+                }
                 usleep(350000); 
                 continue;
             }
             usleep(350000);
-
             sem_P(semid, SEM_MUTEX_TASMA);
 
             int idx = wspolna->tasma.head;
             Paczka p = wspolna->tasma.bufor[idx];
             int vol = p.objetosc;
-	    sem_P(semid, SEM_MUTEX_CIEZAROWKA);
+            
+	        sem_P(semid, SEM_MUTEX_CIEZAROWKA);
             if ( (wspolna->ciezarowka.zaladowana_waga + p.waga <= W) &&
                  (wspolna->ciezarowka.zaladowana_objetosc + vol <= V) )
             {
@@ -73,7 +92,7 @@ int main(int argc, char *argv[])
                 wspolna->tasma.ilosc_paczek--;
                 wspolna->tasma.masa_paczek -= p.waga;
 
-                printf("[CIEZAROWKA] Ciezarowka %d Zaladowano %c (%.1fkg). Stan: %.1f/%.0f kg ---- %.1f/%.0fcm3\n",
+                printf("[CIEZAROWKA %d] Zaladowano %c (%.1fkg). Stan: %.1f/%.1f kg ---- %.1f/%.0fcm3\n",
                        id, p.typ, p.waga, wspolna->ciezarowka.zaladowana_waga, W, wspolna->ciezarowka.zaladowana_objetosc,V);
 
                 sem_V(semid, SEM_MUTEX_CIEZAROWKA);
@@ -82,7 +101,7 @@ int main(int argc, char *argv[])
             }
             else
             {
-                printf("[CIEZAROWKA] Ciezarowka %d pelna! Paczka %.1fkg nie wejdzie. Odjazd.\n", id, p.waga);
+                printf("[CIEZAROWKA %d] pelna! Paczka %.1fkg nie wejdzie. Odjazd.\n", id, p.waga);
                 czy_pelna=1;
                 sem_V(semid, SEM_MUTEX_CIEZAROWKA);
                 sem_V(semid, SEM_MUTEX_TASMA);
@@ -93,12 +112,25 @@ int main(int argc, char *argv[])
         sem_P(semid, SEM_MUTEX_CIEZAROWKA);
         wspolna->ciezarowka.czy_stoi = 0; // Zwalniamy logicznie (dla P4)
         sem_V(semid, SEM_MUTEX_CIEZAROWKA);
-
-        printf("[CIEZAROWKA] Ciezarowka %d Odjezdzam w trase (%ds)...\n", id, TI);
+        if(wspolna->koniec_symulacji && wspolna->ciezarowka.zaladowana_waga == 0) 
+        {
+             printf("[CIEZAROWKA %d] Pusta i koniec pracy. Zwalniam rampe i wychodze.\n", id);
+             sem_V(semid, SEM_RAMPA); 
+             break;
+        }
+        printf("[CIEZAROWKA %d] Odjezdzam w trase (%ds)...\n", id, TI);
         sem_V(semid, SEM_RAMPA);
 
         sleep(TI);
+	if(wspolna->koniec_symulacji && wspolna->tasma.ilosc_paczek == 0)
+        {
+            printf("[CIEZAROWKA %d] Koniec mojej pracy.\n", id);
+        }
 
-        printf("[CIEZAROWKA] Ciezarowka %d Wrocilem z trasy. Ustawiam sie w kolejce.\n", id);
+        else
+        {
+            printf("[CIEZAROWKA %d] Wrocilem z trasy. Ustawiam sie w kolejce.\n", id);
+        }
     }
+
 }
