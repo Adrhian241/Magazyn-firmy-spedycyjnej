@@ -44,6 +44,7 @@ int main(int argc, char *argv[])
         wspolna->ciezarowka.zaladowana_waga = 0.0;
         wspolna->ciezarowka.zaladowana_objetosc = 0;
         wspolna->ciezarowka.czy_stoi = 1; //tak
+	wspolna->ciezarowka.wymus_odjazd = 0;
 
         sem_V(semid, SEM_MUTEX_CIEZAROWKA);
         printf("\n [CIEZAROWKA %d] --- Podjechalem pod rampe\n", id);
@@ -53,6 +54,12 @@ int main(int argc, char *argv[])
 
         while(czy_pelna == 0)
         {
+	    if (wspolna->ciezarowka.wymus_odjazd == 1) 
+	    {
+                printf("[CIEZAROWKA %d] P4 wymusil odjazd (brak miejsca). Odjezdzam.\n", id);
+                czy_pelna = 1;
+                continue;
+            }
             if (msgrcv(msgid, &msg, sizeof(int), 1, IPC_NOWAIT) != -1)
             {
 		if(wspolna->koniec_symulacji)
@@ -76,6 +83,8 @@ int main(int argc, char *argv[])
                 continue;
             }
             usleep(350000);
+	    sem_P(semid, SEM_PRACOWNIK4); 
+            sem_V(semid, SEM_PRACOWNIK4);
             sem_P(semid, SEM_MUTEX_TASMA);
 
             int idx = wspolna->tasma.head;

@@ -24,7 +24,7 @@ int main(){
     else printf("[MAIN] Pamiec dzielona zostala utworzona : %d\n",shmid);
     
     //stworzenie semaforow
-    int semid = semget(KEY_SEM, 5, IPC_CREAT | 0600);
+    int semid = semget(KEY_SEM, 6, IPC_CREAT | 0600);
         if (semid==-1)
         {
                 printf("[MAIN] Nie moglem utworzyc nowych semaforow.\n");
@@ -57,6 +57,7 @@ int main(){
     ustaw_semafor(semid, SEM_EMPTY, K);
     ustaw_semafor(semid, SEM_FULL, 0);
     ustaw_semafor(semid, SEM_RAMPA, 1);
+    ustaw_semafor(semid, SEM_PRACOWNIK4, 1);
 
     //ustawienia poczatkowe tasmy i ciezarowek
     wspolna->tasma.head = 0;
@@ -90,6 +91,23 @@ int main(){
                 printf("[MAIN] Uruchomiono pracownika P%d (PID: %d)\n", i, pid);
             }
         }
+
+    //tworzenie pracownika od paczek ekspresowych p4
+    pid_t pid4 = fork();
+    if (pid4 == 0)
+    {
+        execlp("./pracownik4", "pracownik4", id_str, NULL);
+        perror("[MAIN] Blad execlp (uruchamianie pracownika4)");
+        exit(1);
+    }
+    else if (pid4 < 0) 
+	{
+        perror("[MAIN] Blad fork");
+    }
+    else
+    {
+        printf("[MAIN] Uruchomiono pracownika P4 (PID: %d)\n"),pid4;
+    }
 
     //tworzenie N ciezarowek
      char id_c[10];

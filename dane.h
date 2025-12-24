@@ -16,6 +16,7 @@
 #define V 9000000 //Objetosc ciezarowki [cm3]
 #define N 4 //Liczba ciezarowek
 #define TI 45 // czas po jakim wraca ciezarowka w sekundach
+#define MAX_BUFOR 100 // ilosc paczek jakie moga byc wytworzone przez pracownika 4 w jednym momencie
 #define KEY_SHM 1111
 #define KEY_SEM 2222
 #define KEY_MSG 3333
@@ -26,6 +27,7 @@
 #define SEM_EMPTY 2   // Ile miejsc wolnych na tasmie
 #define SEM_FULL 3   //ile miejsc zajetych na tasmie
 #define SEM_RAMPA 4   //umozliwia wjazd, wyjazd z rampy ciezarowce
+#define SEM_PRACOWNIK4 5   //wprowadzenie paczek ekspresowych
 void sem_P(int semid,int numer_semafora)
 {
     struct sembuf operacja;
@@ -68,6 +70,7 @@ typedef struct{
         double zaladowana_objetosc;
         int id_ciezarowki;
         int czy_stoi;
+	int wymus_odjazd;
 }Ciezarowka;
 
 typedef struct {
