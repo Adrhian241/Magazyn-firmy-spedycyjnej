@@ -56,7 +56,7 @@ int main(int argc,char *argv[])
         exit(1); 
     }
     
-    printf("[PRACOWNIK 4] Pracownik 4 zaczyna prace.\n");
+    logp("[PRACOWNIK 4] Pracownik 4 zaczyna prace.\n");
     sleep(1);
     struct moj_komunikat msg;
     Paczka bufor[MAX_BUFOR];
@@ -67,7 +67,7 @@ int main(int argc,char *argv[])
     {
         if(wspolna->koniec_symulacji) 
         {
-            printf("[PRACOWNIK 4] Koniec pracy. W buforze: %d paczek\n", ilosc_w_buforze);
+            logp("[PRACOWNIK 4] Koniec pracy. W buforze: %d paczek\n", ilosc_w_buforze);
             break;
         }
         usleep(250000);
@@ -76,7 +76,7 @@ int main(int argc,char *argv[])
 	    if (ilosc_w_buforze < MAX_BUFOR) 
             {
                 bufor[ilosc_w_buforze] = generuj_ekspres();
-                printf("[PRACOWNIK P4] + Dodal paczke %c (%.1fkg) o V = %.1fcm3\n"
+                logp("[PRACOWNIK P4] + Dodal paczke %c (%.1fkg) o V = %.1fcm3\n"
                 ,bufor[ilosc_w_buforze].typ,bufor[ilosc_w_buforze].waga,bufor[ilosc_w_buforze].objetosc);
                 ilosc_w_buforze++;
 	    licznik_sekund = 0;
@@ -84,11 +84,11 @@ int main(int argc,char *argv[])
 	}
 	licznik_sekund++;
         if (msgrcv(msgid, &msg, sizeof(int), 2, IPC_NOWAIT) != -1) {
-            printf("\n[DYSPOZYTOR] >>> [PRACOWNIK 4] Otrzymalem rozkaz (SYGNAL 2), laduje paczki ekspresowe\n");
+            logp("\n[DYSPOZYTOR] >>> [PRACOWNIK 4] Otrzymalem rozkaz (SYGNAL 2), laduje paczki ekspresowe\n");
             tryb_wysylania = 1;
             for(int i=0;i<ilosc_w_buforze;i++)
             {
-                printf("paczka %d waga = %.1f\n",i,bufor[i].waga);
+                logp("paczka %d waga = %.1f\n",i,bufor[i].waga);
             }
 	}
         while (tryb_wysylania == 1 && ilosc_w_buforze > 0)    
@@ -106,19 +106,19 @@ int main(int argc,char *argv[])
                     wspolna->ciezarowka.zaladowana_waga += p.waga;
                     wspolna->ciezarowka.zaladowana_objetosc += p.objetosc;
                     ilosc_w_buforze--;
-                    printf("[PRACOWNIK 4] -> Zaladowano EKSPRES! Zostalo: %d. Ciezarowka: %.1f/%.0f\n", 
+                    logp("[PRACOWNIK 4] -> Zaladowano EKSPRES! Zostalo: %d. Ciezarowka: %.1f/%.0f\n", 
                            ilosc_w_buforze, wspolna->ciezarowka.zaladowana_waga, W);
                     udalo_sie_zaladowac=1;
 		}
                 else
                 {
-                    printf("[PRACOWNIK4] Ciezarowka pelna! Paczka o wadze %.1f nie wejdzie. Czekam na nowa.\n",p.waga);
+                    logp("[PRACOWNIK4] Ciezarowka pelna! Paczka o wadze %.1f nie wejdzie. Czekam na nowa.\n",p.waga);
                     wspolna->ciezarowka.wymus_odjazd = 1;
 		    udalo_sie_zaladowac = 0;
                 }
             }
             else {
-                 printf("[PRACOWNIK 4] Brak ciezarowki! Czekam...\n");
+                 logp("[PRACOWNIK 4] Brak ciezarowki! Czekam...\n");
                  udalo_sie_zaladowac = 0;
             }
 
@@ -126,7 +126,7 @@ int main(int argc,char *argv[])
             sem_V(semid, SEM_PRACOWNIK4);
 
             if (udalo_sie_zaladowac == 0) {
-		sleep(1);
+		usleep(100000);
             }
             if(udalo_sie_zaladowac == 1 && ilosc_w_buforze == 0)
 	    {

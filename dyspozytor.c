@@ -39,9 +39,9 @@ int main(int argc, char *argv[])
 	    strcpy(msg.text, "0");
 	    if (msgsnd(msgid, &msg, sizeof(int), 0) == -1) 
 	    {
-    		perror("[DYSPOZYTOR] Blad wyslania komunikatu (1)");
+    		perror("[DYSPOZYTOR] Blad wyslania komunikatu (1)\n");
 	    }
-	    else printf("[DYSPOZYTOR] Wyslano rozklaz odjazdu niepelnej ciezarowki");
+	    else logp("[DYSPOZYTOR] Wyslano rozklaz odjazdu niepelnej ciezarowki\n");
         }
         else if(wybor == 2)
         {
@@ -49,13 +49,13 @@ int main(int argc, char *argv[])
             strcpy(msg.text, "0");
 	    if (msgsnd(msgid, &msg, sizeof(int), 0) == -1)
             {
-                perror("[DYSPOZYTOR] Blad wyslania komunikatu (2)");
+                perror("[DYSPOZYTOR] Blad wyslania komunikatu (2)\n");
             }
-            else printf("[DYSPOZYTOR] Wyslano rozklaz zaladunku paczek priorytetowych");
+            else logp("[DYSPOZYTOR] Wyslano rozklaz zaladunku paczek priorytetowych\n");
         }
         else if (wybor == 3)
         {
-            printf("[DYSPOZYTOR] Koncze symulacje...\n");
+            logp("[DYSPOZYTOR] Koncze symulacje...\n");
             wspolna->koniec_symulacji = 1;
 
             msg.mtype = 1; msgsnd(msgid, &msg, sizeof(int), 0);

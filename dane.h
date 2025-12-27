@@ -1,3 +1,4 @@
+#include <stdarg.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -28,6 +29,24 @@
 #define SEM_FULL 3   //ile miejsc zajetych na tasmie
 #define SEM_RAMPA 4   //umozliwia wjazd, wyjazd z rampy ciezarowce
 #define SEM_PRACOWNIK4 5   //wprowadzenie paczek ekspresowych
+void logp(const char *format, ...) {
+    va_list args;
+
+    va_start(args, format);
+    vprintf(format, args);
+    va_end(args);
+
+    FILE *fp = fopen("raport.txt", "a"); 
+    if (fp) {
+        
+        va_start(args, format);
+        vfprintf(fp, format, args);
+        va_end(args);
+        
+        fclose(fp);
+    }
+}
+
 void sem_P(int semid,int numer_semafora)
 {
     struct sembuf operacja;

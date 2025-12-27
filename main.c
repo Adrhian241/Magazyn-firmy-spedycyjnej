@@ -3,46 +3,51 @@ void ustaw_semafor(int semid, int numer_semafora, int wartosc)
 {
     if (semctl(semid,numer_semafora,SETVAL,wartosc)==-1)
     {
-	    perror("[MAIN] Nie mozna ustawic semafora");
-	    exit(EXIT_FAILURE);
+            perror("[MAIN] Nie mozna ustawic semafora");
+            exit(EXIT_FAILURE);
     }
     else
     {
-        printf("[MAIN] semafor %d zostal ustawiony na %d.\n",numer_semafora,wartosc);
+        logp("[MAIN] semafor %d zostal ustawiony na %d.\n",numer_semafora,wartosc);
     }
 }
 int main(){
-    
+
+    FILE *fp = fopen("raport.txt", "w"); 
+    if (fp) 
+    {
+    fclose(fp);
+    }
+    logp("[MAIN] START SYMULACJI MAGAZYNU\n");
     //stworzenie pamieci dzielonej
-    printf("[MAIN] START SYMULACJI MAGAZYNU");
     int shmid = shmget(KEY_SHM, sizeof(MagazynShared), IPC_CREAT | 0600);
     if (shmid == -1)
     {
-	printf("[MAIN] problem z utworzeniem pamieci dzielonej. \n");
-	exit(EXIT_FAILURE);
+        logp("[MAIN] problem z utworzeniem pamieci dzielonej. \n");
+        exit(EXIT_FAILURE);
     }
-    else printf("[MAIN] Pamiec dzielona zostala utworzona : %d\n",shmid);
-    
+    else logp("[MAIN] Pamiec dzielona zostala utworzona : %d\n",shmid);
+
     //stworzenie semaforow
     int semid = semget(KEY_SEM, 6, IPC_CREAT | 0600);
         if (semid==-1)
         {
-                printf("[MAIN] Nie moglem utworzyc nowych semaforow.\n");
+                perror("[MAIN] Nie moglem utworzyc nowych semaforow.\n");
                 exit(EXIT_FAILURE);
         }
         else
         {
-                printf("[MAIN] Semafory zostal utworzone : %d\n",semid);
+                logp("[MAIN] Semafory zostal utworzone : %d\n",semid);
         }
 
     //tworzenie kolejki komunikatow
     int msgid = msgget(KEY_MSG, IPC_CREAT | 0600);
-    if (msgid == -1) 
+    if (msgid == -1)
     {
         perror("[MAIN] Nie moglem utworzyc kolejki komunikatow");
         exit(1);
     }
-    printf("[MAIN] Kolejka komunikatow utworzona: %d\n", msgid);
+    logp("[MAIN] Kolejka komunikatow utworzona: %d\n", msgid);
 
     //polaczenie sie z pamieci dzielona
     MagazynShared *wspolna = (MagazynShared*)shmat(shmid, NULL, 0);
@@ -67,28 +72,29 @@ int main(){
     wspolna->ciezarowka.czy_stoi = 0;
     wspolna->ciezarowka.id_ciezarowki = -1;
     wspolna->koniec_symulacji = 0;
+    wspolna->ciezarowka.wymus_odjazd = 0;
     shmdt(wspolna);
 
     //tworzenie pracownikow 1,2,3
     char id_str[10]; // Bufor tekstowy na ID pracownika
-        for (int i = 1; i <= 3; i++) 
-	    {
+        for (int i = 1; i <= 3; i++)
+            {
             pid_t pid = fork();
 
             if (pid == 0)
-	    {
+            {
             sprintf(id_str, "%d", i); // Zamiana int na string, np. 1 -> "1"
             execlp("./pracownicy", "pracownicy", id_str, NULL);
             perror("[MAIN] Blad execlp (uruchamianie pracownika)");
             exit(1);
             }
-            else if (pid < 0) 
-	    {
+            else if (pid < 0)
+            {
                 perror("[MAIN] Blad fork");
             }
             else
             {
-                printf("[MAIN] Uruchomiono pracownika P%d (PID: %d)\n", i, pid);
+                logp("[MAIN] Uruchomiono pracownika P%d (PID: %d)\n", i, pid);
             }
         }
 
@@ -100,41 +106,41 @@ int main(){
         perror("[MAIN] Blad execlp (uruchamianie pracownika4)");
         exit(1);
     }
-    else if (pid4 < 0) 
-	{
+    else if (pid4 < 0)
+        {
         perror("[MAIN] Blad fork");
     }
     else
     {
-        printf("[MAIN] Uruchomiono pracownika P4 (PID: %d)\n"),pid4;
+        logp("[MAIN] Uruchomiono pracownika P4 (PID: %d)\n",pid4);
     }
 
     //tworzenie N ciezarowek
-     char id_c[10];
-        for (int i = 1; i <= N; i++) 
+    char id_c[10];
+        for (int i = 1; i <= N; i++)
         {
             pid_t pid = fork();
 
-            if (pid == 0) 
+            if (pid == 0)
             {
             sprintf(id_c, "%d", i); // Zamiana int na string, np. 1 -> "1"
             execlp("./ciezarowka", "ciezarowka", id_c, NULL);
             perror("[MAIN] Blad execlp (uruchamianie ciezarowki)");
             exit(1);
             }
-            else if (pid < 0) 
-	    {
+            else if (pid < 0)
+            {
                 perror("[MAIN] Blad fork");
             }
-                else 
-	    {
-                printf("[MAIN] Uruchomiono ciezarowke C%d (PID: %d)\n", i, pid);
+                else
+            {
+                logp("[MAIN] Uruchomiono ciezarowke C%d (PID: %d)\n", i, pid);
             }
         }
-	int status;
+        int status;
     while (wait(&status) > 0);
 
-    printf("\n[MAIN] Wszyscy pracownicy oraz ciezarowki zakonczyly prace. Sprzatam system.\n");
+    logp("\n[MAIN] Wszyscy pracownicy oraz ciezarowki zakonczyly prace. Sprzatam system.\n");
 
     shmctl(shmid, IPC_RMID, NULL);
     semctl(semid, 0, IPC_RMID);
