@@ -6,12 +6,12 @@ int main(int argc, char *argv[])
     int msgid = msgget(KEY_MSG, 0600);
     if (msgid == -1) { 
         perror("[DYSPOZYTOR] Blad msgget (dyspozytor)"); 
-        exit(1); 
+	exit(EXIT_FAILURE);
     }
     int shmid = shmget(KEY_SHM, sizeof(MagazynShared), 0600);
     if (shmid == -1) {
         perror("[DYSPOZYTOR] Nie widze pamieci dzielonej. Czy uruchomiles ./main?");
-        exit(1);
+        exit(EXIT_FAILURE);
     }
     MagazynShared *wspolna = (MagazynShared*)shmat(shmid, NULL, 0);
 

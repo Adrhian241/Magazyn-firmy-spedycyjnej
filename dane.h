@@ -14,7 +14,7 @@
 #define K 30 //Pojemnosc tasmy ladunkowej
 #define M 400.0 //Maksymalna masa przesylek na tasmie ladunkowej [kg]
 #define W 1200.0 //Ladownosc ciezarowki [kg]
-#define V 9000000 //Objetosc ciezarowki [cm3]
+#define V 9000000.0 //Objetosc ciezarowki [cm3]
 #define N 4 //Liczba ciezarowek
 #define TI 45 // czas po jakim wraca ciezarowka w sekundach
 #define MAX_BUFOR 100 // ilosc paczek jakie moga byc wytworzone przez pracownika 4 w jednym momencie
@@ -55,7 +55,7 @@ void sem_P(int semid,int numer_semafora)
     operacja.sem_flg = 0;
     if (semop(semid, &operacja, 1) == -1) {
         perror("Blad semafor_p");
-        exit(1);
+	exit(EXIT_FAILURE);
     }
 }
 void sem_V(int semid,int numer_semafora)
@@ -66,7 +66,7 @@ void sem_V(int semid,int numer_semafora)
     operacja.sem_flg = 0;
     if (semop(semid, &operacja, 1) == -1) {
         perror("Blad semafor_v");
-        exit(1);
+        exit(EXIT_FAILURE);
     }
 }
 typedef struct{

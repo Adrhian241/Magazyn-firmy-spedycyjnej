@@ -1,0 +1,71 @@
+[MAIN] START SYMULACJI MAGAZYNU
+[MAIN] Pamiec dzielona zostala utworzona : 753684
+[MAIN] Semafory zostal utworzone : 262205
+[MAIN] Kolejka komunikatow utworzona: 196640
+[MAIN] semafor 0 zostal ustawiony na 1.
+[MAIN] semafor 1 zostal ustawiony na 1.
+[MAIN] semafor 2 zostal ustawiony na 2.
+[MAIN] semafor 3 zostal ustawiony na 0.
+[MAIN] semafor 4 zostal ustawiony na 1.
+[MAIN] semafor 5 zostal ustawiony na 1.
+[MAIN] Uruchomiono pracownika P1 (PID: 3395541)
+[MAIN] Uruchomiono pracownika P2 (PID: 3395542)
+[MAIN] Uruchomiono pracownika P3 (PID: 3395543)
+[MAIN] Uruchomiono pracownika P4 (PID: 3395544)
+[MAIN] Uruchomiono ciezarowke C1 (PID: 3395545)
+[MAIN] Uruchomiono ciezarowke C2 (PID: 3395546)
+[MAIN] Uruchomiono ciezarowke C3 (PID: 3395547)
+[PRACOWNIK 1] zaczyna prace.
+[PRACOWNIK 2] zaczyna prace.
+[MAIN] Uruchomiono ciezarowke C4 (PID: 3395548)
+[PRACOWNIK 3] zaczyna prace.
+[CIEZAROWKA 1] zaczyna prace.
+
+ [CIEZAROWKA 1] --- Podjechalem pod rampe
+[CIEZAROWKA 2] zaczyna prace.
+[CIEZAROWKA 3] zaczyna prace.
+[CIEZAROWKA 4] zaczyna prace.
+[PRACOWNIK 1] + Dodal paczke A (3.4kg) o V = 19456.0cm3, Tasma: 1/2 szt, 3.4/400.0 kg
+[PRACOWNIK 3] + Dodal paczke C (24.8kg) o V = 99712.0cm3, Tasma: 2/2 szt, 28.2/400.0 kg
+[CIEZAROWKA 1] Zaladowano  (3.4kg). Stan: 3.4/1200.0 kg ---- 19456.0/9000000.0cm3
+[PRACOWNIK 2] + Dodal paczke C (15.2kg) o V = 99712.0cm3, Tasma: 2/2 szt, 40.0/400.0 kg
+[CIEZAROWKA 1] Zaladowano  (24.8kg). Stan: 28.2/1200.0 kg ---- 119168.0/9000000.0cm3
+[PRACOWNIK 1] + Dodal paczke A (4.4kg) o V = 19456.0cm3, Tasma: 2/2 szt, 19.6/400.0 kg
+[CIEZAROWKA 1] Zaladowano  (15.2kg). Stan: 43.4/1200.0 kg ---- 218880.0/9000000.0cm3
+[PRACOWNIK 3] + Dodal paczke A (7.1kg) o V = 19456.0cm3, Tasma: 2/2 szt, 11.5/400.0 kg
+[CIEZAROWKA 1] Zaladowano  (4.4kg). Stan: 47.8/1200.0 kg ---- 238336.0/9000000.0cm3
+[PRACOWNIK 2] + Dodal paczke A (0.8kg) o V = 19456.0cm3, Tasma: 2/2 szt, 7.9/400.0 kg
+[CIEZAROWKA 1] Zaladowano  (7.1kg). Stan: 54.9/1200.0 kg ---- 257792.0/9000000.0cm3
+[PRACOWNIK 1] + Dodal paczke A (0.7kg) o V = 19456.0cm3, Tasma: 2/2 szt, 1.5/400.0 kg
+[CIEZAROWKA 1] Zaladowano  (0.8kg). Stan: 55.7/1200.0 kg ---- 277248.0/9000000.0cm3
+[PRACOWNIK 3] + Dodal paczke B (13.3kg) o V = 46208.0cm3, Tasma: 2/2 szt, 14.0/400.0 kg
+[CIEZAROWKA 1] Zaladowano  (0.7kg). Stan: 56.4/1200.0 kg ---- 296704.0/9000000.0cm3
+[PRACOWNIK 2] + Dodal paczke A (0.4kg) o V = 19456.0cm3, Tasma: 2/2 szt, 13.7/400.0 kg
+[CIEZAROWKA 1] Zaladowano  (13.3kg). Stan: 69.7/1200.0 kg ---- 342912.0/9000000.0cm3
+[PRACOWNIK 1] + Dodal paczke A (5.0kg) o V = 19456.0cm3, Tasma: 2/2 szt, 5.4/400.0 kg
+[CIEZAROWKA 1] Zaladowano  (0.4kg). Stan: 70.1/1200.0 kg ---- 362368.0/9000000.0cm3
+[PRACOWNIK 3] + Dodal paczke C (20.9kg) o V = 99712.0cm3, Tasma: 2/2 szt, 25.9/400.0 kg
+[CIEZAROWKA 1] Zaladowano  (5.0kg). Stan: 75.1/1200.0 kg ---- 381824.0/9000000.0cm3
+[PRACOWNIK 2] + Dodal paczke B (15.2kg) o V = 46208.0cm3, Tasma: 2/2 szt, 36.1/400.0 kg
+[CIEZAROWKA 1] Zaladowano  (20.9kg). Stan: 96.0/1200.0 kg ---- 481536.0/9000000.0cm3
+[PRACOWNIK 1] + Dodal paczke A (5.8kg) o V = 19456.0cm3, Tasma: 2/2 szt, 21.0/400.0 kg
+[CIEZAROWKA 1] Zaladowano  (15.2kg). Stan: 111.2/1200.0 kg ---- 527744.0/9000000.0cm3
+[PRACOWNIK 3] + Dodal paczke A (7.1kg) o V = 19456.0cm3, Tasma: 2/2 szt, 12.9/400.0 kg
+[CIEZAROWKA 1] Zaladowano  (5.8kg). Stan: 117.0/1200.0 kg ---- 547200.0/9000000.0cm3
+[PRACOWNIK 2] + Dodal paczke C (16.1kg) o V = 99712.0cm3, Tasma: 2/2 szt, 23.2/400.0 kg
+[CIEZAROWKA 1] Zaladowano  (7.1kg). Stan: 124.1/1200.0 kg ---- 566656.0/9000000.0cm3
+[PRACOWNIK 1] + Dodal paczke A (0.6kg) o V = 19456.0cm3, Tasma: 2/2 szt, 16.7/400.0 kg
+[CIEZAROWKA 1] Zaladowano  (16.1kg). Stan: 140.2/1200.0 kg ---- 666368.0/9000000.0cm3
+[PRACOWNIK 3] + Dodal paczke B (13.8kg) o V = 46208.0cm3, Tasma: 2/2 szt, 14.4/400.0 kg
+[CIEZAROWKA 1] Zaladowano  (0.6kg). Stan: 140.8/1200.0 kg ---- 685824.0/9000000.0cm3
+[PRACOWNIK 1] + Dodal paczke C (22.5kg) o V = 99712.0cm3, Tasma: 2/2 szt, 36.3/400.0 kg
+[CIEZAROWKA 1] Zaladowano  (13.8kg). Stan: 154.6/1200.0 kg ---- 732032.0/9000000.0cm3
+[PRACOWNIK 2] + Dodal paczke C (19.7kg) o V = 99712.0cm3, Tasma: 2/2 szt, 42.2/400.0 kg
+[CIEZAROWKA 1] Zaladowano  (22.5kg). Stan: 177.1/1200.0 kg ---- 831744.0/9000000.0cm3
+[PRACOWNIK 3] + Dodal paczke B (11.8kg) o V = 46208.0cm3, Tasma: 2/2 szt, 31.5/400.0 kg
+[CIEZAROWKA 1] Zaladowano  (19.7kg). Stan: 196.8/1200.0 kg ---- 931456.0/9000000.0cm3
+[PRACOWNIK 1] + Dodal paczke C (20.8kg) o V = 99712.0cm3, Tasma: 2/2 szt, 32.6/400.0 kg
+[CIEZAROWKA 1] Zaladowano  (11.8kg). Stan: 208.6/1200.0 kg ---- 977664.0/9000000.0cm3
+[PRACOWNIK 2] + Dodal paczke A (3.6kg) o V = 19456.0cm3, Tasma: 2/2 szt, 24.4/400.0 kg
+[CIEZAROWKA 1] Zaladowano  (20.8kg). Stan: 229.4/1200.0 kg ---- 1077376.0/9000000.0cm3
+[PRACOWNIK 3] + Dodal paczke C (15.1kg) o V = 99712.0cm3, Tasma: 2/2 szt, 18.7/400.0 kg

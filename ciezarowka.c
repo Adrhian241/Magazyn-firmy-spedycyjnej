@@ -8,19 +8,22 @@ int main(int argc, char *argv[])
     int shmid = shmget(KEY_SHM, sizeof(MagazynShared), 0600);
     if (shmid == -1)
     {
-        perror("[CIEZAROWKA] Blad shmget"); exit(1);
+        perror("[CIEZAROWKA] Blad shmget");
+	exit(EXIT_FAILURE);
     }
     MagazynShared *wspolna = (MagazynShared*)shmat(shmid, NULL, 0);
 
     int semid = semget(KEY_SEM, 0, 0);
     if (semid == -1)
     {
-        perror("[CIEZAROWKA] blad semget"); exit(1);
+        perror("[CIEZAROWKA] blad semget"); 
+	exit(EXIT_FAILURE);
     }
     int msgid = msgget(KEY_MSG, 0666);
     if (msgid == -1)
     {
-        perror("[CIEZAROWKA ] Blad msgget"); exit(1);
+        perror("[CIEZAROWKA ] Blad msgget");
+	exit(EXIT_FAILURE);
     }
 
     logp("[CIEZAROWKA %d] zaczyna prace.\n",id);
@@ -101,7 +104,7 @@ int main(int argc, char *argv[])
                 wspolna->tasma.ilosc_paczek--;
                 wspolna->tasma.masa_paczek -= p.waga;
 
-                logp("[CIEZAROWKA %d] Zaladowano %c (%.1fkg). Stan: %.1f/%.1f kg ---- %.1f/%.0fcm3\n",
+                logp("[CIEZAROWKA %d] Zaladowano %c (%.1fkg). Stan: %.1f/%.1f kg ---- %.1f/%.1fcm3\n",
                        id, p.typ, p.waga, wspolna->ciezarowka.zaladowana_waga, W, wspolna->ciezarowka.zaladowana_objetosc,V);
 
                 sem_V(semid, SEM_MUTEX_CIEZAROWKA);

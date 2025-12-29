@@ -45,7 +45,7 @@ int main(){
     if (msgid == -1)
     {
         perror("[MAIN] Nie moglem utworzyc kolejki komunikatow");
-        exit(1);
+        exit(EXIT_FAILURE);
     }
     logp("[MAIN] Kolejka komunikatow utworzona: %d\n", msgid);
 
@@ -54,7 +54,7 @@ int main(){
     if (wspolna == (void*)-1)
     {
         perror("[MAIN] Blad shmat");
-        exit(1);
+	exit(EXIT_FAILURE);
     }
     //ustawianie semaforow
     ustaw_semafor(semid, SEM_MUTEX_TASMA, 1);
@@ -104,7 +104,7 @@ int main(){
     {
         execlp("./pracownik4", "pracownik4", id_str, NULL);
         perror("[MAIN] Blad execlp (uruchamianie pracownika4)");
-        exit(1);
+        exit(EXIT_FAILURE);
     }
     else if (pid4 < 0)
         {
@@ -126,7 +126,7 @@ int main(){
             sprintf(id_c, "%d", i); // Zamiana int na string, np. 1 -> "1"
             execlp("./ciezarowka", "ciezarowka", id_c, NULL);
             perror("[MAIN] Blad execlp (uruchamianie ciezarowki)");
-            exit(1);
+            exit(EXIT_FAILURE);
             }
             else if (pid < 0)
             {

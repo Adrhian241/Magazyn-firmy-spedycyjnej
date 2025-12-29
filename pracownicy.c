@@ -23,20 +23,20 @@ int main(int argc,char *argv[])
     if (shmid == -1)
     {
         perror("[PRACOWNIK] Blad shmget");
-        exit(1);
+        exit(EXIT_FAILURE);
     }
 
     MagazynShared *wspolna = (MagazynShared*)shmat(shmid, NULL, 0);
     if (wspolna == (void*)-1)
     {
         perror("[PRACOWNIK] Blad shmat");
-        exit(1);
+	exit(EXIT_FAILURE);
     }
     int semid = semget(KEY_SEM,0,0);
     if (semid == -1)
     {
         perror("[PRACOWNIK] blad semget");
-        exit(1);
+	exit(EXIT_FAILURE);
     }
     while(1)
     {
