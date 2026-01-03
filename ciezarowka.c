@@ -104,7 +104,7 @@ int main(int argc, char *argv[])
                 wspolna->tasma.ilosc_paczek--;
                 wspolna->tasma.masa_paczek -= p.waga;
 
-                logp("[CIEZAROWKA %d] Zaladowano %c (%.1fkg). Stan: %.1f/%.1f kg ---- %.1f/%.1fcm3\n",
+                logp("[CIEZAROWKA %d] Zaladowano %c (%.1fkg). Stan: %.1f/%.1f kg ---- %.7f/%.1fm3\n",
                        id, p.typ, p.waga, wspolna->ciezarowka.zaladowana_waga, W, wspolna->ciezarowka.zaladowana_objetosc,V);
 
                 sem_V(semid, SEM_MUTEX_CIEZAROWKA);

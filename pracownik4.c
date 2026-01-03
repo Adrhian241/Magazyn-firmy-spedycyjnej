@@ -19,7 +19,7 @@ Paczka generuj_ekspres()
     char typ_paczki = losuj_paczke();
     p.typ = (typ_paczki == 1) ? 'A' : (typ_paczki == 2) ? 'B' : 'C';
     p.waga = losuj_wage(typ_paczki);
-    p.objetosc = (typ_paczki == 1) ? 19456 : (typ_paczki == 2) ? 46208 : 99712; //w cm3
+    p.objetosc = (typ_paczki == 1) ? 0.019456 : (typ_paczki == 2) ? 0.046208 : 0.099712; //w m3
     p.id_pracownika = 4;
     return p;
 }
@@ -76,7 +76,7 @@ int main(int argc,char *argv[])
 	    if (ilosc_w_buforze < MAX_BUFOR) 
             {
                 bufor[ilosc_w_buforze] = generuj_ekspres();
-                logp("[PRACOWNIK P4] + Dodal paczke %c (%.1fkg) o V = %.1fcm3\n"
+                logp("[PRACOWNIK P4] + Dodal paczke %c (%.1fkg) o V = %.7fm3\n"
                 ,bufor[ilosc_w_buforze].typ,bufor[ilosc_w_buforze].waga,bufor[ilosc_w_buforze].objetosc);
                 ilosc_w_buforze++;
 	    licznik_sekund = 0;

@@ -51,7 +51,7 @@ int main(int argc,char *argv[])
         char typ_paczki = losuj_paczke();
         double waga_paczki = losuj_wage(typ_paczki);
         char nazwa_paczki = (typ_paczki == 1) ? 'A' : (typ_paczki == 2) ? 'B' : 'C';
-        double objetosc_paczki = (typ_paczki == 1) ? 19456 : (typ_paczki == 2) ? 46208 : 99712; //w cm3
+        double objetosc_paczki = (typ_paczki == 1) ? 0.019456 : (typ_paczki == 2) ? 0.046208 : 0.099712; //w m3
         while(!czy_udalo_sie_polozyc)
         {
             if(wspolna->koniec_symulacji)
@@ -70,7 +70,7 @@ int main(int argc,char *argv[])
                 wspolna->tasma.tail = (indeks + 1) % K;
                 wspolna->tasma.masa_paczek += waga_paczki;
                 wspolna->tasma.ilosc_paczek += 1;
-                 logp("[PRACOWNIK %d] + Dodal paczke %c (%.1fkg) o V = %.1fcm3, Tasma: %d/%d szt, %.1f/%.1f kg\n"
+                 logp("[PRACOWNIK %d] + Dodal paczke %c (%.1fkg) o V = %.7fm3, Tasma: %d/%d szt, %.1f/%.1f kg\n"
                 ,id,nazwa_paczki,waga_paczki,objetosc_paczki,wspolna->tasma.ilosc_paczek, K,wspolna->tasma.masa_paczek, M);
 
                 czy_udalo_sie_polozyc = 1;
