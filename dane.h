@@ -10,7 +10,7 @@
 #include <sys/sem.h>
 #include <sys/msg.h>
 #include <time.h>
-
+#include <errno.h>
 #define K 30 //Pojemnosc tasmy ladunkowej
 #define M 400.0 //Maksymalna masa przesylek na tasmie ladunkowej [kg]
 #define W 1500.0 //Ladownosc ciezarowki [kg]
@@ -53,7 +53,8 @@ void sem_P(int semid,int numer_semafora)
     operacja.sem_num = numer_semafora;
     operacja.sem_op = -1;
     operacja.sem_flg = 0;
-    if (semop(semid, &operacja, 1) == -1) {
+    while (semop(semid, &operacja, 1) == -1) {
+	if (errno == EINTR) continue;
         perror("Blad semafor_p");
 	exit(EXIT_FAILURE);
     }
