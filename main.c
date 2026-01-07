@@ -8,25 +8,25 @@ void ustaw_semafor(int semid, int numer_semafora, int wartosc)
     }
     else
     {
-        logp("[MAIN] semafor %d zostal ustawiony na %d.\n",numer_semafora,wartosc);
+        logp(KOLOR_CYAN,"[MAIN] semafor %d zostal ustawiony na %d.\n",numer_semafora,wartosc);
     }
 }
 int main(){
 
-    FILE *fp = fopen("raport.txt", "w"); 
-    if (fp) 
+    FILE *fp = fopen("raport.txt", "w");
+    if (fp)
     {
     fclose(fp);
     }
-    logp("[MAIN] START SYMULACJI MAGAZYNU\n");
+    logp(KOLOR_CYAN,"[MAIN] START SYMULACJI MAGAZYNU\n");
     //stworzenie pamieci dzielonej
     int shmid = shmget(KEY_SHM, sizeof(MagazynShared), IPC_CREAT | 0600);
     if (shmid == -1)
     {
-        logp("[MAIN] problem z utworzeniem pamieci dzielonej. \n");
+        logp(KOLOR_CYAN,"[MAIN] problem z utworzeniem pamieci dzielonej. \n");
         exit(EXIT_FAILURE);
     }
-    else logp("[MAIN] Pamiec dzielona zostala utworzona : %d\n",shmid);
+    else logp(KOLOR_CYAN,"[MAIN] Pamiec dzielona zostala utworzona : %d\n",shmid);
 
     //stworzenie semaforow
     int semid = semget(KEY_SEM, 6, IPC_CREAT | 0600);
@@ -37,7 +37,7 @@ int main(){
         }
         else
         {
-                logp("[MAIN] Semafory zostal utworzone : %d\n",semid);
+                logp(KOLOR_CYAN,"[MAIN] Semafory zostal utworzone : %d\n",semid);
         }
 
     //tworzenie kolejki komunikatow
@@ -47,14 +47,14 @@ int main(){
         perror("[MAIN] Nie moglem utworzyc kolejki komunikatow");
         exit(EXIT_FAILURE);
     }
-    logp("[MAIN] Kolejka komunikatow utworzona: %d\n", msgid);
+    logp(KOLOR_CYAN,"[MAIN] Kolejka komunikatow utworzona: %d\n", msgid);
 
     //polaczenie sie z pamieci dzielona
     MagazynShared *wspolna = (MagazynShared*)shmat(shmid, NULL, 0);
     if (wspolna == (void*)-1)
     {
         perror("[MAIN] Blad shmat");
-	exit(EXIT_FAILURE);
+        exit(EXIT_FAILURE);
     }
     //ustawianie semaforow
     ustaw_semafor(semid, SEM_MUTEX_TASMA, 1);
@@ -94,7 +94,7 @@ int main(){
             }
             else
             {
-                logp("[MAIN] Uruchomiono pracownika P%d (PID: %d)\n", i, pid);
+                logp(KOLOR_CYAN,"[MAIN] Uruchomiono pracownika P%d (PID: %d)\n", i, pid);
             }
         }
 
@@ -112,7 +112,7 @@ int main(){
     }
     else
     {
-        logp("[MAIN] Uruchomiono pracownika P4 (PID: %d)\n",pid4);
+        logp(KOLOR_CYAN,"[MAIN] Uruchomiono pracownika P4 (PID: %d)\n",pid4);
     }
 
     //tworzenie N ciezarowek
@@ -134,13 +134,13 @@ int main(){
             }
                 else
             {
-                logp("[MAIN] Uruchomiono ciezarowke C%d (PID: %d)\n", i, pid);
+                logp(KOLOR_CYAN,"[MAIN] Uruchomiono ciezarowke C%d (PID: %d)\n", i, pid);
             }
         }
         int status;
     while (wait(&status) > 0);
 
-    logp("\n[MAIN] Wszyscy pracownicy oraz ciezarowki zakonczyly prace. Sprzatam system.\n");
+    logp(KOLOR_CYAN,"\n[MAIN] Wszyscy pracownicy oraz ciezarowki zakonczyly prace. Sprzatam system.\n");
 
     shmctl(shmid, IPC_RMID, NULL);
     semctl(semid, 0, IPC_RMID);

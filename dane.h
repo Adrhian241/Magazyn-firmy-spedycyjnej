@@ -11,6 +11,14 @@
 #include <sys/msg.h>
 #include <time.h>
 #include <errno.h>
+
+#define KOLOR_RED     "\x1b[31m"
+#define KOLOR_GREEN   "\x1b[32m"
+#define KOLOR_YELLOW  "\x1b[33m"
+#define KOLOR_BLUE    "\x1b[34m"
+#define KOLOR_CYAN    "\x1b[36m"
+#define KOLOR_RESET   "\x1b[0m"
+
 #define K 30 //Pojemnosc tasmy ladunkowej
 #define M 400.0 //Maksymalna masa przesylek na tasmie ladunkowej [kg]
 #define W 1500.0 //Ladownosc ciezarowki [kg]
@@ -29,20 +37,22 @@
 #define SEM_FULL 3   //ile miejsc zajetych na tasmie
 #define SEM_RAMPA 4   //umozliwia wjazd, wyjazd z rampy ciezarowce
 #define SEM_PRACOWNIK4 5   //wprowadzenie paczek ekspresowych
-void logp(const char *format, ...) {
+void logp(const char *kolor, const char *format, ...) {
     va_list args;
 
+    printf("%s", kolor); // Włącz kolor
     va_start(args, format);
     vprintf(format, args);
     va_end(args);
+    printf("%s", KOLOR_RESET); // Wyłącz kolor
 
-    FILE *fp = fopen("raport.txt", "a"); 
+    FILE *fp = fopen("raport.txt", "a");
     if (fp) {
-        
+
         va_start(args, format);
         vfprintf(fp, format, args);
         va_end(args);
-        
+
         fclose(fp);
     }
 }
@@ -54,9 +64,9 @@ void sem_P(int semid,int numer_semafora)
     operacja.sem_op = -1;
     operacja.sem_flg = 0;
     while (semop(semid, &operacja, 1) == -1) {
-	if (errno == EINTR) continue;
+        if (errno == EINTR) continue;
         perror("Blad semafor_p");
-	exit(EXIT_FAILURE);
+        exit(EXIT_FAILURE);
     }
 }
 void sem_V(int semid,int numer_semafora)
@@ -90,7 +100,7 @@ typedef struct{
         double zaladowana_objetosc;
         int id_ciezarowki;
         int czy_stoi;
-	int wymus_odjazd;
+        int wymus_odjazd;
 }Ciezarowka;
 
 typedef struct {

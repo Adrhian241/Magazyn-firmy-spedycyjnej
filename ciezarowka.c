@@ -8,8 +8,8 @@ int main(int argc, char *argv[])
     int shmid = shmget(KEY_SHM, sizeof(MagazynShared), 0600);
     if (shmid == -1)
     {
-        perror("[CIEZAROWKA] Blad shmget");
-	exit(EXIT_FAILURE);
+        perror("[CIEZAROWKA] Blad shmget"); 
+        exit(EXIT_FAILURE);
     }
     MagazynShared *wspolna = (MagazynShared*)shmat(shmid, NULL, 0);
 
@@ -19,25 +19,25 @@ int main(int argc, char *argv[])
         perror("[CIEZAROWKA] blad semget"); 
 	exit(EXIT_FAILURE);
     }
-    int msgid = msgget(KEY_MSG, 0666);
+    int msgid = msgget(KEY_MSG, 0600);
     if (msgid == -1)
     {
-        perror("[CIEZAROWKA ] Blad msgget");
+        perror("[CIEZAROWKA ] Blad msgget"); 
 	exit(EXIT_FAILURE);
     }
 
-    logp("[CIEZAROWKA %d] zaczyna prace.\n",id);
+    logp(KOLOR_BLUE,"[CIEZAROWKA %d] zaczyna prace.\n",id);
     while(1)
     {
         if (wspolna->koniec_symulacji && wspolna->tasma.ilosc_paczek == 0)
         {
-            logp("[CIEZAROWKA %d] Koniec symulacji i brak paczek. Koncze prace\n", id);
+            logp(KOLOR_BLUE,"[CIEZAROWKA %d] Koniec symulacji i brak paczek. Koncze prace\n", id);
             break;
         }
         sem_P(semid, SEM_RAMPA);
         if (wspolna->koniec_symulacji && wspolna->tasma.ilosc_paczek == 0)
         {
-            logp("[CIEZAROWKA %d] Wjechalem na rampe ale brak paczek. Koncze prace\n", id);
+            logp(KOLOR_BLUE,"[CIEZAROWKA %d] Wjechalem na rampe ale brak paczek. Koncze prace\n", id);
             sem_V(semid, SEM_RAMPA);
             break;
         }
@@ -50,7 +50,7 @@ int main(int argc, char *argv[])
         wspolna->ciezarowka.wymus_odjazd = 0;
 
         sem_V(semid, SEM_MUTEX_CIEZAROWKA);
-        logp("\n [CIEZAROWKA %d] --- Podjechalem pod rampe\n", id);
+        logp(KOLOR_BLUE,"\n [CIEZAROWKA %d] --- Podjechalem pod rampe\n", id);
 
         int czy_pelna = 0;
         struct moj_komunikat msg;
@@ -59,7 +59,7 @@ int main(int argc, char *argv[])
         {
             if (wspolna->ciezarowka.wymus_odjazd == 1)
             {
-                logp("[CIEZAROWKA %d] P4 wymusil odjazd (brak miejsca). Odjezdzam.\n", id);
+                logp(KOLOR_BLUE,"[CIEZAROWKA %d] P4 wymusil odjazd (brak miejsca). Odjezdzam.\n", id);
                 czy_pelna = 1;
                 continue;
             }
@@ -69,7 +69,7 @@ int main(int argc, char *argv[])
                 {
                     continue;
                 }
-                logp("\nDYSPOZYTOR KAZE ODJECHAC (Sygnal 1)!\n");
+                logp(KOLOR_BLUE,"\nDYSPOZYTOR KAZE ODJECHAC (Sygnal 1)!\n");
                 czy_pelna = 1;
                 continue;
             }
@@ -78,7 +78,7 @@ int main(int argc, char *argv[])
             if (semop(semid, &check_full, 1) == -1) {
                 if(wspolna->koniec_symulacji)
                 {
-                    logp("[CIEZAROWKA %d] Koniec symulacji i pusta tasma. Koncze ladunek i odjezdzam w ostatnia trase.\n", id);
+                    logp(KOLOR_BLUE,"[CIEZAROWKA %d] Koniec symulacji i pusta tasma. Koncze ladunek i odjezdzam w ostatnia trase.\n", id);
                     czy_pelna = 1;
                     continue;
                 }
@@ -104,7 +104,7 @@ int main(int argc, char *argv[])
                 wspolna->tasma.ilosc_paczek--;
                 wspolna->tasma.masa_paczek -= p.waga;
 
-                logp("[CIEZAROWKA %d] Zaladowano %c (%.1fkg). Stan: %.1f/%.1f kg ---- %.7f/%.1fm3\n",
+                logp(KOLOR_BLUE,"[CIEZAROWKA %d] Zaladowano %c (%.1fkg). Stan: %.1f/%.1f kg ---- %.1f/%.0fcm3\n",
                        id, p.typ, p.waga, wspolna->ciezarowka.zaladowana_waga, W, wspolna->ciezarowka.zaladowana_objetosc,V);
 
                 sem_V(semid, SEM_MUTEX_CIEZAROWKA);
@@ -113,7 +113,7 @@ int main(int argc, char *argv[])
             }
             else
             {
-                logp("[CIEZAROWKA %d] pelna! Paczka %.1fkg nie wejdzie. Odjazd.\n", id, p.waga);
+                logp(KOLOR_BLUE,"[CIEZAROWKA %d] pelna! Paczka %.1fkg nie wejdzie. Odjazd.\n", id, p.waga);
                 czy_pelna=1;
                 sem_V(semid, SEM_MUTEX_CIEZAROWKA);
                 sem_V(semid, SEM_MUTEX_TASMA);
@@ -126,22 +126,22 @@ int main(int argc, char *argv[])
         sem_V(semid, SEM_MUTEX_CIEZAROWKA);
         if(wspolna->koniec_symulacji && wspolna->ciezarowka.zaladowana_waga == 0)
         {
-             logp("[CIEZAROWKA %d] Pusta i koniec pracy. Zwalniam rampe i wychodze.\n", id);
+             logp(KOLOR_BLUE,"[CIEZAROWKA %d] Pusta i koniec pracy. Zwalniam rampe i wychodze.\n", id);
              sem_V(semid, SEM_RAMPA);
              break;
         }
-        logp("[CIEZAROWKA %d] Odjezdzam w trase (%ds)...\n", id, TI);
+        logp(KOLOR_BLUE,"[CIEZAROWKA %d] Odjezdzam w trase (%ds)...\n", id, TI);
         sem_V(semid, SEM_RAMPA);
 
         sleep(TI);
         if(wspolna->koniec_symulacji && wspolna->tasma.ilosc_paczek == 0)
         {
-            logp("[CIEZAROWKA %d] Koniec mojej pracy.\n", id);
+            logp(KOLOR_BLUE,"[CIEZAROWKA %d] Koniec mojej pracy.\n", id);
         }
 
         else
         {
-            logp("[CIEZAROWKA %d] Wrocilem z trasy. Ustawiam sie w kolejce.\n", id);
+            logp(KOLOR_BLUE,"[CIEZAROWKA %d] Wrocilem z trasy. Ustawiam sie w kolejce.\n", id);
         }
     }
 

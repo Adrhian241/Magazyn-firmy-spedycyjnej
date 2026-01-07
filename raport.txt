@@ -1,0 +1,675 @@
+[MAIN] START SYMULACJI MAGAZYNU
+[MAIN] Pamiec dzielona zostala utworzona : 884752
+[MAIN] Semafory zostal utworzone : 360479
+[MAIN] Kolejka komunikatow utworzona: 262168
+[MAIN] semafor 0 zostal ustawiony na 1.
+[MAIN] semafor 1 zostal ustawiony na 1.
+[MAIN] semafor 2 zostal ustawiony na 30.
+[MAIN] semafor 3 zostal ustawiony na 0.
+[MAIN] semafor 4 zostal ustawiony na 1.
+[MAIN] semafor 5 zostal ustawiony na 1.
+[MAIN] Uruchomiono pracownika P1 (PID: 1900493)
+[MAIN] Uruchomiono pracownika P2 (PID: 1900494)
+[MAIN] Uruchomiono pracownika P3 (PID: 1900495)
+[MAIN] Uruchomiono pracownika P4 (PID: 1900496)
+[MAIN] Uruchomiono ciezarowke C1 (PID: 1900497)
+[PRACOWNIK 1] zaczyna prace.
+[MAIN] Uruchomiono ciezarowke C2 (PID: 1900498)
+[PRACOWNIK 2] zaczyna prace.
+[MAIN] Uruchomiono ciezarowke C3 (PID: 1900499)
+[MAIN] Uruchomiono ciezarowke C4 (PID: 1900500)
+[PRACOWNIK 3] zaczyna prace.
+[CIEZAROWKA 1] zaczyna prace.
+[PRACOWNIK 4] Pracownik 4 zaczyna prace.
+
+ [CIEZAROWKA 1] --- Podjechalem pod rampe
+[CIEZAROWKA 2] zaczyna prace.
+[CIEZAROWKA 3] zaczyna prace.
+[CIEZAROWKA 4] zaczyna prace.
+[PRACOWNIK 1] + Dodal paczke B (14.8kg) o V = 0.0462080m3, Tasma: 1/30 szt, 14.8/400.0 kg
+[PRACOWNIK 3] + Dodal paczke B (8.2kg) o V = 0.0462080m3, Tasma: 2/30 szt, 23.0/400.0 kg
+[PRACOWNIK 2] + Dodal paczke C (22.2kg) o V = 0.0997120m3, Tasma: 3/30 szt, 45.2/400.0 kg
+[PRACOWNIK 1] + Dodal paczke C (18.1kg) o V = 0.0997120m3, Tasma: 4/30 szt, 63.3/400.0 kg
+[PRACOWNIK 3] + Dodal paczke B (10.2kg) o V = 0.0462080m3, Tasma: 5/30 szt, 73.5/400.0 kg
+[CIEZAROWKA 1] Zaladowano  (14.8kg). Stan: 14.8/1500.0 kg ---- 0.0/15cm3
+[PRACOWNIK 1] + Dodal paczke A (0.5kg) o V = 0.0194560m3, Tasma: 5/30 szt, 59.2/400.0 kg
+[PRACOWNIK 3] + Dodal paczke B (13.9kg) o V = 0.0462080m3, Tasma: 6/30 szt, 73.1/400.0 kg
+[PRACOWNIK 1] + Dodal paczke C (17.1kg) o V = 0.0997120m3, Tasma: 7/30 szt, 90.2/400.0 kg
+[CIEZAROWKA 1] Zaladowano  (8.2kg). Stan: 23.0/1500.0 kg ---- 0.1/15cm3
+[PRACOWNIK 2] + Dodal paczke B (14.5kg) o V = 0.0462080m3, Tasma: 7/30 szt, 96.5/400.0 kg
+[CIEZAROWKA 1] Zaladowano  (22.2kg). Stan: 45.2/1500.0 kg ---- 0.2/15cm3
+[PRACOWNIK 3] + Dodal paczke B (17.4kg) o V = 0.0462080m3, Tasma: 7/30 szt, 91.7/400.0 kg
+[PRACOWNIK 2] + Dodal paczke B (9.6kg) o V = 0.0462080m3, Tasma: 8/30 szt, 101.3/400.0 kg
+[PRACOWNIK 1] + Dodal paczke A (3.5kg) o V = 0.0194560m3, Tasma: 9/30 szt, 104.8/400.0 kg
+[CIEZAROWKA 1] Zaladowano  (18.1kg). Stan: 63.3/1500.0 kg ---- 0.3/15cm3
+[PRACOWNIK 2] + Dodal paczke C (18.8kg) o V = 0.0997120m3, Tasma: 9/30 szt, 105.5/400.0 kg
+[CIEZAROWKA 1] Zaladowano  (10.2kg). Stan: 73.5/1500.0 kg ---- 0.3/15cm3
+[PRACOWNIK 3] + Dodal paczke A (5.5kg) o V = 0.0194560m3, Tasma: 9/30 szt, 100.8/400.0 kg
+[PRACOWNIK 1] + Dodal paczke C (24.7kg) o V = 0.0997120m3, Tasma: 10/30 szt, 125.5/400.0 kg
+[CIEZAROWKA 1] Zaladowano  (0.5kg). Stan: 74.0/1500.0 kg ---- 0.4/15cm3
+[PRACOWNIK 2] + Dodal paczke B (9.0kg) o V = 0.0462080m3, Tasma: 10/30 szt, 134.0/400.0 kg
+[PRACOWNIK 3] + Dodal paczke B (8.0kg) o V = 0.0462080m3, Tasma: 11/30 szt, 142.0/400.0 kg
+[CIEZAROWKA 1] Zaladowano  (13.9kg). Stan: 87.9/1500.0 kg ---- 0.4/15cm3
+[PRACOWNIK 1] + Dodal paczke C (16.8kg) o V = 0.0997120m3, Tasma: 11/30 szt, 144.9/400.0 kg
+[PRACOWNIK 3] + Dodal paczke A (5.1kg) o V = 0.0194560m3, Tasma: 12/30 szt, 150.0/400.0 kg
+[CIEZAROWKA 1] Zaladowano  (17.1kg). Stan: 105.0/1500.0 kg ---- 0.5/15cm3
+[PRACOWNIK 1] + Dodal paczke B (10.1kg) o V = 0.0462080m3, Tasma: 12/30 szt, 143.0/400.0 kg
+[PRACOWNIK 2] + Dodal paczke C (17.1kg) o V = 0.0997120m3, Tasma: 13/30 szt, 160.1/400.0 kg
+[PRACOWNIK 2] + Dodal paczke B (14.1kg) o V = 0.0462080m3, Tasma: 14/30 szt, 174.2/400.0 kg
+[CIEZAROWKA 1] Zaladowano  (14.5kg). Stan: 119.5/1500.0 kg ---- 0.5/15cm3
+[PRACOWNIK 3] + Dodal paczke B (12.7kg) o V = 0.0462080m3, Tasma: 14/30 szt, 172.4/400.0 kg
+[PRACOWNIK 1] + Dodal paczke B (13.3kg) o V = 0.0462080m3, Tasma: 15/30 szt, 185.7/400.0 kg
+[CIEZAROWKA 1] Zaladowano  (17.4kg). Stan: 136.9/1500.0 kg ---- 0.6/15cm3
+[PRACOWNIK 2] + Dodal paczke C (19.4kg) o V = 0.0997120m3, Tasma: 15/30 szt, 187.7/400.0 kg
+[PRACOWNIK 3] + Dodal paczke A (0.3kg) o V = 0.0194560m3, Tasma: 16/30 szt, 188.0/400.0 kg
+[CIEZAROWKA 1] Zaladowano  (9.6kg). Stan: 146.5/1500.0 kg ---- 0.6/15cm3
+[PRACOWNIK 3] + Dodal paczke A (7.2kg) o V = 0.0194560m3, Tasma: 16/30 szt, 185.6/400.0 kg
+[PRACOWNIK 2] + Dodal paczke B (8.3kg) o V = 0.0462080m3, Tasma: 17/30 szt, 193.9/400.0 kg
+[PRACOWNIK 1] + Dodal paczke B (16.6kg) o V = 0.0462080m3, Tasma: 18/30 szt, 210.5/400.0 kg
+[CIEZAROWKA 1] Zaladowano  (3.5kg). Stan: 150.0/1500.0 kg ---- 0.7/15cm3
+[PRACOWNIK 3] + Dodal paczke A (8.0kg) o V = 0.0194560m3, Tasma: 18/30 szt, 215.0/400.0 kg
+[CIEZAROWKA 1] Zaladowano  (18.8kg). Stan: 168.8/1500.0 kg ---- 0.8/15cm3
+[PRACOWNIK 2] + Dodal paczke B (10.2kg) o V = 0.0462080m3, Tasma: 18/30 szt, 206.4/400.0 kg
+[PRACOWNIK 1] + Dodal paczke B (14.9kg) o V = 0.0462080m3, Tasma: 19/30 szt, 221.3/400.0 kg
+[PRACOWNIK 3] + Dodal paczke C (18.2kg) o V = 0.0997120m3, Tasma: 20/30 szt, 239.5/400.0 kg
+[CIEZAROWKA 1] Zaladowano  (5.5kg). Stan: 174.3/1500.0 kg ---- 0.8/15cm3
+[PRACOWNIK 1] + Dodal paczke C (24.8kg) o V = 0.0997120m3, Tasma: 20/30 szt, 258.8/400.0 kg
+[PRACOWNIK 2] + Dodal paczke C (24.2kg) o V = 0.0997120m3, Tasma: 21/30 szt, 283.0/400.0 kg
+[CIEZAROWKA 1] Zaladowano  (24.7kg). Stan: 199.0/1500.0 kg ---- 0.9/15cm3
+[PRACOWNIK 3] + Dodal paczke B (15.4kg) o V = 0.0462080m3, Tasma: 21/30 szt, 273.7/400.0 kg
+[CIEZAROWKA 1] Zaladowano  (9.0kg). Stan: 208.0/1500.0 kg ---- 0.9/15cm3
+[PRACOWNIK 2] + Dodal paczke B (8.7kg) o V = 0.0462080m3, Tasma: 21/30 szt, 273.4/400.0 kg
+[PRACOWNIK 1] + Dodal paczke B (12.4kg) o V = 0.0462080m3, Tasma: 22/30 szt, 285.8/400.0 kg
+[CIEZAROWKA 1] Zaladowano  (8.0kg). Stan: 216.0/1500.0 kg ---- 1.0/15cm3
+[PRACOWNIK 1] + Dodal paczke A (4.9kg) o V = 0.0194560m3, Tasma: 22/30 szt, 282.7/400.0 kg
+[PRACOWNIK 3] + Dodal paczke A (2.3kg) o V = 0.0194560m3, Tasma: 23/30 szt, 285.0/400.0 kg
+[PRACOWNIK 2] + Dodal paczke C (23.0kg) o V = 0.0997120m3, Tasma: 24/30 szt, 308.0/400.0 kg
+[CIEZAROWKA 1] Zaladowano  (16.8kg). Stan: 232.8/1500.0 kg ---- 1.1/15cm3
+[PRACOWNIK 2] + Dodal paczke B (17.9kg) o V = 0.0462080m3, Tasma: 24/30 szt, 309.1/400.0 kg
+[PRACOWNIK 1] + Dodal paczke C (20.2kg) o V = 0.0997120m3, Tasma: 25/30 szt, 329.3/400.0 kg
+[CIEZAROWKA 1] Zaladowano  (5.1kg). Stan: 237.9/1500.0 kg ---- 1.1/15cm3
+[PRACOWNIK 2] + Dodal paczke B (8.3kg) o V = 0.0462080m3, Tasma: 25/30 szt, 332.5/400.0 kg
+[PRACOWNIK 3] + Dodal paczke A (2.5kg) o V = 0.0194560m3, Tasma: 26/30 szt, 335.0/400.0 kg
+[CIEZAROWKA 1] Zaladowano  (10.1kg). Stan: 248.0/1500.0 kg ---- 1.1/15cm3
+[PRACOWNIK 3] + Dodal paczke B (10.3kg) o V = 0.0462080m3, Tasma: 26/30 szt, 335.2/400.0 kg
+[PRACOWNIK P4] + Dodal paczke B (14.8kg) o V = 0.0462080m3
+[PRACOWNIK 2] + Dodal paczke B (16.0kg) o V = 0.0462080m3, Tasma: 27/30 szt, 351.2/400.0 kg
+[PRACOWNIK 1] + Dodal paczke C (20.0kg) o V = 0.0997120m3, Tasma: 28/30 szt, 371.2/400.0 kg
+[CIEZAROWKA 1] Zaladowano  (17.1kg). Stan: 265.1/1500.0 kg ---- 1.2/15cm3
+[PRACOWNIK 1] + Dodal paczke B (12.4kg) o V = 0.0462080m3, Tasma: 28/30 szt, 366.5/400.0 kg
+[PRACOWNIK 3] + Dodal paczke B (11.0kg) o V = 0.0462080m3, Tasma: 29/30 szt, 377.5/400.0 kg
+[CIEZAROWKA 1] Zaladowano  (14.1kg). Stan: 279.2/1500.0 kg ---- 1.3/15cm3
+[PRACOWNIK 2] + Dodal paczke A (0.7kg) o V = 0.0194560m3, Tasma: 29/30 szt, 364.1/400.0 kg
+[PRACOWNIK 1] + Dodal paczke A (7.2kg) o V = 0.0194560m3, Tasma: 30/30 szt, 371.3/400.0 kg
+[CIEZAROWKA 1] Zaladowano  (12.7kg). Stan: 291.9/1500.0 kg ---- 1.3/15cm3
+[PRACOWNIK 3] + Dodal paczke B (13.4kg) o V = 0.0462080m3, Tasma: 30/30 szt, 372.0/400.0 kg
+[CIEZAROWKA 1] Zaladowano  (13.3kg). Stan: 305.2/1500.0 kg ---- 1.4/15cm3
+[PRACOWNIK 1] + Dodal paczke B (9.6kg) o V = 0.0462080m3, Tasma: 30/30 szt, 368.3/400.0 kg
+[CIEZAROWKA 1] Zaladowano  (19.4kg). Stan: 324.6/1500.0 kg ---- 1.5/15cm3
+[PRACOWNIK 2] + Dodal paczke C (18.1kg) o V = 0.0997120m3, Tasma: 30/30 szt, 367.0/400.0 kg
+[CIEZAROWKA 1] Zaladowano  (0.3kg). Stan: 324.9/1500.0 kg ---- 1.5/15cm3
+[PRACOWNIK 3] + Dodal paczke C (19.3kg) o V = 0.0997120m3, Tasma: 30/30 szt, 386.0/400.0 kg
+[CIEZAROWKA 1] Zaladowano  (7.2kg). Stan: 332.1/1500.0 kg ---- 1.5/15cm3
+[PRACOWNIK 1] + Dodal paczke C (19.6kg) o V = 0.0997120m3, Tasma: 30/30 szt, 398.4/400.0 kg
+[CIEZAROWKA 1] Zaladowano  (8.3kg). Stan: 340.4/1500.0 kg ---- 1.6/15cm3
+[PRACOWNIK 2] + Dodal paczke A (2.9kg) o V = 0.0194560m3, Tasma: 30/30 szt, 393.0/400.0 kg
+[CIEZAROWKA 1] Zaladowano  (16.6kg). Stan: 357.0/1500.0 kg ---- 1.6/15cm3
+[PRACOWNIK 3] + Dodal paczke A (7.3kg) o V = 0.0194560m3, Tasma: 30/30 szt, 383.7/400.0 kg
+[CIEZAROWKA 1] Zaladowano  (8.0kg). Stan: 365.0/1500.0 kg ---- 1.6/15cm3
+[PRACOWNIK 1] + Dodal paczke B (17.2kg) o V = 0.0462080m3, Tasma: 30/30 szt, 392.9/400.0 kg
+[CIEZAROWKA 1] Zaladowano  (10.2kg). Stan: 375.2/1500.0 kg ---- 1.7/15cm3
+[PRACOWNIK 2] + Dodal paczke A (1.5kg) o V = 0.0194560m3, Tasma: 30/30 szt, 384.2/400.0 kg
+[CIEZAROWKA 1] Zaladowano  (14.9kg). Stan: 390.1/1500.0 kg ---- 1.7/15cm3
+[PRACOWNIK 3] + Dodal paczke C (24.6kg) o V = 0.0997120m3, Tasma: 30/30 szt, 393.9/400.0 kg
+[CIEZAROWKA 1] Zaladowano  (18.2kg). Stan: 408.3/1500.0 kg ---- 1.8/15cm3
+[PRACOWNIK 1] + Dodal paczke C (23.3kg) o V = 0.0997120m3, Tasma: 30/30 szt, 399.0/400.0 kg
+[CIEZAROWKA 1] Zaladowano  (24.8kg). Stan: 433.1/1500.0 kg ---- 1.9/15cm3
+[PRACOWNIK 2] + Dodal paczke B (17.2kg) o V = 0.0462080m3, Tasma: 30/30 szt, 391.4/400.0 kg
+[CIEZAROWKA 1] Zaladowano  (24.2kg). Stan: 457.3/1500.0 kg ---- 2.0/15cm3
+[PRACOWNIK 3] + Dodal paczke B (11.4kg) o V = 0.0462080m3, Tasma: 30/30 szt, 378.6/400.0 kg
+[CIEZAROWKA 1] Zaladowano  (15.4kg). Stan: 472.7/1500.0 kg ---- 2.1/15cm3
+[PRACOWNIK 1] + Dodal paczke A (0.5kg) o V = 0.0194560m3, Tasma: 30/30 szt, 363.7/400.0 kg
+[CIEZAROWKA 1] Zaladowano  (8.7kg). Stan: 481.4/1500.0 kg ---- 2.1/15cm3
+[PRACOWNIK 2] + Dodal paczke A (7.9kg) o V = 0.0194560m3, Tasma: 30/30 szt, 362.9/400.0 kg
+[CIEZAROWKA 1] Zaladowano  (12.4kg). Stan: 493.8/1500.0 kg ---- 2.2/15cm3
+[PRACOWNIK 3] + Dodal paczke A (7.6kg) o V = 0.0194560m3, Tasma: 30/30 szt, 358.1/400.0 kg
+[PRACOWNIK P4] + Dodal paczke C (24.8kg) o V = 0.0997120m3
+[CIEZAROWKA 1] Zaladowano  (4.9kg). Stan: 498.7/1500.0 kg ---- 2.2/15cm3
+[PRACOWNIK 1] + Dodal paczke A (0.1kg) o V = 0.0194560m3, Tasma: 30/30 szt, 353.3/400.0 kg
+[CIEZAROWKA 1] Zaladowano  (2.3kg). Stan: 501.0/1500.0 kg ---- 2.2/15cm3
+[PRACOWNIK 2] + Dodal paczke A (4.1kg) o V = 0.0194560m3, Tasma: 30/30 szt, 355.1/400.0 kg
+[CIEZAROWKA 1] Zaladowano  (23.0kg). Stan: 524.0/1500.0 kg ---- 2.3/15cm3
+[PRACOWNIK 3] + Dodal paczke B (17.8kg) o V = 0.0462080m3, Tasma: 30/30 szt, 349.9/400.0 kg
+[CIEZAROWKA 1] Zaladowano  (17.9kg). Stan: 541.9/1500.0 kg ---- 2.3/15cm3
+[PRACOWNIK 1] + Dodal paczke B (11.2kg) o V = 0.0462080m3, Tasma: 30/30 szt, 343.2/400.0 kg
+[CIEZAROWKA 1] Zaladowano  (20.2kg). Stan: 562.1/1500.0 kg ---- 2.4/15cm3
+[PRACOWNIK 2] + Dodal paczke C (20.6kg) o V = 0.0997120m3, Tasma: 30/30 szt, 343.6/400.0 kg
+[CIEZAROWKA 1] Zaladowano  (8.3kg). Stan: 570.4/1500.0 kg ---- 2.5/15cm3
+[PRACOWNIK 3] + Dodal paczke B (12.1kg) o V = 0.0462080m3, Tasma: 30/30 szt, 347.4/400.0 kg
+[CIEZAROWKA 1] Zaladowano  (2.5kg). Stan: 572.9/1500.0 kg ---- 2.5/15cm3
+[PRACOWNIK 1] + Dodal paczke A (7.1kg) o V = 0.0194560m3, Tasma: 30/30 szt, 352.0/400.0 kg
+[CIEZAROWKA 1] Zaladowano  (10.3kg). Stan: 583.2/1500.0 kg ---- 2.6/15cm3
+[PRACOWNIK 2] + Dodal paczke B (15.0kg) o V = 0.0462080m3, Tasma: 30/30 szt, 356.7/400.0 kg
+[CIEZAROWKA 1] Zaladowano  (16.0kg). Stan: 599.2/1500.0 kg ---- 2.6/15cm3
+[PRACOWNIK 3] + Dodal paczke A (6.7kg) o V = 0.0194560m3, Tasma: 30/30 szt, 347.4/400.0 kg
+[CIEZAROWKA 1] Zaladowano  (20.0kg). Stan: 619.2/1500.0 kg ---- 2.7/15cm3
+[PRACOWNIK 1] + Dodal paczke B (14.1kg) o V = 0.0462080m3, Tasma: 30/30 szt, 341.5/400.0 kg
+[CIEZAROWKA 1] Zaladowano  (12.4kg). Stan: 631.6/1500.0 kg ---- 2.7/15cm3
+[PRACOWNIK 2] + Dodal paczke C (15.6kg) o V = 0.0997120m3, Tasma: 30/30 szt, 344.7/400.0 kg
+[CIEZAROWKA 1] Zaladowano  (11.0kg). Stan: 642.6/1500.0 kg ---- 2.8/15cm3
+[PRACOWNIK 3] + Dodal paczke C (18.0kg) o V = 0.0997120m3, Tasma: 30/30 szt, 351.7/400.0 kg
+[CIEZAROWKA 1] Zaladowano  (0.7kg). Stan: 643.3/1500.0 kg ---- 2.8/15cm3
+[PRACOWNIK 1] + Dodal paczke A (4.5kg) o V = 0.0194560m3, Tasma: 30/30 szt, 355.5/400.0 kg
+[CIEZAROWKA 1] Zaladowano  (7.2kg). Stan: 650.5/1500.0 kg ---- 2.8/15cm3
+[PRACOWNIK 2] + Dodal paczke A (1.3kg) o V = 0.0194560m3, Tasma: 30/30 szt, 349.6/400.0 kg
+[CIEZAROWKA 1] Zaladowano  (13.4kg). Stan: 663.9/1500.0 kg ---- 2.9/15cm3
+[PRACOWNIK 3] + Dodal paczke C (16.1kg) o V = 0.0997120m3, Tasma: 30/30 szt, 352.3/400.0 kg
+[CIEZAROWKA 1] Zaladowano  (9.6kg). Stan: 673.5/1500.0 kg ---- 2.9/15cm3
+[PRACOWNIK 1] + Dodal paczke C (15.8kg) o V = 0.0997120m3, Tasma: 30/30 szt, 358.5/400.0 kg
+[CIEZAROWKA 1] Zaladowano  (18.1kg). Stan: 691.6/1500.0 kg ---- 3.0/15cm3
+[PRACOWNIK 2] + Dodal paczke C (15.8kg) o V = 0.0997120m3, Tasma: 30/30 szt, 356.2/400.0 kg
+[CIEZAROWKA 1] Zaladowano  (19.3kg). Stan: 710.9/1500.0 kg ---- 3.1/15cm3
+[PRACOWNIK 3] + Dodal paczke B (12.7kg) o V = 0.0462080m3, Tasma: 30/30 szt, 349.6/400.0 kg
+[PRACOWNIK P4] + Dodal paczke B (12.5kg) o V = 0.0462080m3
+[CIEZAROWKA 1] Zaladowano  (19.6kg). Stan: 730.5/1500.0 kg ---- 3.2/15cm3
+[PRACOWNIK 1] + Dodal paczke A (7.0kg) o V = 0.0194560m3, Tasma: 30/30 szt, 337.0/400.0 kg
+[CIEZAROWKA 1] Zaladowano  (2.9kg). Stan: 733.4/1500.0 kg ---- 3.2/15cm3
+[PRACOWNIK 2] + Dodal paczke B (15.8kg) o V = 0.0462080m3, Tasma: 30/30 szt, 349.9/400.0 kg
+[CIEZAROWKA 1] Zaladowano  (7.3kg). Stan: 740.7/1500.0 kg ---- 3.3/15cm3
+[PRACOWNIK 3] + Dodal paczke C (15.8kg) o V = 0.0997120m3, Tasma: 30/30 szt, 358.4/400.0 kg
+[CIEZAROWKA 1] Zaladowano  (17.2kg). Stan: 757.9/1500.0 kg ---- 3.3/15cm3
+[PRACOWNIK 1] + Dodal paczke B (8.0kg) o V = 0.0462080m3, Tasma: 30/30 szt, 349.2/400.0 kg
+[CIEZAROWKA 1] Zaladowano  (1.5kg). Stan: 759.4/1500.0 kg ---- 3.3/15cm3
+[PRACOWNIK 2] + Dodal paczke A (3.1kg) o V = 0.0194560m3, Tasma: 30/30 szt, 350.8/400.0 kg
+[CIEZAROWKA 1] Zaladowano  (24.6kg). Stan: 784.0/1500.0 kg ---- 3.4/15cm3
+[PRACOWNIK 3] + Dodal paczke B (10.2kg) o V = 0.0462080m3, Tasma: 30/30 szt, 336.4/400.0 kg
+[CIEZAROWKA 1] Zaladowano  (23.3kg). Stan: 807.3/1500.0 kg ---- 3.5/15cm3
+[PRACOWNIK 1] + Dodal paczke C (16.5kg) o V = 0.0997120m3, Tasma: 30/30 szt, 329.6/400.0 kg
+[CIEZAROWKA 1] Zaladowano  (17.2kg). Stan: 824.5/1500.0 kg ---- 3.6/15cm3
+[PRACOWNIK 2] + Dodal paczke C (17.0kg) o V = 0.0997120m3, Tasma: 30/30 szt, 329.4/400.0 kg
+[CIEZAROWKA 1] Zaladowano  (11.4kg). Stan: 835.9/1500.0 kg ---- 3.6/15cm3
+[PRACOWNIK 3] + Dodal paczke C (24.1kg) o V = 0.0997120m3, Tasma: 30/30 szt, 342.1/400.0 kg
+[CIEZAROWKA 1] Zaladowano  (0.5kg). Stan: 836.4/1500.0 kg ---- 3.6/15cm3
+[PRACOWNIK 1] + Dodal paczke B (14.5kg) o V = 0.0462080m3, Tasma: 30/30 szt, 356.1/400.0 kg
+[CIEZAROWKA 1] Zaladowano  (7.9kg). Stan: 844.3/1500.0 kg ---- 3.7/15cm3
+[PRACOWNIK 2] + Dodal paczke A (5.3kg) o V = 0.0194560m3, Tasma: 30/30 szt, 353.5/400.0 kg
+[CIEZAROWKA 1] Zaladowano  (7.6kg). Stan: 851.9/1500.0 kg ---- 3.7/15cm3
+[PRACOWNIK 3] + Dodal paczke C (18.7kg) o V = 0.0997120m3, Tasma: 30/30 szt, 364.6/400.0 kg
+[CIEZAROWKA 1] Zaladowano  (0.1kg). Stan: 852.0/1500.0 kg ---- 3.7/15cm3
+[PRACOWNIK 2] + Dodal paczke A (0.4kg) o V = 0.0194560m3, Tasma: 30/30 szt, 364.9/400.0 kg
+[CIEZAROWKA 1] Zaladowano  (4.1kg). Stan: 856.1/1500.0 kg ---- 3.7/15cm3
+[PRACOWNIK 1] + Dodal paczke B (8.1kg) o V = 0.0462080m3, Tasma: 30/30 szt, 368.9/400.0 kg
+[CIEZAROWKA 1] Zaladowano  (17.8kg). Stan: 873.9/1500.0 kg ---- 3.8/15cm3
+[PRACOWNIK 3] + Dodal paczke B (10.0kg) o V = 0.0462080m3, Tasma: 30/30 szt, 361.1/400.0 kg
+[CIEZAROWKA 1] Zaladowano  (11.2kg). Stan: 885.1/1500.0 kg ---- 3.8/15cm3
+[PRACOWNIK 2] + Dodal paczke B (11.0kg) o V = 0.0462080m3, Tasma: 30/30 szt, 360.9/400.0 kg
+[CIEZAROWKA 1] Zaladowano  (20.6kg). Stan: 905.7/1500.0 kg ---- 3.9/15cm3
+[PRACOWNIK 1] + Dodal paczke B (17.8kg) o V = 0.0462080m3, Tasma: 30/30 szt, 358.1/400.0 kg
+[PRACOWNIK P4] + Dodal paczke A (7.2kg) o V = 0.0194560m3
+[CIEZAROWKA 1] Zaladowano  (12.1kg). Stan: 917.8/1500.0 kg ---- 4.0/15cm3
+[PRACOWNIK 3] + Dodal paczke C (23.6kg) o V = 0.0997120m3, Tasma: 30/30 szt, 369.6/400.0 kg
+[CIEZAROWKA 1] Zaladowano  (7.1kg). Stan: 924.9/1500.0 kg ---- 4.0/15cm3
+[PRACOWNIK 2] + Dodal paczke C (20.0kg) o V = 0.0997120m3, Tasma: 30/30 szt, 382.5/400.0 kg
+[CIEZAROWKA 1] Zaladowano  (15.0kg). Stan: 939.9/1500.0 kg ---- 4.0/15cm3
+[PRACOWNIK 3] + Dodal paczke C (23.0kg) o V = 0.0997120m3, Tasma: 30/30 szt, 390.5/400.0 kg
+[CIEZAROWKA 1] Zaladowano  (6.7kg). Stan: 946.6/1500.0 kg ---- 4.0/15cm3
+[PRACOWNIK 1] + Dodal paczke B (12.1kg) o V = 0.0462080m3, Tasma: 30/30 szt, 395.9/400.0 kg
+[CIEZAROWKA 1] Zaladowano  (14.1kg). Stan: 960.7/1500.0 kg ---- 4.1/15cm3
+[PRACOWNIK 2] !cd Paczka 19.6kg za ciezka (Tasma: 381.8kg). Czekam z paczka...
+[PRACOWNIK 3] + Dodal paczke A (1.3kg) o V = 0.0194560m3, Tasma: 30/30 szt, 383.1/400.0 kg
+[CIEZAROWKA 1] Zaladowano  (15.6kg). Stan: 976.3/1500.0 kg ---- 4.2/15cm3
+[PRACOWNIK 1] + Dodal paczke C (18.1kg) o V = 0.0997120m3, Tasma: 30/30 szt, 385.6/400.0 kg
+[CIEZAROWKA 1] Zaladowano  (18.0kg). Stan: 994.3/1500.0 kg ---- 4.3/15cm3
+[PRACOWNIK 3] + Dodal paczke C (20.5kg) o V = 0.0997120m3, Tasma: 30/30 szt, 388.1/400.0 kg
+[CIEZAROWKA 1] Zaladowano  (4.5kg). Stan: 998.8/1500.0 kg ---- 4.3/15cm3
+[PRACOWNIK 1] !cd Paczka 23.3kg za ciezka (Tasma: 383.6kg). Czekam z paczka...
+[PRACOWNIK 3] !cd Paczka 16.5kg za ciezka (Tasma: 383.6kg). Czekam z paczka...
+[CIEZAROWKA 1] Zaladowano  (1.3kg). Stan: 1000.1/1500.0 kg ---- 4.3/15cm3
+[CIEZAROWKA 1] Zaladowano  (16.1kg). Stan: 1016.2/1500.0 kg ---- 4.4/15cm3
+[CIEZAROWKA 1] Zaladowano  (15.8kg). Stan: 1032.0/1500.0 kg ---- 4.5/15cm3
+[CIEZAROWKA 1] Zaladowano  (15.8kg). Stan: 1047.8/1500.0 kg ---- 4.6/15cm3
+[CIEZAROWKA 1] Zaladowano  (12.7kg). Stan: 1060.5/1500.0 kg ---- 4.7/15cm3
+[PRACOWNIK 2] + Dodal paczke C (19.6kg) o V = 0.0997120m3, Tasma: 25/30 szt, 341.5/400.0 kg
+[CIEZAROWKA 1] Zaladowano  (7.0kg). Stan: 1067.5/1500.0 kg ---- 4.7/15cm3
+[PRACOWNIK 2] + Dodal paczke C (24.1kg) o V = 0.0997120m3, Tasma: 25/30 szt, 358.6/400.0 kg
+[CIEZAROWKA 1] Zaladowano  (15.8kg). Stan: 1083.3/1500.0 kg ---- 4.7/15cm3
+[PRACOWNIK 2] + Dodal paczke B (12.7kg) o V = 0.0462080m3, Tasma: 25/30 szt, 355.5/400.0 kg
+[CIEZAROWKA 1] Zaladowano  (15.8kg). Stan: 1099.1/1500.0 kg ---- 4.8/15cm3
+[PRACOWNIK 1] + Dodal paczke C (23.3kg) o V = 0.0997120m3, Tasma: 25/30 szt, 363.0/400.0 kg
+[PRACOWNIK 3] + Dodal paczke B (16.5kg) o V = 0.0462080m3, Tasma: 26/30 szt, 379.5/400.0 kg
+[CIEZAROWKA 1] Zaladowano  (8.0kg). Stan: 1107.1/1500.0 kg ---- 4.9/15cm3
+[PRACOWNIK 1] + Dodal paczke C (17.2kg) o V = 0.0997120m3, Tasma: 26/30 szt, 388.7/400.0 kg
+[PRACOWNIK 2] + Dodal paczke B (9.0kg) o V = 0.0462080m3, Tasma: 27/30 szt, 397.7/400.0 kg
+[CIEZAROWKA 1] Zaladowano  (3.1kg). Stan: 1110.2/1500.0 kg ---- 4.9/15cm3
+[PRACOWNIK 2] + Dodal paczke A (0.3kg) o V = 0.0194560m3, Tasma: 27/30 szt, 394.9/400.0 kg
+[PRACOWNIK 3] !cd Paczka 23.0kg za ciezka (Tasma: 394.9kg). Czekam z paczka...
+[PRACOWNIK P4] + Dodal paczke A (1.2kg) o V = 0.0194560m3
+[PRACOWNIK 1] !cd Paczka 19.8kg za ciezka (Tasma: 394.9kg). Czekam z paczka...
+[CIEZAROWKA 1] Zaladowano  (10.2kg). Stan: 1120.4/1500.0 kg ---- 4.9/15cm3
+[PRACOWNIK 2] !cd Paczka 17.1kg za ciezka (Tasma: 384.7kg). Czekam z paczka...
+[CIEZAROWKA 1] Zaladowano  (16.5kg). Stan: 1136.9/1500.0 kg ---- 5.0/15cm3
+[CIEZAROWKA 1] Zaladowano  (17.0kg). Stan: 1153.9/1500.0 kg ---- 5.1/15cm3
+[CIEZAROWKA 1] Zaladowano  (24.1kg). Stan: 1178.0/1500.0 kg ---- 5.2/15cm3
+[CIEZAROWKA 1] Zaladowano  (14.5kg). Stan: 1192.5/1500.0 kg ---- 5.3/15cm3
+[CIEZAROWKA 1] Zaladowano  (5.3kg). Stan: 1197.8/1500.0 kg ---- 5.3/15cm3
+[CIEZAROWKA 1] Zaladowano  (18.7kg). Stan: 1216.5/1500.0 kg ---- 5.4/15cm3
+[CIEZAROWKA 1] Zaladowano  (0.4kg). Stan: 1216.9/1500.0 kg ---- 5.4/15cm3
+[PRACOWNIK 3] + Dodal paczke C (23.0kg) o V = 0.0997120m3, Tasma: 20/30 szt, 311.2/400.0 kg
+[CIEZAROWKA 1] Zaladowano  (8.1kg). Stan: 1225.0/1500.0 kg ---- 5.5/15cm3
+[PRACOWNIK 1] + Dodal paczke C (19.8kg) o V = 0.0997120m3, Tasma: 20/30 szt, 322.9/400.0 kg
+[CIEZAROWKA 1] Zaladowano  (10.0kg). Stan: 1235.0/1500.0 kg ---- 5.5/15cm3
+[PRACOWNIK 2] + Dodal paczke B (17.1kg) o V = 0.0462080m3, Tasma: 20/30 szt, 330.0/400.0 kg
+[PRACOWNIK 1] + Dodal paczke C (20.2kg) o V = 0.0997120m3, Tasma: 21/30 szt, 350.2/400.0 kg
+[PRACOWNIK 3] + Dodal paczke B (8.0kg) o V = 0.0462080m3, Tasma: 22/30 szt, 358.2/400.0 kg
+[CIEZAROWKA 1] Zaladowano  (11.0kg). Stan: 1246.0/1500.0 kg ---- 5.6/15cm3
+[PRACOWNIK 3] + Dodal paczke A (6.5kg) o V = 0.0194560m3, Tasma: 22/30 szt, 353.7/400.0 kg
+[PRACOWNIK 2] + Dodal paczke B (10.5kg) o V = 0.0462080m3, Tasma: 23/30 szt, 364.2/400.0 kg
+[PRACOWNIK 1] + Dodal paczke B (8.3kg) o V = 0.0462080m3, Tasma: 24/30 szt, 372.5/400.0 kg
+[CIEZAROWKA 1] Zaladowano  (17.8kg). Stan: 1263.8/1500.0 kg ---- 5.6/15cm3
+[PRACOWNIK 3] + Dodal paczke B (12.7kg) o V = 0.0462080m3, Tasma: 24/30 szt, 367.4/400.0 kg
+[PRACOWNIK 2] + Dodal paczke A (7.5kg) o V = 0.0194560m3, Tasma: 25/30 szt, 374.9/400.0 kg
+[PRACOWNIK 1] + Dodal paczke A (4.1kg) o V = 0.0194560m3, Tasma: 26/30 szt, 379.0/400.0 kg
+[PRACOWNIK 2] !cd Paczka 23.0kg za ciezka (Tasma: 379.0kg). Czekam z paczka...
+[CIEZAROWKA 1] Zaladowano  (23.6kg). Stan: 1287.4/1500.0 kg ---- 5.7/15cm3
+[PRACOWNIK 3] + Dodal paczke C (18.7kg) o V = 0.0997120m3, Tasma: 26/30 szt, 374.1/400.0 kg
+[PRACOWNIK 1] + Dodal paczke C (18.9kg) o V = 0.0997120m3, Tasma: 27/30 szt, 393.0/400.0 kg
+[CIEZAROWKA 1] Zaladowano  (20.0kg). Stan: 1307.4/1500.0 kg ---- 5.8/15cm3
+[PRACOWNIK 3] + Dodal paczke B (12.2kg) o V = 0.0462080m3, Tasma: 27/30 szt, 385.2/400.0 kg
+[PRACOWNIK 1] + Dodal paczke A (2.0kg) o V = 0.0194560m3, Tasma: 28/30 szt, 387.2/400.0 kg
+[CIEZAROWKA 1] Zaladowano  (23.0kg). Stan: 1330.4/1500.0 kg ---- 5.9/15cm3
+[PRACOWNIK 1] + Dodal paczke C (15.1kg) o V = 0.0997120m3, Tasma: 28/30 szt, 379.3/400.0 kg
+[CIEZAROWKA 1] Zaladowano  (12.1kg). Stan: 1342.5/1500.0 kg ---- 6.0/15cm3
+[PRACOWNIK 3] + Dodal paczke C (16.2kg) o V = 0.0997120m3, Tasma: 28/30 szt, 383.4/400.0 kg
+[PRACOWNIK 1] + Dodal paczke A (2.0kg) o V = 0.0194560m3, Tasma: 29/30 szt, 385.4/400.0 kg
+[CIEZAROWKA 1] Zaladowano  (1.3kg). Stan: 1343.8/1500.0 kg ---- 6.0/15cm3
+[PRACOWNIK 3] !cd Paczka 22.0kg za ciezka (Tasma: 384.1kg). Czekam z paczka...
+[PRACOWNIK 1] + Dodal paczke B (9.7kg) o V = 0.0462080m3, Tasma: 29/30 szt, 393.8/400.0 kg
+[CIEZAROWKA 1] Zaladowano  (18.1kg). Stan: 1361.9/1500.0 kg ---- 6.1/15cm3
+[PRACOWNIK P4] + Dodal paczke B (15.7kg) o V = 0.0462080m3
+[PRACOWNIK 1] + Dodal paczke A (5.9kg) o V = 0.0194560m3, Tasma: 29/30 szt, 381.6/400.0 kg
+[CIEZAROWKA 1] Zaladowano  (20.5kg). Stan: 1382.4/1500.0 kg ---- 6.2/15cm3
+[CIEZAROWKA 1] Zaladowano  (19.6kg). Stan: 1402.0/1500.0 kg ---- 6.3/15cm3
+[PRACOWNIK 1] + Dodal paczke C (15.8kg) o V = 0.0997120m3, Tasma: 28/30 szt, 357.3/400.0 kg
+[CIEZAROWKA 1] Zaladowano  (24.1kg). Stan: 1426.1/1500.0 kg ---- 6.4/15cm3
+[PRACOWNIK 2] + Dodal paczke C (23.0kg) o V = 0.0997120m3, Tasma: 28/30 szt, 356.2/400.0 kg
+[CIEZAROWKA 1] Zaladowano  (12.7kg). Stan: 1438.8/1500.0 kg ---- 6.4/15cm3
+[PRACOWNIK 1] + Dodal paczke A (0.8kg) o V = 0.0194560m3, Tasma: 28/30 szt, 344.3/400.0 kg
+[CIEZAROWKA 1] Zaladowano  (23.3kg). Stan: 1462.1/1500.0 kg ---- 6.5/15cm3
+[DYSPOZYTOR] Wyslano rozklaz zaladunku paczek priorytetowych
+[PRACOWNIK 2] + Dodal paczke C (23.2kg) o V = 0.0997120m3, Tasma: 28/30 szt, 344.2/400.0 kg
+[PRACOWNIK 1] + Dodal paczke C (23.9kg) o V = 0.0997120m3, Tasma: 29/30 szt, 368.1/400.0 kg
+
+[DYSPOZYTOR] >>> [PRACOWNIK 4] Otrzymalem rozkaz (SYGNAL 2), laduje paczki ekspresowe
+paczka 0 waga = 14.8
+paczka 1 waga = 24.8
+paczka 2 waga = 12.5
+paczka 3 waga = 7.2
+paczka 4 waga = 1.2
+paczka 5 waga = 15.7
+[PRACOWNIK 4] -> Zaladowano EKSPRES! Zostalo: 5. Ciezarowka: 1477.8/1500
+[PRACOWNIK 4] -> Zaladowano EKSPRES! Zostalo: 4. Ciezarowka: 1479.0/1500
+[PRACOWNIK 4] -> Zaladowano EKSPRES! Zostalo: 3. Ciezarowka: 1486.2/1500
+[PRACOWNIK 4] -> Zaladowano EKSPRES! Zostalo: 2. Ciezarowka: 1498.7/1500
+[PRACOWNIK4] Ciezarowka pelna! Paczka o wadze 24.8 nie wejdzie. Czekam na nowa.
+[PRACOWNIK4] Ciezarowka pelna! Paczka o wadze 24.8 nie wejdzie. Czekam na nowa.
+[CIEZAROWKA 1] pelna! Paczka 16.5kg nie wejdzie. Odjazd.
+[CIEZAROWKA 1] Odjezdzam w trase (3s)...
+
+ [CIEZAROWKA 2] --- Podjechalem pod rampe
+[PRACOWNIK 2] + Dodal paczke A (2.3kg) o V = 0.0194560m3, Tasma: 30/30 szt, 370.4/400.0 kg
+[PRACOWNIK 4] -> Zaladowano EKSPRES! Zostalo: 1. Ciezarowka: 24.8/1500
+[PRACOWNIK 4] -> Zaladowano EKSPRES! Zostalo: 0. Ciezarowka: 39.6/1500
+[CIEZAROWKA 2] Zaladowano  (16.5kg). Stan: 56.1/1500.0 kg ---- 0.2/15cm3
+[PRACOWNIK 1] + Dodal paczke A (4.9kg) o V = 0.0194560m3, Tasma: 30/30 szt, 358.8/400.0 kg
+[CIEZAROWKA 2] Zaladowano  (17.2kg). Stan: 73.3/1500.0 kg ---- 0.3/15cm3
+[PRACOWNIK 3] + Dodal paczke C (22.0kg) o V = 0.0997120m3, Tasma: 30/30 szt, 363.6/400.0 kg
+[CIEZAROWKA 2] Zaladowano  (9.0kg). Stan: 82.3/1500.0 kg ---- 0.3/15cm3
+[PRACOWNIK 2] + Dodal paczke A (2.7kg) o V = 0.0194560m3, Tasma: 30/30 szt, 357.3/400.0 kg
+[CIEZAROWKA 2] Zaladowano  (0.3kg). Stan: 82.6/1500.0 kg ---- 0.4/15cm3
+[PRACOWNIK 1] + Dodal paczke A (0.1kg) o V = 0.0194560m3, Tasma: 30/30 szt, 357.1/400.0 kg
+[CIEZAROWKA 2] Zaladowano  (23.0kg). Stan: 105.6/1500.0 kg ---- 0.5/15cm3
+[PRACOWNIK 3] + Dodal paczke B (12.7kg) o V = 0.0462080m3, Tasma: 30/30 szt, 346.8/400.0 kg
+[CIEZAROWKA 2] Zaladowano  (19.8kg). Stan: 125.4/1500.0 kg ---- 0.6/15cm3
+[PRACOWNIK 2] + Dodal paczke B (8.6kg) o V = 0.0462080m3, Tasma: 30/30 szt, 335.6/400.0 kg
+[CIEZAROWKA 2] Zaladowano  (17.1kg). Stan: 142.5/1500.0 kg ---- 0.6/15cm3
+[PRACOWNIK 1] + Dodal paczke C (20.9kg) o V = 0.0997120m3, Tasma: 30/30 szt, 339.4/400.0 kg
+[CIEZAROWKA 2] Zaladowano  (20.2kg). Stan: 162.7/1500.0 kg ---- 0.7/15cm3
+[PRACOWNIK 3] + Dodal paczke B (12.8kg) o V = 0.0462080m3, Tasma: 30/30 szt, 332.0/400.0 kg
+[CIEZAROWKA 1] Wrocilem z trasy. Ustawiam sie w kolejce.
+[CIEZAROWKA 2] Zaladowano  (8.0kg). Stan: 170.7/1500.0 kg ---- 0.7/15cm3
+[PRACOWNIK 2] + Dodal paczke A (6.0kg) o V = 0.0194560m3, Tasma: 30/30 szt, 330.0/400.0 kg
+[CIEZAROWKA 2] Zaladowano  (6.5kg). Stan: 177.2/1500.0 kg ---- 0.8/15cm3
+[PRACOWNIK 1] + Dodal paczke B (14.4kg) o V = 0.0462080m3, Tasma: 30/30 szt, 337.9/400.0 kg
+[CIEZAROWKA 2] Zaladowano  (10.5kg). Stan: 187.7/1500.0 kg ---- 0.8/15cm3
+[PRACOWNIK 3] + Dodal paczke B (14.8kg) o V = 0.0462080m3, Tasma: 30/30 szt, 342.2/400.0 kg
+[CIEZAROWKA 2] Zaladowano  (8.3kg). Stan: 196.0/1500.0 kg ---- 0.9/15cm3
+[PRACOWNIK 2] + Dodal paczke A (2.2kg) o V = 0.0194560m3, Tasma: 30/30 szt, 336.1/400.0 kg
+[CIEZAROWKA 2] Zaladowano  (12.7kg). Stan: 208.7/1500.0 kg ---- 0.9/15cm3
+[PRACOWNIK 1] + Dodal paczke B (9.8kg) o V = 0.0462080m3, Tasma: 30/30 szt, 333.2/400.0 kg
+[PRACOWNIK P4] + Dodal paczke B (16.2kg) o V = 0.0462080m3
+[CIEZAROWKA 2] Zaladowano  (7.5kg). Stan: 216.2/1500.0 kg ---- 0.9/15cm3
+[PRACOWNIK 3] + Dodal paczke A (2.2kg) o V = 0.0194560m3, Tasma: 30/30 szt, 327.9/400.0 kg
+[CIEZAROWKA 2] Zaladowano  (4.1kg). Stan: 220.3/1500.0 kg ---- 0.9/15cm3
+[PRACOWNIK 2] + Dodal paczke C (22.8kg) o V = 0.0997120m3, Tasma: 30/30 szt, 346.6/400.0 kg
+[CIEZAROWKA 2] Zaladowano  (18.7kg). Stan: 239.0/1500.0 kg ---- 1.0/15cm3
+[PRACOWNIK 1] + Dodal paczke C (23.6kg) o V = 0.0997120m3, Tasma: 30/30 szt, 351.5/400.0 kg
+[CIEZAROWKA 2] Zaladowano  (18.9kg). Stan: 257.9/1500.0 kg ---- 1.1/15cm3
+[PRACOWNIK 3] + Dodal paczke B (9.4kg) o V = 0.0462080m3, Tasma: 30/30 szt, 342.0/400.0 kg
+[CIEZAROWKA 2] Zaladowano  (12.2kg). Stan: 270.1/1500.0 kg ---- 1.2/15cm3
+[PRACOWNIK 2] + Dodal paczke B (16.2kg) o V = 0.0462080m3, Tasma: 30/30 szt, 346.0/400.0 kg
+[CIEZAROWKA 2] Zaladowano  (2.0kg). Stan: 272.1/1500.0 kg ---- 1.2/15cm3
+[PRACOWNIK 1] + Dodal paczke C (22.2kg) o V = 0.0997120m3, Tasma: 30/30 szt, 366.2/400.0 kg
+[CIEZAROWKA 2] Zaladowano  (15.1kg). Stan: 287.2/1500.0 kg ---- 1.3/15cm3
+[PRACOWNIK 3] + Dodal paczke A (2.3kg) o V = 0.0194560m3, Tasma: 30/30 szt, 353.4/400.0 kg
+[CIEZAROWKA 2] Zaladowano  (16.2kg). Stan: 303.4/1500.0 kg ---- 1.4/15cm3
+[PRACOWNIK 2] + Dodal paczke B (8.3kg) o V = 0.0462080m3, Tasma: 30/30 szt, 345.5/400.0 kg
+[CIEZAROWKA 2] Zaladowano  (2.0kg). Stan: 305.4/1500.0 kg ---- 1.4/15cm3
+[PRACOWNIK 1] + Dodal paczke A (2.7kg) o V = 0.0194560m3, Tasma: 30/30 szt, 346.2/400.0 kg
+[CIEZAROWKA 2] Zaladowano  (9.7kg). Stan: 315.1/1500.0 kg ---- 1.5/15cm3
+[PRACOWNIK 3] + Dodal paczke A (1.3kg) o V = 0.0194560m3, Tasma: 30/30 szt, 337.8/400.0 kg
+[CIEZAROWKA 2] Zaladowano  (5.9kg). Stan: 321.0/1500.0 kg ---- 1.5/15cm3
+[PRACOWNIK 2] + Dodal paczke B (12.6kg) o V = 0.0462080m3, Tasma: 30/30 szt, 344.5/400.0 kg
+[CIEZAROWKA 2] Zaladowano  (15.8kg). Stan: 336.8/1500.0 kg ---- 1.6/15cm3
+[PRACOWNIK 3] + Dodal paczke B (17.5kg) o V = 0.0462080m3, Tasma: 30/30 szt, 346.2/400.0 kg
+[CIEZAROWKA 2] Zaladowano  (23.0kg). Stan: 359.8/1500.0 kg ---- 1.7/15cm3
+[PRACOWNIK 1] + Dodal paczke B (14.7kg) o V = 0.0462080m3, Tasma: 30/30 szt, 337.9/400.0 kg
+[CIEZAROWKA 2] Zaladowano  (0.8kg). Stan: 360.6/1500.0 kg ---- 1.7/15cm3
+[PRACOWNIK 2] + Dodal paczke C (21.2kg) o V = 0.0997120m3, Tasma: 30/30 szt, 358.3/400.0 kg
+[CIEZAROWKA 2] Zaladowano  (23.2kg). Stan: 383.8/1500.0 kg ---- 1.8/15cm3
+[PRACOWNIK 3] + Dodal paczke C (15.0kg) o V = 0.0997120m3, Tasma: 30/30 szt, 350.1/400.0 kg
+[CIEZAROWKA 2] Zaladowano  (23.9kg). Stan: 407.7/1500.0 kg ---- 1.9/15cm3
+[PRACOWNIK 1] + Dodal paczke B (14.9kg) o V = 0.0462080m3, Tasma: 30/30 szt, 341.1/400.0 kg
+[CIEZAROWKA 2] Zaladowano  (2.3kg). Stan: 410.0/1500.0 kg ---- 1.9/15cm3
+[PRACOWNIK 2] + Dodal paczke A (2.0kg) o V = 0.0194560m3, Tasma: 30/30 szt, 340.8/400.0 kg
+[PRACOWNIK P4] + Dodal paczke B (12.4kg) o V = 0.0462080m3
+[CIEZAROWKA 2] Zaladowano  (4.9kg). Stan: 414.9/1500.0 kg ---- 2.0/15cm3
+[PRACOWNIK 3] + Dodal paczke A (3.8kg) o V = 0.0194560m3, Tasma: 30/30 szt, 339.7/400.0 kg
+[CIEZAROWKA 2] Zaladowano  (22.0kg). Stan: 436.9/1500.0 kg ---- 2.1/15cm3
+[PRACOWNIK 1] + Dodal paczke A (4.0kg) o V = 0.0194560m3, Tasma: 30/30 szt, 321.7/400.0 kg
+[CIEZAROWKA 2] Zaladowano  (2.7kg). Stan: 439.6/1500.0 kg ---- 2.1/15cm3
+[PRACOWNIK 3] + Dodal paczke A (5.8kg) o V = 0.0194560m3, Tasma: 30/30 szt, 324.8/400.0 kg
+[CIEZAROWKA 2] Zaladowano  (0.1kg). Stan: 439.7/1500.0 kg ---- 2.1/15cm3
+[PRACOWNIK 2] + Dodal paczke B (17.8kg) o V = 0.0462080m3, Tasma: 30/30 szt, 342.5/400.0 kg
+[CIEZAROWKA 2] Zaladowano  (12.7kg). Stan: 452.4/1500.0 kg ---- 2.1/15cm3
+[PRACOWNIK 1] + Dodal paczke B (13.0kg) o V = 0.0462080m3, Tasma: 30/30 szt, 342.8/400.0 kg
+[CIEZAROWKA 2] Zaladowano  (8.6kg). Stan: 461.0/1500.0 kg ---- 2.2/15cm3
+[PRACOWNIK 3] + Dodal paczke A (0.3kg) o V = 0.0194560m3, Tasma: 30/30 szt, 334.5/400.0 kg
+[CIEZAROWKA 2] Zaladowano  (20.9kg). Stan: 481.9/1500.0 kg ---- 2.3/15cm3
+[PRACOWNIK 2] + Dodal paczke A (3.6kg) o V = 0.0194560m3, Tasma: 30/30 szt, 317.2/400.0 kg
+[CIEZAROWKA 2] Zaladowano  (12.8kg). Stan: 494.7/1500.0 kg ---- 2.3/15cm3
+[PRACOWNIK 1] + Dodal paczke B (12.8kg) o V = 0.0462080m3, Tasma: 30/30 szt, 317.2/400.0 kg
+[CIEZAROWKA 2] Zaladowano  (6.0kg). Stan: 500.7/1500.0 kg ---- 2.3/15cm3
+[PRACOWNIK 3] + Dodal paczke C (21.1kg) o V = 0.0997120m3, Tasma: 30/30 szt, 332.3/400.0 kg
+[CIEZAROWKA 2] Zaladowano  (14.4kg). Stan: 515.1/1500.0 kg ---- 2.4/15cm3
+[PRACOWNIK 2] + Dodal paczke B (8.7kg) o V = 0.0462080m3, Tasma: 30/30 szt, 326.6/400.0 kg
+[CIEZAROWKA 2] Zaladowano  (14.8kg). Stan: 529.9/1500.0 kg ---- 2.4/15cm3
+[PRACOWNIK 1] + Dodal paczke C (20.0kg) o V = 0.0997120m3, Tasma: 30/30 szt, 331.8/400.0 kg
+[CIEZAROWKA 2] Zaladowano  (2.2kg). Stan: 532.1/1500.0 kg ---- 2.5/15cm3
+[PRACOWNIK 3] + Dodal paczke C (24.2kg) o V = 0.0997120m3, Tasma: 30/30 szt, 353.8/400.0 kg
+[CIEZAROWKA 2] Zaladowano  (9.8kg). Stan: 541.9/1500.0 kg ---- 2.5/15cm3
+[PRACOWNIK 2] + Dodal paczke A (1.7kg) o V = 0.0194560m3, Tasma: 30/30 szt, 345.7/400.0 kg
+[CIEZAROWKA 2] Zaladowano  (2.2kg). Stan: 544.1/1500.0 kg ---- 2.5/15cm3
+[PRACOWNIK 1] + Dodal paczke A (5.8kg) o V = 0.0194560m3, Tasma: 30/30 szt, 349.3/400.0 kg
+[CIEZAROWKA 2] Zaladowano  (22.8kg). Stan: 566.9/1500.0 kg ---- 2.6/15cm3
+[PRACOWNIK 3] + Dodal paczke C (18.9kg) o V = 0.0997120m3, Tasma: 30/30 szt, 345.4/400.0 kg
+[CIEZAROWKA 2] Zaladowano  (23.6kg). Stan: 590.5/1500.0 kg ---- 2.7/15cm3
+[PRACOWNIK 2] + Dodal paczke C (18.1kg) o V = 0.0997120m3, Tasma: 30/30 szt, 339.9/400.0 kg
+[CIEZAROWKA 2] Zaladowano  (9.4kg). Stan: 599.9/1500.0 kg ---- 2.8/15cm3
+[PRACOWNIK 1] + Dodal paczke B (10.6kg) o V = 0.0462080m3, Tasma: 30/30 szt, 341.1/400.0 kg
+[CIEZAROWKA 2] Zaladowano  (16.2kg). Stan: 616.1/1500.0 kg ---- 2.8/15cm3
+[PRACOWNIK 2] + Dodal paczke C (16.4kg) o V = 0.0997120m3, Tasma: 30/30 szt, 341.3/400.0 kg
+[PRACOWNIK P4] + Dodal paczke B (10.3kg) o V = 0.0462080m3
+[CIEZAROWKA 2] Zaladowano  (22.2kg). Stan: 638.3/1500.0 kg ---- 2.9/15cm3
+[PRACOWNIK 3] + Dodal paczke B (17.1kg) o V = 0.0462080m3, Tasma: 30/30 szt, 336.2/400.0 kg
+[CIEZAROWKA 2] Zaladowano  (2.3kg). Stan: 640.6/1500.0 kg ---- 2.9/15cm3
+[PRACOWNIK 1] + Dodal paczke B (9.9kg) o V = 0.0462080m3, Tasma: 30/30 szt, 343.8/400.0 kg
+[CIEZAROWKA 2] Zaladowano  (8.3kg). Stan: 648.9/1500.0 kg ---- 3.0/15cm3
+[PRACOWNIK 2] + Dodal paczke C (23.1kg) o V = 0.0997120m3, Tasma: 30/30 szt, 358.6/400.0 kg
+[CIEZAROWKA 2] Zaladowano  (2.7kg). Stan: 651.6/1500.0 kg ---- 3.0/15cm3
+[PRACOWNIK 3] + Dodal paczke A (3.2kg) o V = 0.0194560m3, Tasma: 30/30 szt, 359.1/400.0 kg
+[CIEZAROWKA 2] Zaladowano  (1.3kg). Stan: 652.9/1500.0 kg ---- 3.0/15cm3
+[PRACOWNIK 1] + Dodal paczke A (7.9kg) o V = 0.0194560m3, Tasma: 30/30 szt, 365.7/400.0 kg
+[CIEZAROWKA 2] Zaladowano  (12.6kg). Stan: 665.5/1500.0 kg ---- 3.1/15cm3
+[PRACOWNIK 2] + Dodal paczke A (0.5kg) o V = 0.0194560m3, Tasma: 30/30 szt, 353.6/400.0 kg
+[CIEZAROWKA 2] Zaladowano  (17.5kg). Stan: 683.0/1500.0 kg ---- 3.1/15cm3
+[PRACOWNIK 3] + Dodal paczke B (13.9kg) o V = 0.0462080m3, Tasma: 30/30 szt, 350.0/400.0 kg
+[CIEZAROWKA 2] Zaladowano  (14.7kg). Stan: 697.7/1500.0 kg ---- 3.2/15cm3
+[PRACOWNIK 1] + Dodal paczke A (3.7kg) o V = 0.0194560m3, Tasma: 30/30 szt, 339.0/400.0 kg
+[CIEZAROWKA 2] Zaladowano  (21.2kg). Stan: 718.9/1500.0 kg ---- 3.3/15cm3
+[PRACOWNIK 2] + Dodal paczke A (1.7kg) o V = 0.0194560m3, Tasma: 30/30 szt, 319.5/400.0 kg
+[CIEZAROWKA 2] Zaladowano  (15.0kg). Stan: 733.9/1500.0 kg ---- 3.4/15cm3
+[PRACOWNIK 3] + Dodal paczke B (11.3kg) o V = 0.0462080m3, Tasma: 30/30 szt, 315.8/400.0 kg
+[CIEZAROWKA 2] Zaladowano  (14.9kg). Stan: 748.8/1500.0 kg ---- 3.4/15cm3
+[PRACOWNIK 1] + Dodal paczke B (15.7kg) o V = 0.0462080m3, Tasma: 30/30 szt, 316.6/400.0 kg
+[CIEZAROWKA 2] Zaladowano  (2.0kg). Stan: 750.8/1500.0 kg ---- 3.4/15cm3
+[PRACOWNIK 2] + Dodal paczke A (1.6kg) o V = 0.0194560m3, Tasma: 30/30 szt, 316.2/400.0 kg
+[CIEZAROWKA 2] Zaladowano  (3.8kg). Stan: 754.6/1500.0 kg ---- 3.4/15cm3
+[PRACOWNIK 3] + Dodal paczke A (5.5kg) o V = 0.0194560m3, Tasma: 30/30 szt, 317.9/400.0 kg
+[CIEZAROWKA 2] Zaladowano  (4.0kg). Stan: 758.6/1500.0 kg ---- 3.5/15cm3
+[PRACOWNIK 1] + Dodal paczke A (3.2kg) o V = 0.0194560m3, Tasma: 30/30 szt, 317.1/400.0 kg
+[CIEZAROWKA 2] Zaladowano  (5.8kg). Stan: 764.4/1500.0 kg ---- 3.5/15cm3
+[PRACOWNIK 2] + Dodal paczke C (15.0kg) o V = 0.0997120m3, Tasma: 30/30 szt, 326.3/400.0 kg
+[CIEZAROWKA 2] Zaladowano  (17.8kg). Stan: 782.2/1500.0 kg ---- 3.5/15cm3
+[PRACOWNIK 3] + Dodal paczke A (5.4kg) o V = 0.0194560m3, Tasma: 30/30 szt, 313.9/400.0 kg
+[CIEZAROWKA 2] Zaladowano  (13.0kg). Stan: 795.2/1500.0 kg ---- 3.6/15cm3
+[PRACOWNIK 2] + Dodal paczke B (14.6kg) o V = 0.0462080m3, Tasma: 30/30 szt, 315.5/400.0 kg
+[CIEZAROWKA 2] Zaladowano  (0.3kg). Stan: 795.5/1500.0 kg ---- 3.6/15cm3
+[PRACOWNIK 1] + Dodal paczke C (18.2kg) o V = 0.0997120m3, Tasma: 30/30 szt, 333.4/400.0 kg
+[DYSPOZYTOR] Wyslano rozklaz zaladunku paczek priorytetowych
+[PRACOWNIK P4] + Dodal paczke A (3.6kg) o V = 0.0194560m3
+
+[DYSPOZYTOR] >>> [PRACOWNIK 4] Otrzymalem rozkaz (SYGNAL 2), laduje paczki ekspresowe
+paczka 0 waga = 16.2
+paczka 1 waga = 12.4
+paczka 2 waga = 10.3
+paczka 3 waga = 3.6
+[PRACOWNIK 4] -> Zaladowano EKSPRES! Zostalo: 3. Ciezarowka: 799.1/1500
+[PRACOWNIK 4] -> Zaladowano EKSPRES! Zostalo: 2. Ciezarowka: 809.4/1500
+[PRACOWNIK 4] -> Zaladowano EKSPRES! Zostalo: 1. Ciezarowka: 821.8/1500
+[PRACOWNIK 4] -> Zaladowano EKSPRES! Zostalo: 0. Ciezarowka: 838.0/1500
+[CIEZAROWKA 2] Zaladowano  (3.6kg). Stan: 841.6/1500.0 kg ---- 3.8/15cm3
+[PRACOWNIK 3] + Dodal paczke C (19.1kg) o V = 0.0997120m3, Tasma: 30/30 szt, 348.9/400.0 kg
+[DYSPOZYTOR] Wyslano rozklaz zaladunku paczek priorytetowych
+[CIEZAROWKA 2] Zaladowano  (12.8kg). Stan: 854.4/1500.0 kg ---- 3.8/15cm3
+[PRACOWNIK 2] + Dodal paczke B (8.9kg) o V = 0.0462080m3, Tasma: 30/30 szt, 345.0/400.0 kg
+
+[DYSPOZYTOR] >>> [PRACOWNIK 4] Otrzymalem rozkaz (SYGNAL 2), laduje paczki ekspresowe
+[DYSPOZYTOR] Wyslano rozklaz zaladunku paczek priorytetowych
+
+[DYSPOZYTOR] >>> [PRACOWNIK 4] Otrzymalem rozkaz (SYGNAL 2), laduje paczki ekspresowe
+[CIEZAROWKA 2] Zaladowano  (21.1kg). Stan: 875.5/1500.0 kg ---- 3.9/15cm3
+[PRACOWNIK 1] + Dodal paczke C (22.1kg) o V = 0.0997120m3, Tasma: 30/30 szt, 346.0/400.0 kg
+[DYSPOZYTOR] Wyslano rozklaz zaladunku paczek priorytetowych
+[CIEZAROWKA 2] Zaladowano  (8.7kg). Stan: 884.2/1500.0 kg ---- 4.0/15cm3
+[PRACOWNIK 3] + Dodal paczke A (6.1kg) o V = 0.0194560m3, Tasma: 30/30 szt, 343.4/400.0 kg
+
+[DYSPOZYTOR] >>> [PRACOWNIK 4] Otrzymalem rozkaz (SYGNAL 2), laduje paczki ekspresowe
+[DYSPOZYTOR] Wyslano rozklaz zaladunku paczek priorytetowych
+
+[DYSPOZYTOR] >>> [PRACOWNIK 4] Otrzymalem rozkaz (SYGNAL 2), laduje paczki ekspresowe
+[CIEZAROWKA 2] Zaladowano  (20.0kg). Stan: 904.2/1500.0 kg ---- 4.1/15cm3
+[PRACOWNIK 2] + Dodal paczke C (24.0kg) o V = 0.0997120m3, Tasma: 30/30 szt, 347.4/400.0 kg
+[DYSPOZYTOR] Wyslano rozklaz zaladunku paczek priorytetowych
+
+[DYSPOZYTOR] >>> [PRACOWNIK 4] Otrzymalem rozkaz (SYGNAL 2), laduje paczki ekspresowe
+[CIEZAROWKA 2] Zaladowano  (24.2kg). Stan: 928.4/1500.0 kg ---- 4.2/15cm3
+[PRACOWNIK 1] + Dodal paczke C (23.6kg) o V = 0.0997120m3, Tasma: 30/30 szt, 346.8/400.0 kg
+[DYSPOZYTOR] Wyslano rozklaz zaladunku paczek priorytetowych
+[CIEZAROWKA 2] Zaladowano  (1.7kg). Stan: 930.1/1500.0 kg ---- 4.2/15cm3
+[PRACOWNIK 3] + Dodal paczke C (21.2kg) o V = 0.0997120m3, Tasma: 30/30 szt, 366.3/400.0 kg
+
+[DYSPOZYTOR] >>> [PRACOWNIK 4] Otrzymalem rozkaz (SYGNAL 2), laduje paczki ekspresowe
+[DYSPOZYTOR] Wyslano rozklaz zaladunku paczek priorytetowych
+
+[DYSPOZYTOR] >>> [PRACOWNIK 4] Otrzymalem rozkaz (SYGNAL 2), laduje paczki ekspresowe
+[CIEZAROWKA 2] Zaladowano  (5.8kg). Stan: 935.9/1500.0 kg ---- 4.2/15cm3
+[PRACOWNIK 2] + Dodal paczke A (1.3kg) o V = 0.0194560m3, Tasma: 30/30 szt, 361.8/400.0 kg
+[DYSPOZYTOR] Wyslano rozklaz zaladunku paczek priorytetowych
+
+[DYSPOZYTOR] >>> [PRACOWNIK 4] Otrzymalem rozkaz (SYGNAL 2), laduje paczki ekspresowe
+[CIEZAROWKA 2] Zaladowano  (18.9kg). Stan: 954.8/1500.0 kg ---- 4.3/15cm3
+[PRACOWNIK 1] + Dodal paczke A (1.9kg) o V = 0.0194560m3, Tasma: 30/30 szt, 344.8/400.0 kg
+[DYSPOZYTOR] Wyslano rozklaz zaladunku paczek priorytetowych
+
+[DYSPOZYTOR] >>> [PRACOWNIK 4] Otrzymalem rozkaz (SYGNAL 2), laduje paczki ekspresowe
+[CIEZAROWKA 2] Zaladowano  (18.1kg). Stan: 972.9/1500.0 kg ---- 4.4/15cm3
+[PRACOWNIK 3] + Dodal paczke B (14.8kg) o V = 0.0462080m3, Tasma: 30/30 szt, 341.5/400.0 kg
+[DYSPOZYTOR] Wyslano rozklaz odjazdu niepelnej ciezarowki
+[CIEZAROWKA 2] Zaladowano  (10.6kg). Stan: 983.5/1500.0 kg ---- 4.5/15cm3
+
+DYSPOZYTOR KAZE ODJECHAC (Sygnal 1)!
+[CIEZAROWKA 2] Odjezdzam w trase (3s)...
+[PRACOWNIK 2] + Dodal paczke B (9.0kg) o V = 0.0462080m3, Tasma: 30/30 szt, 339.9/400.0 kg
+
+ [CIEZAROWKA 3] --- Podjechalem pod rampe
+[DYSPOZYTOR] Wyslano rozklaz odjazdu niepelnej ciezarowki
+[CIEZAROWKA 3] Zaladowano  (16.4kg). Stan: 16.4/1500.0 kg ---- 0.1/15cm3
+
+DYSPOZYTOR KAZE ODJECHAC (Sygnal 1)!
+[CIEZAROWKA 3] Odjezdzam w trase (3s)...
+[PRACOWNIK 1] + Dodal paczke B (15.9kg) o V = 0.0462080m3, Tasma: 30/30 szt, 339.4/400.0 kg
+
+ [CIEZAROWKA 4] --- Podjechalem pod rampe
+[DYSPOZYTOR] Wyslano rozklaz odjazdu niepelnej ciezarowki
+[CIEZAROWKA 4] Zaladowano  (17.1kg). Stan: 17.1/1500.0 kg ---- 0.0/15cm3
+
+DYSPOZYTOR KAZE ODJECHAC (Sygnal 1)!
+[CIEZAROWKA 4] Odjezdzam w trase (3s)...
+[PRACOWNIK 3] + Dodal paczke C (23.5kg) o V = 0.0997120m3, Tasma: 30/30 szt, 345.8/400.0 kg
+
+ [CIEZAROWKA 1] --- Podjechalem pod rampe
+[DYSPOZYTOR] Wyslano rozklaz odjazdu niepelnej ciezarowki
+[CIEZAROWKA 1] Zaladowano  (9.9kg). Stan: 9.9/1500.0 kg ---- 0.0/15cm3
+
+DYSPOZYTOR KAZE ODJECHAC (Sygnal 1)!
+[CIEZAROWKA 1] Odjezdzam w trase (3s)...
+[PRACOWNIK 2] + Dodal paczke A (6.7kg) o V = 0.0194560m3, Tasma: 30/30 szt, 342.6/400.0 kg
+[DYSPOZYTOR] Wyslano rozklaz odjazdu niepelnej ciezarowki
+[DYSPOZYTOR] Wyslano rozklaz odjazdu niepelnej ciezarowki
+[DYSPOZYTOR] Wyslano rozklaz zaladunku paczek priorytetowych
+
+[DYSPOZYTOR] >>> [PRACOWNIK 4] Otrzymalem rozkaz (SYGNAL 2), laduje paczki ekspresowe
+[DYSPOZYTOR] Wyslano rozklaz zaladunku paczek priorytetowych
+
+[DYSPOZYTOR] >>> [PRACOWNIK 4] Otrzymalem rozkaz (SYGNAL 2), laduje paczki ekspresowe
+[PRACOWNIK P4] + Dodal paczke C (18.4kg) o V = 0.0997120m3
+[PRACOWNIK 4] Brak ciezarowki! Czekam...
+[PRACOWNIK 4] Brak ciezarowki! Czekam...
+[PRACOWNIK 4] Brak ciezarowki! Czekam...
+[PRACOWNIK 4] Brak ciezarowki! Czekam...
+[CIEZAROWKA 2] Wrocilem z trasy. Ustawiam sie w kolejce.
+
+ [CIEZAROWKA 2] --- Podjechalem pod rampe
+
+DYSPOZYTOR KAZE ODJECHAC (Sygnal 1)!
+[CIEZAROWKA 2] Odjezdzam w trase (3s)...
+[PRACOWNIK 4] Brak ciezarowki! Czekam...
+[PRACOWNIK 4] Brak ciezarowki! Czekam...
+[PRACOWNIK 4] Brak ciezarowki! Czekam...
+[PRACOWNIK 4] Brak ciezarowki! Czekam...
+[CIEZAROWKA 3] Wrocilem z trasy. Ustawiam sie w kolejce.
+
+ [CIEZAROWKA 3] --- Podjechalem pod rampe
+
+DYSPOZYTOR KAZE ODJECHAC (Sygnal 1)!
+[CIEZAROWKA 3] Odjezdzam w trase (3s)...
+[PRACOWNIK 4] Brak ciezarowki! Czekam...
+[PRACOWNIK 4] Brak ciezarowki! Czekam...
+[PRACOWNIK 4] Brak ciezarowki! Czekam...
+[CIEZAROWKA 4] Wrocilem z trasy. Ustawiam sie w kolejce.
+
+ [CIEZAROWKA 4] --- Podjechalem pod rampe
+[PRACOWNIK 4] -> Zaladowano EKSPRES! Zostalo: 0. Ciezarowka: 18.4/1500
+[CIEZAROWKA 4] Zaladowano  (23.1kg). Stan: 41.5/1500.0 kg ---- 0.2/15cm3
+[PRACOWNIK 1] + Dodal paczke C (20.8kg) o V = 0.0997120m3, Tasma: 30/30 szt, 340.3/400.0 kg
+[CIEZAROWKA 1] Wrocilem z trasy. Ustawiam sie w kolejce.
+[CIEZAROWKA 4] Zaladowano  (3.2kg). Stan: 44.7/1500.0 kg ---- 0.2/15cm3
+[PRACOWNIK 3] + Dodal paczke B (8.9kg) o V = 0.0462080m3, Tasma: 30/30 szt, 346.0/400.0 kg
+[CIEZAROWKA 4] Zaladowano  (7.9kg). Stan: 52.6/1500.0 kg ---- 0.2/15cm3
+[PRACOWNIK 2] + Dodal paczke A (3.1kg) o V = 0.0194560m3, Tasma: 30/30 szt, 341.2/400.0 kg
+[CIEZAROWKA 4] Zaladowano  (0.5kg). Stan: 53.1/1500.0 kg ---- 0.3/15cm3
+[PRACOWNIK 1] + Dodal paczke A (5.3kg) o V = 0.0194560m3, Tasma: 30/30 szt, 346.0/400.0 kg
+[CIEZAROWKA 4] Zaladowano  (13.9kg). Stan: 67.0/1500.0 kg ---- 0.3/15cm3
+[PRACOWNIK 3] + Dodal paczke B (10.9kg) o V = 0.0462080m3, Tasma: 30/30 szt, 343.0/400.0 kg
+[CIEZAROWKA 4] Zaladowano  (3.7kg). Stan: 70.7/1500.0 kg ---- 0.3/15cm3
+[PRACOWNIK 2] + Dodal paczke B (9.9kg) o V = 0.0462080m3, Tasma: 30/30 szt, 349.2/400.0 kg
+[CIEZAROWKA 2] Wrocilem z trasy. Ustawiam sie w kolejce.
+[CIEZAROWKA 4] Zaladowano  (1.7kg). Stan: 72.4/1500.0 kg ---- 0.3/15cm3
+[PRACOWNIK 1] + Dodal paczke A (6.4kg) o V = 0.0194560m3, Tasma: 30/30 szt, 353.9/400.0 kg
+[CIEZAROWKA 3] Wrocilem z trasy. Ustawiam sie w kolejce.
+[CIEZAROWKA 4] Zaladowano  (11.3kg). Stan: 83.7/1500.0 kg ---- 0.4/15cm3
+[PRACOWNIK 3] + Dodal paczke A (3.2kg) o V = 0.0194560m3, Tasma: 30/30 szt, 345.8/400.0 kg
+[CIEZAROWKA 4] Zaladowano  (15.7kg). Stan: 99.4/1500.0 kg ---- 0.4/15cm3
+[PRACOWNIK 2] + Dodal paczke B (15.8kg) o V = 0.0462080m3, Tasma: 30/30 szt, 345.9/400.0 kg
+[CIEZAROWKA 4] Zaladowano  (1.6kg). Stan: 101.0/1500.0 kg ---- 0.5/15cm3
+[PRACOWNIK 1] + Dodal paczke A (5.0kg) o V = 0.0194560m3, Tasma: 30/30 szt, 349.3/400.0 kg
+[CIEZAROWKA 4] Zaladowano  (5.5kg). Stan: 106.5/1500.0 kg ---- 0.5/15cm3
+[PRACOWNIK 3] + Dodal paczke C (15.5kg) o V = 0.0997120m3, Tasma: 30/30 szt, 359.3/400.0 kg
+[CIEZAROWKA 4] Zaladowano  (3.2kg). Stan: 109.7/1500.0 kg ---- 0.5/15cm3
+[PRACOWNIK 2] + Dodal paczke C (18.8kg) o V = 0.0997120m3, Tasma: 30/30 szt, 374.9/400.0 kg
+[CIEZAROWKA 4] Zaladowano  (15.0kg). Stan: 124.7/1500.0 kg ---- 0.6/15cm3
+[PRACOWNIK 1] + Dodal paczke A (2.0kg) o V = 0.0194560m3, Tasma: 30/30 szt, 361.9/400.0 kg
+[CIEZAROWKA 4] Zaladowano  (5.4kg). Stan: 130.1/1500.0 kg ---- 0.6/15cm3
+[PRACOWNIK 3] + Dodal paczke A (7.7kg) o V = 0.0194560m3, Tasma: 30/30 szt, 364.2/400.0 kg
+[CIEZAROWKA 4] Zaladowano  (14.6kg). Stan: 144.7/1500.0 kg ---- 0.7/15cm3
+[PRACOWNIK 2] + Dodal paczke B (16.1kg) o V = 0.0462080m3, Tasma: 30/30 szt, 365.7/400.0 kg
+[CIEZAROWKA 4] Zaladowano  (18.2kg). Stan: 162.9/1500.0 kg ---- 0.8/15cm3
+[PRACOWNIK 1] + Dodal paczke A (0.7kg) o V = 0.0194560m3, Tasma: 30/30 szt, 348.2/400.0 kg
+[CIEZAROWKA 4] Zaladowano  (19.1kg). Stan: 182.0/1500.0 kg ---- 0.9/15cm3
+[PRACOWNIK 3] + Dodal paczke C (15.7kg) o V = 0.0997120m3, Tasma: 30/30 szt, 344.8/400.0 kg
+[PRACOWNIK P4] + Dodal paczke C (22.8kg) o V = 0.0997120m3
+[CIEZAROWKA 4] Zaladowano  (8.9kg). Stan: 190.9/1500.0 kg ---- 0.9/15cm3
+[PRACOWNIK 2] + Dodal paczke B (9.3kg) o V = 0.0462080m3, Tasma: 30/30 szt, 345.2/400.0 kg
+[CIEZAROWKA 4] Zaladowano  (22.1kg). Stan: 213.0/1500.0 kg ---- 1.0/15cm3
+[PRACOWNIK 1] + Dodal paczke C (18.0kg) o V = 0.0997120m3, Tasma: 30/30 szt, 341.1/400.0 kg
+[CIEZAROWKA 4] Zaladowano  (6.1kg). Stan: 219.1/1500.0 kg ---- 1.0/15cm3
+[PRACOWNIK 3] + Dodal paczke B (11.9kg) o V = 0.0462080m3, Tasma: 30/30 szt, 346.9/400.0 kg
+[CIEZAROWKA 4] Zaladowano  (24.0kg). Stan: 243.1/1500.0 kg ---- 1.1/15cm3
+[PRACOWNIK 2] + Dodal paczke C (16.5kg) o V = 0.0997120m3, Tasma: 30/30 szt, 339.4/400.0 kg
+[CIEZAROWKA 4] Zaladowano  (23.6kg). Stan: 266.7/1500.0 kg ---- 1.2/15cm3
+[PRACOWNIK 1] + Dodal paczke A (4.3kg) o V = 0.0194560m3, Tasma: 30/30 szt, 320.1/400.0 kg
+[CIEZAROWKA 4] Zaladowano  (21.2kg). Stan: 287.9/1500.0 kg ---- 1.3/15cm3
+[PRACOWNIK 3] + Dodal paczke B (14.0kg) o V = 0.0462080m3, Tasma: 30/30 szt, 312.9/400.0 kg
+[CIEZAROWKA 4] Zaladowano  (1.3kg). Stan: 289.2/1500.0 kg ---- 1.3/15cm3
+[PRACOWNIK 2] + Dodal paczke C (22.9kg) o V = 0.0997120m3, Tasma: 30/30 szt, 334.5/400.0 kg
+[CIEZAROWKA 4] Zaladowano  (1.9kg). Stan: 291.1/1500.0 kg ---- 1.4/15cm3
+[PRACOWNIK 1] + Dodal paczke B (13.4kg) o V = 0.0462080m3, Tasma: 30/30 szt, 346.0/400.0 kg
+[CIEZAROWKA 4] Zaladowano  (14.8kg). Stan: 305.9/1500.0 kg ---- 1.4/15cm3
+[PRACOWNIK 3] + Dodal paczke B (14.3kg) o V = 0.0462080m3, Tasma: 30/30 szt, 345.5/400.0 kg
+[CIEZAROWKA 4] Zaladowano  (9.0kg). Stan: 314.9/1500.0 kg ---- 1.5/15cm3
+[PRACOWNIK 2] + Dodal paczke C (18.2kg) o V = 0.0997120m3, Tasma: 30/30 szt, 354.7/400.0 kg
+[CIEZAROWKA 4] Zaladowano  (15.9kg). Stan: 330.8/1500.0 kg ---- 1.5/15cm3
+[PRACOWNIK 1] + Dodal paczke B (17.6kg) o V = 0.0462080m3, Tasma: 30/30 szt, 356.4/400.0 kg
+[CIEZAROWKA 4] Zaladowano  (23.5kg). Stan: 354.3/1500.0 kg ---- 1.6/15cm3
+[PRACOWNIK 3] + Dodal paczke C (21.2kg) o V = 0.0997120m3, Tasma: 30/30 szt, 354.1/400.0 kg
+[CIEZAROWKA 4] Zaladowano  (6.7kg). Stan: 361.0/1500.0 kg ---- 1.6/15cm3
+[PRACOWNIK 2] + Dodal paczke B (9.2kg) o V = 0.0462080m3, Tasma: 30/30 szt, 356.6/400.0 kg
+[CIEZAROWKA 4] Zaladowano  (20.8kg). Stan: 381.8/1500.0 kg ---- 1.7/15cm3
+[PRACOWNIK 1] + Dodal paczke C (18.8kg) o V = 0.0997120m3, Tasma: 30/30 szt, 354.6/400.0 kg
+[CIEZAROWKA 4] Zaladowano  (8.9kg). Stan: 390.7/1500.0 kg ---- 1.8/15cm3
+[PRACOWNIK 3] + Dodal paczke B (16.3kg) o V = 0.0462080m3, Tasma: 30/30 szt, 362.0/400.0 kg
+[CIEZAROWKA 4] Zaladowano  (3.1kg). Stan: 393.8/1500.0 kg ---- 1.8/15cm3
+[PRACOWNIK 2] + Dodal paczke C (17.0kg) o V = 0.0997120m3, Tasma: 30/30 szt, 375.9/400.0 kg
+[CIEZAROWKA 4] Zaladowano  (5.3kg). Stan: 399.1/1500.0 kg ---- 1.8/15cm3
+[PRACOWNIK 1] + Dodal paczke A (7.0kg) o V = 0.0194560m3, Tasma: 30/30 szt, 377.6/400.0 kg
+[DYSPOZYTOR] Koncze symulacje...
+[PRACOWNIK 2] koniec pracy
+
+[DYSPOZYTOR] >>> [PRACOWNIK 4] Otrzymalem rozkaz (SYGNAL 2), laduje paczki ekspresowe
+paczka 0 waga = 22.8
+[PRACOWNIK 4] -> Zaladowano EKSPRES! Zostalo: 0. Ciezarowka: 421.9/1500
+[PRACOWNIK 4] Koniec pracy. W buforze: 0 paczek
+[CIEZAROWKA 4] Zaladowano  (10.9kg). Stan: 432.8/1500.0 kg ---- 2.0/15cm3
+[PRACOWNIK 3] + Dodal paczke B (13.5kg) o V = 0.0462080m3, Tasma: 30/30 szt, 380.2/400.0 kg
+[PRACOWNIK 3] koniec pracy
+[PRACOWNIK 1] koniec pracy
+[CIEZAROWKA 4] Zaladowano  (9.9kg). Stan: 442.7/1500.0 kg ---- 2.0/15cm3
+[CIEZAROWKA 4] Zaladowano  (6.4kg). Stan: 449.1/1500.0 kg ---- 2.0/15cm3
+[CIEZAROWKA 4] Zaladowano  (3.2kg). Stan: 452.3/1500.0 kg ---- 2.0/15cm3
+[CIEZAROWKA 4] Zaladowano  (15.8kg). Stan: 468.1/1500.0 kg ---- 2.1/15cm3
+[CIEZAROWKA 4] Zaladowano  (5.0kg). Stan: 473.1/1500.0 kg ---- 2.1/15cm3
+[CIEZAROWKA 4] Zaladowano  (15.5kg). Stan: 488.6/1500.0 kg ---- 2.2/15cm3
+[CIEZAROWKA 4] Zaladowano  (18.8kg). Stan: 507.4/1500.0 kg ---- 2.3/15cm3
+[CIEZAROWKA 4] Zaladowano  (2.0kg). Stan: 509.4/1500.0 kg ---- 2.3/15cm3
+[CIEZAROWKA 4] Zaladowano  (7.7kg). Stan: 517.1/1500.0 kg ---- 2.3/15cm3
+[CIEZAROWKA 4] Zaladowano  (16.1kg). Stan: 533.2/1500.0 kg ---- 2.4/15cm3
