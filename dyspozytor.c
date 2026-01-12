@@ -42,9 +42,15 @@ int main(int argc, char *argv[])
         {
             msg.mtype = 1;
             strcpy(msg.text, "0");
-            if (msgsnd(msgid, &msg, sizeof(int), 0) == -1)
+            if (msgsnd(msgid, &msg, sizeof(int), IPC_NOWAIT) == -1)
             {
-                perror("[DYSPOZYTOR] Blad wyslania komunikatu (1)\n");
+		if (errno == EAGAIN) 
+		{
+                    logp(KOLOR_RED, "[DYSPOZYTOR] ! BLAD: Kolejka komunikatow przepelniona.\n");
+                } else 
+		{
+                    perror("[DYSPOZYTOR] Blad wyslania komunikatu (1)\n");
+                }
             }
             else logp(KOLOR_RED,"[DYSPOZYTOR] Wyslano rozklaz odjazdu niepelnej ciezarowki\n");
         }
@@ -52,9 +58,15 @@ int main(int argc, char *argv[])
         {
             msg.mtype = 2;
             strcpy(msg.text, "0");
-            if (msgsnd(msgid, &msg, sizeof(int), 0) == -1)
+            if (msgsnd(msgid, &msg, sizeof(int), IPC_NOWAIT) == -1)
             {
-                perror("[DYSPOZYTOR] Blad wyslania komunikatu (2)\n");
+		if (errno == EAGAIN) 
+		{
+                    logp(KOLOR_RED, "[DYSPOZYTOR] ! BLAD: Kolejka przepelniona.\n");
+                } else 
+		{
+                    perror("[DYSPOZYTOR] Blad wyslania komunikatu (2)\n");
+                }
             }
             else logp(KOLOR_RED,"[DYSPOZYTOR] Wyslano rozklaz zaladunku paczek priorytetowych\n");
         }
