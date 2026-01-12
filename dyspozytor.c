@@ -1,8 +1,13 @@
 #include "dane.h"
-
+void handle_sigint_dyspozytor(int sig) 
+{
+    printf(KOLOR_RED "\n[DYSPOZYTOR] Zamykanie panelu sterowania...\n" KOLOR_RESET);
+    exit(0);
+}
 
 int main(int argc, char *argv[])
 {
+    signal(SIGINT, handle_sigint_dyspozytor);
     int msgid = msgget(KEY_MSG, 0600);
     if (msgid == -1) {
         perror("[DYSPOZYTOR] Blad msgget (dyspozytor)");
