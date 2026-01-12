@@ -133,7 +133,11 @@ int main(int argc, char *argv[])
         logp(KOLOR_BLUE,"[CIEZAROWKA %d] Odjezdzam w trase (%ds)...\n", id, TI);
         sem_V(semid, SEM_RAMPA);
 
-        sleep(TI);
+	time_t start_trasy = time(NULL);
+	while (difftime(time(NULL), start_trasy) < TI)
+        {
+            usleep(100000); 
+        }
         if(wspolna->koniec_symulacji && wspolna->tasma.ilosc_paczek == 0)
         {
             logp(KOLOR_BLUE,"[CIEZAROWKA %d] Koniec mojej pracy.\n", id);
