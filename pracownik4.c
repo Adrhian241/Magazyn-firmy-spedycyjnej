@@ -1,4 +1,5 @@
 #include "dane.h"
+
 double losuj_paczke()
 {
     int r = rand()%3 + 1;
@@ -6,13 +7,16 @@ double losuj_paczke()
     else if (r == 2) return 2;
     else return 3;
 }
-double losuj_wage(int typ_paczki) {
+
+double losuj_wage(int typ_paczki)
+{
     int waga_int;
     if (typ_paczki == 1) waga_int = (rand() % 80) + 1;       // 0.1 - 8.0 kg
     else if (typ_paczki == 2) waga_int = (rand() % 100) + 80; // 8.0 - 18.0 kg
     else waga_int = (rand() % 100) + 150;                        // 15.0 - 25.0 kg
     return (double)waga_int / 10.0;
 }
+
 Paczka generuj_ekspres()
 {
     Paczka p;
@@ -23,6 +27,7 @@ Paczka generuj_ekspres()
     p.id_pracownika = 4;
     return p;
 }
+
 int main(int argc,char *argv[])
 {
 
@@ -36,6 +41,7 @@ int main(int argc,char *argv[])
     }
 
     MagazynShared *wspolna = (MagazynShared*)shmat(shmid, NULL, 0);
+
     if (wspolna == (void*)-1)
     {
         perror("[PRACOWNIK] Blad shmat");
@@ -63,6 +69,7 @@ int main(int argc,char *argv[])
     int ilosc_w_buforze = 0;
     int tryb_wysylania = 0; //0 generuj 1 laduj
     int licznik_sekund = 0;
+
     while(1)
     {
         if(wspolna->koniec_symulacji)
@@ -70,7 +77,7 @@ int main(int argc,char *argv[])
             logp(KOLOR_YELLOW,"[PRACOWNIK 4] Koniec pracy. W buforze: %d paczek\n", ilosc_w_buforze);
             break;
         }
-        usleep(250000);
+        usleep(100000); //generowanie co 100000 * 25 = 2,5 sekundy
         if(licznik_sekund>=25)
         {
             if (ilosc_w_buforze < MAX_BUFOR)
@@ -79,11 +86,13 @@ int main(int argc,char *argv[])
                 logp(KOLOR_YELLOW,"[PRACOWNIK P4] + Dodal paczke %c (%.1fkg) o V = %.7fm3\n"
                 ,bufor[ilosc_w_buforze].typ,bufor[ilosc_w_buforze].waga,bufor[ilosc_w_buforze].objetosc);
                 ilosc_w_buforze++;
-            licznik_sekund = 0;
+                licznik_sekund = 0;
             }
         }
         licznik_sekund++;
-        if (msgrcv(msgid, &msg, sizeof(int), 2, IPC_NOWAIT) != -1) {
+        
+        if (msgrcv(msgid, &msg, sizeof(int), 2, IPC_NOWAIT) != -1) 
+        {
             logp(KOLOR_YELLOW,"\n[DYSPOZYTOR] >>> [PRACOWNIK 4] Otrzymalem rozkaz (SYGNAL 2), laduje paczki ekspresowe\n");
             tryb_wysylania = 1;
             for(int i=0;i<ilosc_w_buforze;i++)
@@ -91,6 +100,7 @@ int main(int argc,char *argv[])
                 logp(KOLOR_YELLOW,"paczka %d waga = %.1f\n",i,bufor[i].waga);
             }
         }
+
         while (tryb_wysylania == 1 && ilosc_w_buforze > 0)
         {
             sem_P(semid, SEM_PRACOWNIK4);
@@ -117,7 +127,8 @@ int main(int argc,char *argv[])
                     udalo_sie_zaladowac = 0;
                 }
             }
-            else {
+            else
+            {
                  logp(KOLOR_YELLOW,"[PRACOWNIK 4] Brak ciezarowki! Czekam...\n");
                  udalo_sie_zaladowac = 0;
             }
@@ -125,7 +136,8 @@ int main(int argc,char *argv[])
             sem_V(semid, SEM_MUTEX_CIEZAROWKA);
             sem_V(semid, SEM_PRACOWNIK4);
 
-            if (udalo_sie_zaladowac == 0) {
+            if (udalo_sie_zaladowac == 0) //czekanie na ciężarówkę
+            {
                 usleep(100000);
             }
             if(udalo_sie_zaladowac == 1 && ilosc_w_buforze == 0)

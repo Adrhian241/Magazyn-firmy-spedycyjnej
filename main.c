@@ -4,42 +4,45 @@ int g_shmid = -1;
 int g_semid = -1;
 int g_msgid = -1;
 
+pid_t g_parent_pid;
 pid_t g_pids_pracownicy[3];
 pid_t g_pid_p4;
 pid_t g_pids_ciezarowki[N];
 
 void handle_sigint(int sig) 
 {
+    if (getpid() != g_parent_pid) //sprawdzam czy main wywołuje funkcję
+    {
+        exit(0); 
+    }
+    
+    signal(SIGTERM, SIG_IGN); 
 
-    logp(KOLOR_RED, "\n\n[MAIN] Otrzymano sygnal SIGINT (Ctrl+C). Przerywam symulacje...\n");
-    for (int i = 0; i < 3; i++) 
-    {
-        if (g_pids_pracownicy[i] > 0) kill(g_pids_pracownicy[i], SIGTERM);
-    }
-    if (g_pid_p4 > 0) kill(g_pid_p4, SIGTERM);
-    for (int i = 0; i < N; i++) 
-    {
-        if (g_pids_ciezarowki[i] > 0) kill(g_pids_ciezarowki[i], SIGTERM);
-    }
+    fprintf(stderr, "\n[MAIN] SIGINT! Zabijam procesy (kill 0)...\n");
+
+    kill(0, SIGTERM);  //używam zwykłego SIGTERMA 
 
     int status;
-    while (wait(&status) > 0); 
+    pid_t wpid;
+   
+    while ((wpid = wait(&status)) > 0);   //czekam aż wszystkie procesy się zakończą i sprzątam
 
-    logp(KOLOR_RED, "[MAIN] Procesy potomne zakonczone. Usuwam IPC.\n");
-
-    if (g_shmid != -1) {
+    fprintf(stderr, "[MAIN] Sprzatam IPC...\n");
+    
+    if (g_shmid != -1) 
+    {
         shmctl(g_shmid, IPC_RMID, NULL);
-        logp(KOLOR_CYAN, "[MAIN] Pamiec dzielona usunieta.\n");
     }
-    if (g_semid != -1) {
+    if (g_semid != -1) 
+    {
         semctl(g_semid, 0, IPC_RMID);
-        logp(KOLOR_CYAN, "[MAIN] Semafory usuniete.\n");
     }
-    if (g_msgid != -1) {
+    if (g_msgid != -1) 
+    {
         msgctl(g_msgid, IPC_RMID, NULL);
-        logp(KOLOR_CYAN, "[MAIN] Kolejka komunikatow usunieta.\n");
     }
 
+    fprintf(stderr, "[MAIN] KONIEC.\n");
     exit(0);
 }
 
@@ -55,15 +58,57 @@ void ustaw_semafor(int semid, int numer_semafora, int wartosc)
         logp(KOLOR_CYAN,"[MAIN] semafor %d zostal ustawiony na %d.\n",numer_semafora,wartosc);
     }
 }
-int main(){
 
+int main()
+{
+
+    g_parent_pid = getpid();
+    printf(KOLOR_CYAN "\n");
+    printf("   ##################################################\n");
+    printf("   #           SYMULACJA MAGAZYNU SPEDYCYJNEGO      #\n");
+    printf("   ##################################################\n");
+    printf("   #                                                #\n");
+    printf("   #  KONFIGURACJA SYSTEMU:                         #\n");
+    printf("   #  --------------------------------------------  #\n");
+    printf("   #  [-] Liczba ciezarowek (N):      %-4d          #\n", N);
+    printf("   #  [-] Czas trasy (TI):            %-4d sek      #\n", TI);
+    printf("   #  [-] Zaloga:                     3 + 1 (P4)    #\n");
+    printf("   #                                                #\n");
+    printf("   #  PARAMETRY TASMY I LADUNKU:                    #\n");
+    printf("   #  --------------------------------------------  #\n");
+    printf("   #  [-] Pojemnosc tasmy (K):        %-4d szt      #\n", K);
+    printf("   #  [-] Maks. masa na tasmie (M):   %-6.1f kg     #\n", M);
+    printf("   #  [-] Ladownosc ciezarowki (W):   %-6.1f kg     #\n", W);
+    printf("   #  [-] Pojemnosc ciezarowki (V):   %-6.1f m3     #\n", V);
+    printf("   #                                                #\n");
+    printf("   ##################################################\n");
+    printf("\n" KOLOR_RESET);
+    fflush(stdout);
+    
     signal(SIGINT, handle_sigint);
     FILE *fp = fopen("raport.txt", "w");
     if (fp)
     {
     fclose(fp);
     }
+
+    //stworzenie semaforow
+    int semid = semget(KEY_SEM, 7, IPC_CREAT | 0600);
+        if (semid==-1)
+        {
+                perror("[MAIN] Nie moglem utworzyc nowych semaforow.\n");
+                exit(EXIT_FAILURE);
+        }
+        else
+        {
+            ustaw_semafor(semid, SEM_LOG, 1); //ustawienie w tym miejscu, żeby logi mogły działać od początku
+            logp(KOLOR_CYAN,"[MAIN] Semafory zostal utworzone : %d\n",semid);
+         	g_semid = semid;
+	}
+    
+
     logp(KOLOR_CYAN,"[MAIN] START SYMULACJI MAGAZYNU\n");
+
     //stworzenie pamieci dzielonej
     int shmid = shmget(KEY_SHM, sizeof(MagazynShared), IPC_CREAT | 0600);
     if (shmid == -1)
@@ -73,22 +118,10 @@ int main(){
     }
     else
     {
-	logp(KOLOR_CYAN,"[MAIN] Pamiec dzielona zostala utworzona : %d\n",shmid);
-	g_shmid = shmid;
+	    logp(KOLOR_CYAN,"[MAIN] Pamiec dzielona zostala utworzona : %d\n",shmid);
+	    g_shmid = shmid;
     }
-    //stworzenie semaforow
-    int semid = semget(KEY_SEM, 6, IPC_CREAT | 0600);
-        if (semid==-1)
-        {
-                perror("[MAIN] Nie moglem utworzyc nowych semaforow.\n");
-                exit(EXIT_FAILURE);
-        }
-        else
-        {
-                logp(KOLOR_CYAN,"[MAIN] Semafory zostal utworzone : %d\n",semid);
-         	g_semid = semid;
-	}
-
+    
     //tworzenie kolejki komunikatow
     int msgid = msgget(KEY_MSG, IPC_CREAT | 0600);
     if (msgid == -1)
@@ -98,16 +131,18 @@ int main(){
     }
     else
     {
-	logp(KOLOR_CYAN,"[MAIN] Kolejka komunikatow utworzona: %d\n", msgid);
-	g_msgid = msgid;
+	    logp(KOLOR_CYAN,"[MAIN] Kolejka komunikatow utworzona: %d\n", msgid);
+	    g_msgid = msgid;
     }
+
     //polaczenie sie z pamieci dzielona
     MagazynShared *wspolna = (MagazynShared*)shmat(shmid, NULL, 0);
     if (wspolna == (void*)-1)
     {
         perror("[MAIN] Blad shmat");
-	handle_sigint(0);
+	    handle_sigint(0);
     }
+
     //ustawianie semaforow
     ustaw_semafor(semid, SEM_MUTEX_TASMA, 1);
     ustaw_semafor(semid, SEM_MUTEX_CIEZAROWKA, 1);
@@ -125,6 +160,7 @@ int main(){
     wspolna->ciezarowka.id_ciezarowki = -1;
     wspolna->koniec_symulacji = 0;
     wspolna->ciezarowka.wymus_odjazd = 0;
+
     shmdt(wspolna);
 
     //tworzenie pracownikow 1,2,3
@@ -135,6 +171,7 @@ int main(){
 
             if (pid == 0)
             {
+            signal(SIGINT, SIG_DFL); // Powrót do default, żeby nie czyściło IPC 
             sprintf(id_str, "%d", i); // Zamiana int na string, np. 1 -> "1"
             execlp("./pracownicy", "pracownicy", id_str, NULL);
             perror("[MAIN] Blad execlp (uruchamianie pracownika)");
@@ -147,7 +184,7 @@ int main(){
             else
             {
                 g_pids_pracownicy[i-1] = pid;
-		logp(KOLOR_CYAN,"[MAIN] Uruchomiono pracownika P%d (PID: %d)\n", i, pid);
+		        logp(KOLOR_CYAN,"[MAIN] Uruchomiono pracownika P%d (PID: %d)\n", i, pid);
             }
         }
 
@@ -155,17 +192,18 @@ int main(){
     pid_t pid4 = fork();
     if (pid4 == 0)
     {
+        signal(SIGINT, SIG_DFL);
         execlp("./pracownik4", "pracownik4", id_str, NULL);
         perror("[MAIN] Blad execlp (uruchamianie pracownika4)");
         exit(EXIT_FAILURE);
     }
     else if (pid4 < 0)
-        {
+    {
         perror("[MAIN] Blad fork");
     }
     else
     {
-	g_pid_p4 = pid4;
+	    g_pid_p4 = pid4;
         logp(KOLOR_CYAN,"[MAIN] Uruchomiono pracownika P4 (PID: %d)\n",pid4);
     }
 
@@ -177,6 +215,7 @@ int main(){
 
             if (pid == 0)
             {
+            signal(SIGINT, SIG_DFL);
             sprintf(id_c, "%d", i); // Zamiana int na string, np. 1 -> "1"
             execlp("./ciezarowka", "ciezarowka", id_c, NULL);
             perror("[MAIN] Blad execlp (uruchamianie ciezarowki)");
@@ -188,7 +227,7 @@ int main(){
             }
                 else
             {
-		g_pids_ciezarowki[i-1] = pid;
+		        g_pids_ciezarowki[i-1] = pid;
                 logp(KOLOR_CYAN,"[MAIN] Uruchomiono ciezarowke C%d (PID: %d)\n", i, pid);
             }
         }

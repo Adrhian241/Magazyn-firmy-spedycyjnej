@@ -8,16 +8,19 @@ void handle_sigint_dyspozytor(int sig)
 int main(int argc, char *argv[])
 {
     signal(SIGINT, handle_sigint_dyspozytor);
+
     int msgid = msgget(KEY_MSG, 0600);
     if (msgid == -1) {
         perror("[DYSPOZYTOR] Blad msgget (dyspozytor)");
         exit(EXIT_FAILURE);
     }
+
     int shmid = shmget(KEY_SHM, sizeof(MagazynShared), 0600);
     if (shmid == -1) {
         perror("[DYSPOZYTOR] Blad shmget. ");
         exit(EXIT_FAILURE);
     }
+    
     MagazynShared *wspolna = (MagazynShared*)shmat(shmid, NULL, 0);
 
     struct moj_komunikat msg;
@@ -44,32 +47,34 @@ int main(int argc, char *argv[])
             strcpy(msg.text, "0");
             if (msgsnd(msgid, &msg, sizeof(int), IPC_NOWAIT) == -1)
             {
-		if (errno == EAGAIN) 
-		{
+		        if (errno == EAGAIN) 
+		        {
                     logp(KOLOR_RED, "[DYSPOZYTOR] ! BLAD: Kolejka komunikatow przepelniona.\n");
                 } else 
-		{
+		        {
                     perror("[DYSPOZYTOR] Blad wyslania komunikatu (1)\n");
                 }
             }
             else logp(KOLOR_RED,"[DYSPOZYTOR] Wyslano rozklaz odjazdu niepelnej ciezarowki\n");
         }
+
         else if(wybor == 2)
         {
             msg.mtype = 2;
             strcpy(msg.text, "0");
             if (msgsnd(msgid, &msg, sizeof(int), IPC_NOWAIT) == -1)
             {
-		if (errno == EAGAIN) 
-		{
-                    logp(KOLOR_RED, "[DYSPOZYTOR] ! BLAD: Kolejka przepelniona.\n");
-                } else 
-		{
-                    perror("[DYSPOZYTOR] Blad wyslania komunikatu (2)\n");
-                }
+		    if (errno == EAGAIN) 
+		    {
+                logp(KOLOR_RED, "[DYSPOZYTOR] ! BLAD: Kolejka przepelniona.\n");
+            } else 
+		    {
+                perror("[DYSPOZYTOR] Blad wyslania komunikatu (2)\n");
+            }
             }
             else logp(KOLOR_RED,"[DYSPOZYTOR] Wyslano rozklaz zaladunku paczek priorytetowych\n");
         }
+        
         else if (wybor == 3)
         {
             logp(KOLOR_RED,"[DYSPOZYTOR] Koncze symulacje...\n");

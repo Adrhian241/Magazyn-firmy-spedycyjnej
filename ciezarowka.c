@@ -1,29 +1,31 @@
 #include "dane.h"
-#include <errno.h>
 
 int main(int argc, char *argv[])
 {
     int id =  atoi(argv[1]);
     srand(time(NULL));
+
     int shmid = shmget(KEY_SHM, sizeof(MagazynShared), 0600);
     if (shmid == -1)
     {
         perror("[CIEZAROWKA] Blad shmget"); 
         exit(EXIT_FAILURE);
     }
+
     MagazynShared *wspolna = (MagazynShared*)shmat(shmid, NULL, 0);
 
     int semid = semget(KEY_SEM, 0, 0);
     if (semid == -1)
     {
         perror("[CIEZAROWKA] blad semget"); 
-	exit(EXIT_FAILURE);
+	    exit(EXIT_FAILURE);
     }
+
     int msgid = msgget(KEY_MSG, 0600);
     if (msgid == -1)
     {
         perror("[CIEZAROWKA ] Blad msgget"); 
-	exit(EXIT_FAILURE);
+	    exit(EXIT_FAILURE);
     }
 
     logp(KOLOR_BLUE,"[CIEZAROWKA %d] zaczyna prace.\n",id);
@@ -34,6 +36,7 @@ int main(int argc, char *argv[])
             logp(KOLOR_BLUE,"[CIEZAROWKA %d] Koniec symulacji i brak paczek. Koncze prace\n", id);
             break;
         }
+
         sem_P(semid, SEM_RAMPA);
         if (wspolna->koniec_symulacji && wspolna->tasma.ilosc_paczek == 0)
         {
@@ -57,12 +60,13 @@ int main(int argc, char *argv[])
 
         while(czy_pelna == 0)
         {
-            if (wspolna->ciezarowka.wymus_odjazd == 1)
+            if (wspolna->ciezarowka.wymus_odjazd == 1)  //od P4
             {
                 logp(KOLOR_BLUE,"[CIEZAROWKA %d] P4 wymusil odjazd (brak miejsca). Odjezdzam.\n", id);
                 czy_pelna = 1;
                 continue;
             }
+
             if (msgrcv(msgid, &msg, sizeof(int), 1, IPC_NOWAIT) != -1)
             {
                 if(wspolna->koniec_symulacji)
@@ -75,7 +79,8 @@ int main(int argc, char *argv[])
             }
 
             struct sembuf check_full = {SEM_FULL, -1, IPC_NOWAIT};
-            if (semop(semid, &check_full, 1) == -1) {
+            if (semop(semid, &check_full, 1) == -1) 
+            {
                 if(wspolna->koniec_symulacji)
                 {
                     logp(KOLOR_BLUE,"[CIEZAROWKA %d] Koniec symulacji i pusta tasma. Koncze ladunek i odjezdzam w ostatnia trase.\n", id);
@@ -85,16 +90,18 @@ int main(int argc, char *argv[])
                 usleep(350000);
                 continue;
             }
+
             usleep(350000);
             sem_P(semid, SEM_PRACOWNIK4);
             sem_V(semid, SEM_PRACOWNIK4);
             sem_P(semid, SEM_MUTEX_TASMA);
 
+            //biorę paczkę i ładuje jeśli się zmieści, jeśli nie - odjeżdzam
             int idx = wspolna->tasma.head;
             Paczka p = wspolna->tasma.bufor[idx];
             int vol = p.objetosc;
 
-                sem_P(semid, SEM_MUTEX_CIEZAROWKA);
+            sem_P(semid, SEM_MUTEX_CIEZAROWKA);
             if ( (wspolna->ciezarowka.zaladowana_waga + p.waga <= W) &&
                  (wspolna->ciezarowka.zaladowana_objetosc + vol <= V) )
             {
@@ -122,7 +129,7 @@ int main(int argc, char *argv[])
         }
 
         sem_P(semid, SEM_MUTEX_CIEZAROWKA);
-        wspolna->ciezarowka.czy_stoi = 0; // Zwalniamy logicznie (dla P4)
+        wspolna->ciezarowka.czy_stoi = 0; // Zwalniam logicznie (dla P4)
         sem_V(semid, SEM_MUTEX_CIEZAROWKA);
         if(wspolna->koniec_symulacji && wspolna->ciezarowka.zaladowana_waga == 0)
         {
@@ -130,11 +137,12 @@ int main(int argc, char *argv[])
              sem_V(semid, SEM_RAMPA);
              break;
         }
+
         logp(KOLOR_BLUE,"[CIEZAROWKA %d] Odjezdzam w trase (%ds)...\n", id, TI);
         sem_V(semid, SEM_RAMPA);
 
-	time_t start_trasy = time(NULL);
-	while (difftime(time(NULL), start_trasy) < TI)
+	    time_t start_trasy = time(NULL);
+	    while (difftime(time(NULL), start_trasy) < TI)
         {
             usleep(100000); 
         }

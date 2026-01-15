@@ -21,10 +21,10 @@
 #define KOLOR_RESET   "\x1b[0m"
 
 #define K 30 //Pojemnosc tasmy ladunkowej
-#define M 400.0 //Maksymalna masa przesylek na tasmie ladunkowej [kg]
+#define M 420.0 //Maksymalna masa przesylek na tasmie ladunkowej [kg]
 #define W 1500.0 //Ladownosc ciezarowki [kg]
 #define V 15.0 //Objetosc ciezarowki [m3]
-#define N 4 //Liczba ciezarowek
+#define N 5000 //Liczba ciezarowek
 #define TI 3 // czas po jakim wraca ciezarowka w sekundach
 #define MAX_BUFOR 100 // ilosc paczek jakie moga byc wytworzone przez pracownika 4 w jednym momencie
 #define KEY_SHM 1111
@@ -32,20 +32,66 @@
 #define KEY_MSG 3333
 
 // ID semaforow w tablicy semaforow
-#define SEM_MUTEX_TASMA 0    //dotep do tasmy
-#define SEM_MUTEX_CIEZAROWKA 1   //dostep do wagi ciezarowki
-#define SEM_EMPTY 2   // Ile miejsc wolnych na tasmie
-#define SEM_FULL 3   //ile miejsc zajetych na tasmie
-#define SEM_RAMPA 4   //umozliwia wjazd, wyjazd z rampy ciezarowce
+#define SEM_MUTEX_TASMA 0    //dostęp do taśmy
+#define SEM_MUTEX_CIEZAROWKA 1   //dostęp do wagi ciężarówki
+#define SEM_EMPTY 2   // Ile miejsc wolnych na taśmie
+#define SEM_FULL 3   //ile miejsc zajętych na taśmie
+#define SEM_RAMPA 4   //umożliwia wjazd, wyjazd z rampy ciężarówce
 #define SEM_PRACOWNIK4 5   //wprowadzenie paczek ekspresowych
-void logp(const char *kolor, const char *format, ...) {
-    va_list args;
+#define SEM_LOG 6   //synchronizacja logów
 
-    printf("%s", kolor); // Włącz kolor
+
+
+void sem_P(int semid, int numer_semafora)
+{
+    struct sembuf operacja;
+    operacja.sem_num = numer_semafora;
+    operacja.sem_op = -1;
+
+    if (numer_semafora == SEM_EMPTY || numer_semafora == SEM_FULL) //semafory do obsługi ilości na taśmie
+        operacja.sem_flg = 0; 
+    else 
+        operacja.sem_flg = SEM_UNDO; //gdy podczas sem_P(SEM_LOG) zakończy się program, żeby proces zwrócił semafor
+
+    while (semop(semid, &operacja, 1) == -1) 
+    {
+        if (errno == EINTR) continue;
+        perror("Blad semafor_p");
+        exit(EXIT_FAILURE);
+    }
+}
+
+void sem_V(int semid, int numer_semafora)
+{
+    struct sembuf operacja;
+    operacja.sem_num = numer_semafora;
+    operacja.sem_op = 1;
+
+    if (numer_semafora == SEM_EMPTY || numer_semafora == SEM_FULL) 
+        operacja.sem_flg = 0;
+    else 
+        operacja.sem_flg = SEM_UNDO;
+
+    if (semop(semid, &operacja, 1) == -1)
+    {
+        perror("Blad semafor_v");
+        exit(EXIT_FAILURE);
+    }
+}
+
+void logp(const char *kolor, const char *format, ...)  //przyjmuje dowolną ilość argumentów
+{
+
+    int semid = semget(KEY_SEM, 0, 0); 
+    if (semid != -1) sem_P(semid, SEM_LOG);
+
+    va_list args;
+    printf("%s", kolor); 
     va_start(args, format);
     vprintf(format, args);
     va_end(args);
-    printf("%s", KOLOR_RESET); // Wyłącz kolor
+    printf("%s", KOLOR_RESET);
+    fflush(stdout);
 
     FILE *fp = fopen("raport.txt", "a");
     if (fp) {
@@ -55,30 +101,8 @@ void logp(const char *kolor, const char *format, ...) {
         va_end(args);
 
         fclose(fp);
-    }
-}
 
-void sem_P(int semid,int numer_semafora)
-{
-    struct sembuf operacja;
-    operacja.sem_num = numer_semafora;
-    operacja.sem_op = -1;
-    operacja.sem_flg = 0;
-    while (semop(semid, &operacja, 1) == -1) {
-        if (errno == EINTR) continue;
-        perror("Blad semafor_p");
-        exit(EXIT_FAILURE);
-    }
-}
-void sem_V(int semid,int numer_semafora)
-{
-    struct sembuf operacja;
-    operacja.sem_num = numer_semafora;
-    operacja.sem_op = 1;
-    operacja.sem_flg = 0;
-    if (semop(semid, &operacja, 1) == -1) {
-        perror("Blad semafor_v");
-        exit(EXIT_FAILURE);
+        if (semid != -1) sem_V(semid, SEM_LOG);
     }
 }
 typedef struct{

@@ -1,4 +1,5 @@
 #include "dane.h"
+
 double losuj_paczke()
 {
     int r = rand()%3 + 1;
@@ -6,15 +7,25 @@ double losuj_paczke()
     else if (r == 2) return 2;
     else return 3;
 }
-double losuj_wage(int typ_paczki) {
+
+double losuj_wage(int typ_paczki) 
+{
     int waga_int;
     if (typ_paczki == 1) waga_int = (rand() % 80) + 1;       // 0.1 - 8.0 kg
     else if (typ_paczki == 2) waga_int = (rand() % 100) + 80; // 8.0 - 18.0 kg
     else waga_int = (rand() % 100) + 150;                        // 15.0 - 25.0 kg
     return (double)waga_int / 10.0;
 }
+
 int main(int argc,char *argv[])
 {
+
+    if (argc < 2) 
+    {
+        printf("[MAIN] BLAD: Uruchomienie bez argumentu ID\n");
+        exit(EXIT_FAILURE);
+    }
+
     int id = atoi(argv[1]);
     srand(time(NULL) ^ getpid());
     logp(KOLOR_GREEN,"[PRACOWNIK %d] zaczyna prace.\n", id);
@@ -27,17 +38,20 @@ int main(int argc,char *argv[])
     }
 
     MagazynShared *wspolna = (MagazynShared*)shmat(shmid, NULL, 0);
+
     if (wspolna == (void*)-1)
     {
         perror("[PRACOWNIK] Blad shmat");
         exit(EXIT_FAILURE);
     }
+
     int semid = semget(KEY_SEM,0,0);
     if (semid == -1)
     {
         perror("[PRACOWNIK] blad semget");
         exit(EXIT_FAILURE);
     }
+
     while(1)
     {
         if(wspolna->koniec_symulacji)
@@ -51,13 +65,16 @@ int main(int argc,char *argv[])
         char typ_paczki = losuj_paczke();
         double waga_paczki = losuj_wage(typ_paczki);
         char nazwa_paczki = (typ_paczki == 1) ? 'A' : (typ_paczki == 2) ? 'B' : 'C';
-	double objetosc_paczki = (typ_paczki == 1) ? 0.019456 : (typ_paczki == 2) ? 0.046208 : 0.099712; //w m3
+	    double objetosc_paczki = (typ_paczki == 1) ? 0.019456 : (typ_paczki == 2) ? 0.046208 : 0.099712; //w m3
         while(!czy_udalo_sie_polozyc)
         {
+            //kończe pracę odrazu
             if(wspolna->koniec_symulacji)
             {
                 break;
             }
+            
+            //jeśli nie - ładuje paczkę na taśme
             sem_P(semid, SEM_EMPTY);
             sem_P(semid, SEM_MUTEX_TASMA);
             if(wspolna->tasma.masa_paczek + waga_paczki <= M)
@@ -66,7 +83,7 @@ int main(int argc,char *argv[])
                 wspolna->tasma.bufor[indeks].id_pracownika = id;
                 wspolna->tasma.bufor[indeks].waga = waga_paczki;
                 wspolna->tasma.bufor[indeks].objetosc = objetosc_paczki;
-                wspolna->tasma.bufor[indeks].typ = typ_paczki;
+                wspolna->tasma.bufor[indeks].typ = nazwa_paczki;
                 wspolna->tasma.tail = (indeks + 1) % K;
                 wspolna->tasma.masa_paczek += waga_paczki;
                 wspolna->tasma.ilosc_paczek += 1;
