@@ -74,7 +74,7 @@ int main(int argc,char *argv[])
     {
         if(wspolna->koniec_symulacji)
         {
-            logp(KOLOR_YELLOW,"[PRACOWNIK 4] Koniec pracy. W buforze: %d paczek\n", ilosc_w_buforze);
+            logp(KOLOR_YELLOW,"[PRACOWNIK 4] Koniec pracy.");
             break;
         }
         usleep(100000); //generowanie co 100000 * 25 = 2,5 sekundy

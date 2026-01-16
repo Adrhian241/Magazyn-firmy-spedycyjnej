@@ -24,7 +24,7 @@
 #define M 420.0 //Maksymalna masa przesylek na tasmie ladunkowej [kg]
 #define W 1500.0 //Ladownosc ciezarowki [kg]
 #define V 15.0 //Objetosc ciezarowki [m3]
-#define N 5000 //Liczba ciezarowek
+#define N 10 //Liczba ciezarowek
 #define TI 3 // czas po jakim wraca ciezarowka w sekundach
 #define MAX_BUFOR 100 // ilosc paczek jakie moga byc wytworzone przez pracownika 4 w jednym momencie
 #define KEY_SHM 1111
@@ -85,11 +85,11 @@ void logp(const char *kolor, const char *format, ...)  //przyjmuje dowolnÄ… iloÅ
     int semid = semget(KEY_SEM, 0, 0); 
     if (semid != -1) sem_P(semid, SEM_LOG);
 
-    va_list args;
+    va_list args;  //usatawia wskaznik za *format
     printf("%s", kolor); 
-    va_start(args, format);
+    va_start(args, format);   //przypisuje args
     vprintf(format, args);
-    va_end(args);
+    va_end(args);  //zakoncz
     printf("%s", KOLOR_RESET);
     fflush(stdout);
 

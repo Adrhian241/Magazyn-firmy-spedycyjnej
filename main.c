@@ -193,7 +193,7 @@ int main()
     if (pid4 == 0)
     {
         signal(SIGINT, SIG_DFL);
-        execlp("./pracownik4", "pracownik4", id_str, NULL);
+        execlp("./pracownik4", "pracownik4", NULL, NULL);
         perror("[MAIN] Blad execlp (uruchamianie pracownika4)");
         exit(EXIT_FAILURE);
     }
