@@ -1,28 +1,26 @@
 CC = gcc
-CFLAGS = -Wall -Wextra -std=gnu99
+CFLAGS = -Wall -g
+LIBS = 
 
-DEPS = dane.h
-TARGETS = m pracownicy pracownik4 ciezarowka dyspozytor
+all: m pracownicy pracownik4 ciezarowka dyspozytor
 
-all: $(TARGETS)
+dane.o: dane.c dane.h
+	$(CC) $(CFLAGS) -c dane.c
 
+m: main.c dane.o dane.h
+	$(CC) $(CFLAGS) -o m main.c dane.o $(LIBS)
 
-m: main.c $(DEPS)
-	$(CC) $(CFLAGS) -o m main.c
+pracownicy: pracownicy.c dane.o dane.h
+	$(CC) $(CFLAGS) -o pracownicy pracownicy.c dane.o $(LIBS)
 
-pracownicy: pracownicy.c $(DEPS)
-	$(CC) $(CFLAGS) -o pracownicy pracownicy.c
+pracownik4: pracownik4.c dane.o dane.h
+	$(CC) $(CFLAGS) -o pracownik4 pracownik4.c dane.o $(LIBS)
 
-pracownik4: pracownik4.c $(DEPS)
-	$(CC) $(CFLAGS) -o pracownik4 pracownik4.c
+ciezarowka: ciezarowka.c dane.o dane.h
+	$(CC) $(CFLAGS) -o ciezarowka ciezarowka.c dane.o $(LIBS)
 
-ciezarowka: ciezarowka.c $(DEPS)
-	$(CC) $(CFLAGS) -o ciezarowka ciezarowka.c
-
-dyspozytor: dyspozytor.c $(DEPS)
-	$(CC) $(CFLAGS) -o dyspozytor dyspozytor.c
+dyspozytor: dyspozytor.c dane.o dane.h
+	$(CC) $(CFLAGS) -o dyspozytor dyspozytor.c dane.o $(LIBS)
 
 clean:
-	rm -f $(TARGETS) raport.txt
-
-.PHONY: all clean
+	rm -f *.o m pracownicy pracownik4 ciezarowka dyspozytor raport.txt

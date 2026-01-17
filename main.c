@@ -1,63 +1,8 @@
 #include "dane.h"
 
-int g_shmid = -1;
-int g_semid = -1;
-int g_msgid = -1;
 
-pid_t g_parent_pid;
-pid_t g_pids_pracownicy[3];
-pid_t g_pid_p4;
-pid_t g_pids_ciezarowki[N];
 
-void handle_sigint(int sig) 
-{
-    if (getpid() != g_parent_pid) //sprawdzam czy main wywołuje funkcję
-    {
-        exit(0); 
-    }
-    
-    signal(SIGTERM, SIG_IGN); 
 
-    fprintf(stderr, "\n[MAIN] SIGINT! Zabijam procesy (kill 0)...\n");
-
-    kill(0, SIGTERM);  //używam zwykłego SIGTERMA 
-
-    int status;
-    pid_t wpid;
-   
-    while ((wpid = wait(&status)) > 0);   //czekam aż wszystkie procesy się zakończą i sprzątam
-
-    fprintf(stderr, "[MAIN] Sprzatam IPC...\n");
-    
-    if (g_shmid != -1) 
-    {
-        shmctl(g_shmid, IPC_RMID, NULL);
-    }
-    if (g_semid != -1) 
-    {
-        semctl(g_semid, 0, IPC_RMID);
-    }
-    if (g_msgid != -1) 
-    {
-        msgctl(g_msgid, IPC_RMID, NULL);
-    }
-
-    fprintf(stderr, "[MAIN] KONIEC.\n");
-    exit(0);
-}
-
-void ustaw_semafor(int semid, int numer_semafora, int wartosc)
-{
-    if (semctl(semid,numer_semafora,SETVAL,wartosc)==-1)
-    {
-            perror("[MAIN] Nie mozna ustawic semafora");
-            exit(EXIT_FAILURE);
-    }
-    else
-    {
-        logp(KOLOR_CYAN,"[MAIN] semafor %d zostal ustawiony na %d.\n",numer_semafora,wartosc);
-    }
-}
 
 int main()
 {

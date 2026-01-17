@@ -40,71 +40,31 @@
 #define SEM_PRACOWNIK4 5   //wprowadzenie paczek ekspresowych
 #define SEM_LOG 6   //synchronizacja logów
 
+extern int g_shmid;
+extern int g_semid;
+extern int g_msgid;
 
+extern pid_t g_parent_pid;
+extern pid_t g_pids_pracownicy[3];
+extern pid_t g_pid_p4;
+extern pid_t g_pids_ciezarowki[N];
 
-void sem_P(int semid, int numer_semafora)
-{
-    struct sembuf operacja;
-    operacja.sem_num = numer_semafora;
-    operacja.sem_op = -1;
+void sem_P(int semid, int numer_semafora);
 
-    if (numer_semafora == SEM_EMPTY || numer_semafora == SEM_FULL) //semafory do obsługi ilości na taśmie
-        operacja.sem_flg = 0; 
-    else 
-        operacja.sem_flg = SEM_UNDO; //gdy podczas sem_P(SEM_LOG) zakończy się program, żeby proces zwrócił semafor
+void sem_V(int semid, int numer_semafora);
 
-    while (semop(semid, &operacja, 1) == -1) 
-    {
-        if (errno == EINTR) continue;
-        perror("Blad semafor_p");
-        exit(EXIT_FAILURE);
-    }
-}
+void logp(const char *kolor, const char *format, ...);  //przyjmuje dowolną ilość argumentów
 
-void sem_V(int semid, int numer_semafora)
-{
-    struct sembuf operacja;
-    operacja.sem_num = numer_semafora;
-    operacja.sem_op = 1;
+void handle_sigint(int sig);
 
-    if (numer_semafora == SEM_EMPTY || numer_semafora == SEM_FULL) 
-        operacja.sem_flg = 0;
-    else 
-        operacja.sem_flg = SEM_UNDO;
+void ustaw_semafor(int semid, int numer_semafora, int wartosc);
 
-    if (semop(semid, &operacja, 1) == -1)
-    {
-        perror("Blad semafor_v");
-        exit(EXIT_FAILURE);
-    }
-}
+void handle_sigint_dyspozytor(int sig);
 
-void logp(const char *kolor, const char *format, ...)  //przyjmuje dowolną ilość argumentów
-{
+double losuj_paczke();
 
-    int semid = semget(KEY_SEM, 0, 0); 
-    if (semid != -1) sem_P(semid, SEM_LOG);
+double losuj_wage(int typ_paczki);
 
-    va_list args;  //usatawia wskaznik za *format
-    printf("%s", kolor); 
-    va_start(args, format);   //przypisuje args
-    vprintf(format, args);
-    va_end(args);  //zakoncz
-    printf("%s", KOLOR_RESET);
-    fflush(stdout);
-
-    FILE *fp = fopen("raport.txt", "a");
-    if (fp) {
-
-        va_start(args, format);
-        vfprintf(fp, format, args);
-        va_end(args);
-
-        fclose(fp);
-
-        if (semid != -1) sem_V(semid, SEM_LOG);
-    }
-}
 typedef struct{
         char typ; //A B C
         double waga;

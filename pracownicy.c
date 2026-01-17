@@ -1,21 +1,5 @@
 #include "dane.h"
 
-double losuj_paczke()
-{
-    int r = rand()%3 + 1;
-    if (r == 1) return 1;
-    else if (r == 2) return 2;
-    else return 3;
-}
-
-double losuj_wage(int typ_paczki) 
-{
-    int waga_int;
-    if (typ_paczki == 1) waga_int = (rand() % 80) + 1;       // 0.1 - 8.0 kg
-    else if (typ_paczki == 2) waga_int = (rand() % 100) + 80; // 8.0 - 18.0 kg
-    else waga_int = (rand() % 100) + 150;                        // 15.0 - 25.0 kg
-    return (double)waga_int / 10.0;
-}
 
 int main(int argc,char *argv[])
 {

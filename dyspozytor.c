@@ -1,9 +1,5 @@
 #include "dane.h"
-void handle_sigint_dyspozytor(int sig) 
-{
-    printf(KOLOR_RED "\n[DYSPOZYTOR] Zamykanie panelu sterowania...\n" KOLOR_RESET);
-    exit(0);
-}
+
 
 int main(int argc, char *argv[])
 {
