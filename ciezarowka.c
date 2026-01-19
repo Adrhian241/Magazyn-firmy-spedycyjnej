@@ -31,14 +31,14 @@ int main(int argc, char *argv[])
     logp(KOLOR_BLUE,"[CIEZAROWKA %d] zaczyna prace.\n",id);
     while(1)
     {
-        if (wspolna->koniec_symulacji && wspolna->tasma.ilosc_paczek == 0)
+        if (wspolna->koniec_symulacji && wspolna->tasma.ilosc_paczek == 0 && wspolna->p4_oczekujace == 0)
         {
             logp(KOLOR_BLUE,"[CIEZAROWKA %d] Koniec symulacji i brak paczek. Koncze prace\n", id);
             break;
         }
 
         sem_P(semid, SEM_RAMPA);
-        if (wspolna->koniec_symulacji && wspolna->tasma.ilosc_paczek == 0)
+        if (wspolna->koniec_symulacji && wspolna->tasma.ilosc_paczek == 0 && wspolna->p4_oczekujace == 0)
         {
             logp(KOLOR_BLUE,"[CIEZAROWKA %d] Wjechalem na rampe ale brak paczek. Koncze prace\n", id);
             sem_V(semid, SEM_RAMPA);
@@ -81,7 +81,7 @@ int main(int argc, char *argv[])
             struct sembuf check_full = {SEM_FULL, -1, IPC_NOWAIT};
             if (semop(semid, &check_full, 1) == -1) 
             {
-                if(wspolna->koniec_symulacji)
+                if(wspolna->koniec_symulacji && wspolna->p4_oczekujace == 0)
                 {
                     logp(KOLOR_BLUE,"[CIEZAROWKA %d] Koniec symulacji i pusta tasma. Koncze ladunek i odjezdzam w ostatnia trase.\n", id);
                     czy_pelna = 1;
@@ -131,7 +131,7 @@ int main(int argc, char *argv[])
         sem_P(semid, SEM_MUTEX_CIEZAROWKA);
         wspolna->ciezarowka.czy_stoi = 0; // Zwalniam logicznie (dla P4)
         sem_V(semid, SEM_MUTEX_CIEZAROWKA);
-        if(wspolna->koniec_symulacji && wspolna->ciezarowka.zaladowana_waga == 0)
+        if(wspolna->koniec_symulacji && wspolna->ciezarowka.zaladowana_waga == 0 && wspolna->p4_oczekujace == 0)
         {
              logp(KOLOR_BLUE,"[CIEZAROWKA %d] Pusta i koniec pracy. Zwalniam rampe i wychodze.\n", id);
              sem_V(semid, SEM_RAMPA);
@@ -146,7 +146,7 @@ int main(int argc, char *argv[])
         {
             usleep(100000); 
         }
-        if(wspolna->koniec_symulacji && wspolna->tasma.ilosc_paczek == 0)
+        if(wspolna->koniec_symulacji && wspolna->tasma.ilosc_paczek == 0 && wspolna->p4_oczekujace == 0)
         {
             logp(KOLOR_BLUE,"[CIEZAROWKA %d] Koniec mojej pracy.\n", id);
         }

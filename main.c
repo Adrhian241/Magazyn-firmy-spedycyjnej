@@ -125,6 +125,7 @@ int main()
             else if (pid < 0)
             {
                 perror("[MAIN] Blad fork");
+                handle_sigint(0);
             }
             else
             {
@@ -145,6 +146,7 @@ int main()
     else if (pid4 < 0)
     {
         perror("[MAIN] Blad fork");
+        handle_sigint(0);
     }
     else
     {
@@ -169,6 +171,7 @@ int main()
             else if (pid < 0)
             {
                 perror("[MAIN] Blad fork");
+                handle_sigint(0);
             }
                 else
             {

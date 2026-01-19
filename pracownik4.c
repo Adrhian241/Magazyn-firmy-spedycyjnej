@@ -56,9 +56,11 @@ int main(int argc,char *argv[])
 
     while(1)
     {
-        if(wspolna->koniec_symulacji)
+        wspolna->p4_oczekujace = ilosc_w_buforze; 
+
+        if(wspolna->koniec_symulacji && ilosc_w_buforze == 0)
         {
-            logp(KOLOR_YELLOW,"[PRACOWNIK 4] Koniec pracy.");
+            logp(KOLOR_YELLOW,"[PRACOWNIK 4] Koniec pracy.\n");
             break;
         }
         usleep(100000); //generowanie co 100000 * 25 = 2,5 sekundy
@@ -70,6 +72,7 @@ int main(int argc,char *argv[])
                 logp(KOLOR_YELLOW,"[PRACOWNIK P4] + Dodal paczke %c (%.1fkg) o V = %.7fm3\n"
                 ,bufor[ilosc_w_buforze].typ,bufor[ilosc_w_buforze].waga,bufor[ilosc_w_buforze].objetosc);
                 ilosc_w_buforze++;
+                wspolna->p4_oczekujace = ilosc_w_buforze;
                 licznik_sekund = 0;
             }
         }
@@ -100,6 +103,7 @@ int main(int argc,char *argv[])
                     wspolna->ciezarowka.zaladowana_waga += p.waga;
                     wspolna->ciezarowka.zaladowana_objetosc += p.objetosc;
                     ilosc_w_buforze--;
+                    wspolna->p4_oczekujace = ilosc_w_buforze;
                     logp(KOLOR_YELLOW,"[PRACOWNIK 4] -> Zaladowano EKSPRES! Zostalo: %d. Ciezarowka: %.1f/%.0f\n",
                            ilosc_w_buforze, wspolna->ciezarowka.zaladowana_waga, W);
                     udalo_sie_zaladowac=1;
