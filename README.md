@@ -353,7 +353,7 @@ $ ps
 [CIEZAROWKA 1] pelna! Paczka 12.7kg nie wejdzie. Odjazd.
 [CIEZAROWKA 1] Odjezdzam w trase (3s)...
 ```
-![alt text](<Zrzut ekranu 2026-01-13 230232.png>)
+
 
 ## Test 7: Spamowanie Dyspozytora
 **Opis:** Test wytrzymałościowy sprawdzający stabilność kolejki komunikatów i obsługi sygnałów. Weryfikuje, czy system nie ulega awarii przy gwałtownym napływie sprzecznych lub nakładających się poleceń.
