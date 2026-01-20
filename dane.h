@@ -22,9 +22,9 @@
 
 #define K 30 //Pojemnosc tasmy ladunkowej
 #define M 420.0 //Maksymalna masa przesylek na tasmie ladunkowej [kg]
-#define W 500.0 //Ladownosc ciezarowki [kg]
+#define W 1500.0 //Ladownosc ciezarowki [kg]
 #define V 15.0 //Objetosc ciezarowki [m3]
-#define N 1000 //Liczba ciezarowek
+#define N 10 //Liczba ciezarowek
 #define TI 3 // czas po jakim wraca ciezarowka w sekundach
 #define MAX_BUFOR 100 // ilosc paczek jakie moga byc wytworzone przez pracownika 4 w jednym momencie
 #define KEY_SHM 1111
